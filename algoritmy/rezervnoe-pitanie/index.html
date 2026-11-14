@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Резервное питание квартиры: расчёт по шагам — Алгоритм дома</title><meta name="description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><meta property="og:title" content="Резервное питание квартиры: расчёт по шагам — Алгоритм дома"><meta property="og:description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/rezervnoe-pitanie/index.html" aria-current="page">Алгоритмы</a><a href="../../kalkulyatory/rezervnoe-pitanie/index.html">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<article>
+<div class="read">
+  <div class="eyebrow">Алгоритм · выпуск 1</div>
+  <h1>Резервное питание квартиры: расчёт по шагам</h1>
+  <p class="lead">Свет отключили на шесть часов. Чтобы холодильник, интернет, свет и ноутбук продолжали работать, хватает аккумулятора с инвертором — если правильно их подобрать. Ниже пять шагов расчёта на понятном примере.</p>
+</div>
+
+<div class="video-slot"><span>Ролик к этому алгоритму появится здесь после публикации на YouTube.</span></div>
+
+<div class="read">
+  <div class="box note">
+    <strong>Итог примера:</strong> на 6 часов для холодильника, роутера, трёх ламп, ноутбука и двух телефонов нужен аккумулятор LiFePO4 <b>12,8 В × 100 А·ч</b> (1280 Вт·ч) и инвертор с <b>чистой синусоидой</b> не меньше <b>≈ 750 Вт</b> длительной мощности. В ролике взят инвертор на 1000 Вт — с запасом.
+  </div>
+  <div class="box tool">
+    <p>Подставьте свои приборы и время отключения — калькулятор посчитает по тем же формулам.</p>
+    <a class="btn" href="../../kalkulyatory/rezervnoe-pitanie/index.html">Открыть калькулятор</a>
+  </div>
+
+  <h2>Как устроена система</h2>
+  <p>Аккумулятор хранит энергию. Инвертор превращает его постоянный ток в обычные 220 В, как в розетке. Между ними обязательно стоит предохранитель. Приборы подключаются к розеткам инвертора или через удлинитель. Когда свет есть, аккумулятор заряжается — от отдельного зарядного устройства или от инвертора со встроенной зарядкой.</p>
+</div>
+<figure><img src="../../assets/img/ep01-sistema.jpg" alt="Схема: аккумулятор, предохранитель, инвертор, розетка и приборы; сеть 220 В отключена" width="1280" height="720" loading="lazy"><figcaption>Аккумулятор → предохранитель → инвертор → приборы. Пока есть сеть, аккумулятор заряжается.</figcaption></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">1</span>Список приборов</h2>
+  <p>Решите, что действительно нужно во время отключения — не вся квартира, а самое важное. В примере: холодильник, роутер, три светодиодные лампы, ноутбук и зарядка двух телефонов; отключение — 6 часов.</p>
+  <p>Мощность прибора написана на нём самом: на наклейке, табличке или блоке питания. Например, у роутера на блоке питания «12V 1A»: 12 В × 1 А = <b>12 Вт</b>. Это максимум, так что расчёт получится с запасом.</p>
+  <p>Холодильник работает не постоянно: компрессор то включается, то выключается. Поэтому берём не мощность, а годовое потребление с энергетической наклейки:</p>
+  <div class="formula">250 кВт·ч в год = 250 000 Вт·ч ÷ 365 ÷ 24 ≈ <b>28,5 Вт·ч за каждый час</b></div>
+</div>
+<figure><img src="../../assets/img/ep01-pribory.jpg" alt="Карточки приборов и примеры: блок питания роутера 12 В × 1 А и энергонаклейка холодильника 250 кВт·ч в год" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">2</span>Энергия за время отключения</h2>
+  <p>Мощность умножаем на время работы. Получаем ватт-часы — сколько энергии съест каждый прибор.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Прибор</th><th class="r">Мощность</th><th class="r">Время</th><th class="r">Энергия</th></tr></thead>
+    <tbody>
+      <tr><td>Холодильник</td><td class="r">28,5 Вт в среднем</td><td class="r">6 ч</td><td class="r">171 Вт·ч</td></tr>
+      <tr><td>Роутер</td><td class="r">12 Вт</td><td class="r">6 ч</td><td class="r">72 Вт·ч</td></tr>
+      <tr><td>3 светодиодные лампы</td><td class="r">3 × 9 Вт</td><td class="r">6 ч</td><td class="r">162 Вт·ч</td></tr>
+      <tr><td>Ноутбук</td><td class="r">65 Вт (блок питания)</td><td class="r">3 ч</td><td class="r">195 Вт·ч</td></tr>
+      <tr><td>2 зарядки телефона</td><td class="r">≈ 15 Вт·ч каждая</td><td class="r">—</td><td class="r">30 Вт·ч</td></tr>
+      <tr class="total"><td>Итого</td><td></td><td></td><td class="r">≈ 630 Вт·ч</td></tr>
+    </tbody></table></div>
+  <p class="small muted">15 Вт·ч на зарядку — пример: аккумулятор телефона 4000 мА·ч × 3,7 В ≈ 15 Вт·ч. Ёмкость вашего телефона — в его характеристиках.</p>
+
+  <h2 class="step-h"><span class="step-n">3</span>Ёмкость аккумулятора</h2>
+  <p>Аккумулятор берём с запасом по трём причинам.</p>
+  <ol class="steps">
+    <li><b>Потери в инверторе.</b> У хороших моделей на 12 В КПД доходит до 92 %. Это максимум, поэтому считаем 90 %: 630 ÷ 0,9 = 700 Вт·ч.</li>
+    <li><b>Холостой ход.</b> Инвертор потребляет энергию сам, даже без нагрузки: у модели на 1200 ВА — около 8 Вт. За 6 часов это ещё 48 Вт·ч, итого ≈ 748 Вт·ч.</li>
+    <li><b>Глубина разряда.</b> Аккумулятор нельзя разряжать в ноль. LiFePO4 по данным производителя выдерживает около 2500 циклов при разряде на 80 %: 748 ÷ 0,8 ≈ 935 Вт·ч.</li>
+  </ol>
+  <div class="formula">(630 ÷ 0,9 + 8 Вт × 6 ч) ÷ 0,8 ≈ <b>935 Вт·ч</b> → LiFePO4 12,8 В × 100 А·ч = <b>1280 Вт·ч</b></div>
+</div>
+<figure><img src="../../assets/img/ep01-akkumulyator.jpg" alt="Расчёт: 630 Вт·ч, деление на КПД 0,9, плюс 48 Вт·ч холостого хода, деление на 0,8 — около 935 Вт·ч; выбран LiFePO4 на 1280 Вт·ч" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h3>Литий или свинец</h3>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>LiFePO4</th><th>Свинцово-кислотный AGM</th></tr></thead>
+    <tbody>
+      <tr><td>Глубина разряда в расчёте</td><td>80 %</td><td>50 % — производитель советует не оставлять разряженным больше чем наполовину</td></tr>
+      <tr><td>Ресурс</td><td>≈ 2500 циклов при разряде 80 %</td><td>≈ 250 циклов при разряде 80 %</td></tr>
+      <tr><td>Нужно для примера</td><td>≈ 935 Вт·ч</td><td>≈ 1500 Вт·ч</td></tr>
+      <tr><td>Вес</td><td colspan="2">Литий, по данным производителя, до 70 % легче; свинец дешевле при покупке</td></tr>
+    </tbody></table></div>
+</div>
+<figure><img src="../../assets/img/ep01-litiy-svinec.jpg" alt="Сравнение LiFePO4 и AGM: разряд 80 и 50 процентов, 2500 и 250 циклов, нужно 935 и 1500 Вт·ч" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">4</span>Мощность инвертора</h2>
+  <p>Сначала складываем всё, что может работать одновременно: холодильник по табличке 120 Вт, роутер 12, лампы 27, ноутбук 65, две зарядки телефонов около 40. Всего ≈ <b>264 Вт</b>.</p>
+</div>
+<figure><img src="../../assets/img/ep01-invertor-summa.jpg" alt="Нагрузка складывается из приборов: холодильник 120, роутер 12, лампы 27, ноутбук 65, телефоны 40 — всего 264 Вт" width="1280" height="720" loading="lazy"></figure>
+<div class="read">
+  <p>Но холодильник при запуске берёт намного больше. Производитель инверторов Samlex пишет, что холодильнику на старте нужно примерно в 5 раз больше рабочей мощности, и рывок длится до 5 секунд. Поэтому инвертор подбираем по длительной мощности, а не по короткому пику:</p>
+  <div class="formula">120 Вт × 5 + 144 Вт остальных ≈ <b>744 Вт</b> → инвертор от ≈ 750 Вт длительно (в примере — 1000 Вт)</div>
+  <p>Для холодильника нужен инвертор с <b>чистой синусоидой</b>: на модифицированной синусоиде двигатели сильнее греются.</p>
+</div>
+<figure><img src="../../assets/img/ep01-invertor-pusk.jpg" alt="График нагрузки: пик при запуске холодильника около 750 Вт, ниже линии 1000 Вт длительной мощности инвертора" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">5</span>Сборка и безопасность</h2>
+  <p>Аккумулятор, предохранитель и инвертор соединяют толстыми короткими проводами. На 12 В ток большой: при нагрузке 1000 Вт это около 85 А (1000 ÷ (12,8 В × 0,92)). Сечение кабеля и номинал предохранителя берите из инструкции к инвертору. Приборы включайте в розетки инвертора или через удлинитель.</p>
+  <div class="box warn"><strong>Никогда</strong> не включайте инвертор в розетку или щиток квартиры, чтобы питать всю проводку. Обратная подача опасна для электриков на линии и для соседей. Выход инвертора нельзя напрямую подключать к щитку, который питается от сети. Питать проводку целиком — отдельная работа для электрика.</div>
+</div>
+<figure><img src="../../assets/img/ep01-bezopasnost.jpg" alt="Схема обратной подачи: инвертор включён в розетку дома, ток уходит в линию к электрику на опоре — так делать нельзя" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Что купить для примера</h2>
+  <ul>
+    <li>Аккумулятор LiFePO4 12,8 В, 100 А·ч (1280 Вт·ч).</li>
+    <li>Инвертор с чистой синусоидой, длительная мощность не меньше ≈ 750 Вт; смотрите КПД и холостой ход в паспорте.</li>
+    <li>Предохранитель и кабели — по инструкции к инвертору.</li>
+    <li>Зарядное устройство, подходящее для вашего типа аккумулятора, или инвертор со встроенной зарядкой.</li>
+    <li>Удлинитель для подключения приборов.</li>
+  </ul>
+  <p class="muted small">Мощности приборов в примере — примеры с наклеек. Для своей квартиры подставьте свои цифры в калькулятор.</p>
+
+  <h2>Источники</h2>
+  <ul class="src">
+    <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-12,8-&amp;-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf" rel="noopener" target="_blank">Victron Energy — даташит LiFePO4 Smart 12,8 В</a>: ячейка 3,2 В, 2500 циклов при разряде 80 %, до 70 % легче.</li>
+    <li><a href="https://www.victronenergy.com/upload/documents/Book-Energy-Unlimited-EN.pdf" rel="noopener" target="_blank">Victron Energy — «Energy Unlimited»</a>: свинцовый аккумулятор не оставлять разряженным больше 50 %; AGM ≈ 250 циклов при разряде 80 %.</li>
+    <li>Victron Energy — даташит Phoenix Inverter 180–1200 VA: КПД до 92 % (12 В), холостой ход 8 Вт, 1200 ВА = 1000 Вт длительно, 2400 Вт пик.</li>
+    <li><a href="https://samlexamerica.com/resources-support/faq/inverters-general-information/" rel="noopener" target="_blank">Samlex — FAQ по инверторам</a>: пусковая мощность холодильника ≈ 5× рабочей, до 5 секунд; не подключать выход инвертора к щитку, питающемуся от сети.</li>
+    <li><a href="https://samlexamerica.com/resources-support/faq/pure-sine-wave-versus-modified-sine-wave-inverters/" rel="noopener" target="_blank">Samlex — чистая и модифицированная синусоида</a>: на модифицированной двигатели сильнее греются.</li>
+    <li><a href="https://www.cpsc.gov/s3fs-public/pdfs/blk_media_portgen.pdf" rel="noopener" target="_blank">CPSC — памятка по портативным генераторам</a>: обратная подача опасна для электриков и соседей.</li>
+  </ul>
+  <p class="muted small">Проверено 14 ноября 2026 г. Нашли ошибку — напишите в комментариях под роликом.</p>
+</div>
+</article>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><a href="../../o-proekte/index.html">Как мы проверяем факты</a></div></footer></body></html>
