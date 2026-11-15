@@ -103,3 +103,14 @@ ul.src{padding-left:1.2em;display:grid;gap:6px;font-size:15px}
 .cbox input:focus{outline:2px solid var(--amber);outline-offset:1px}
 .cres{max-width:var(--wide)}
 .cres h2{margin-top:8px}
+
+/* шапка закреплена при прокрутке */
+.site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px)}
+h1,h2,h3{scroll-margin-top:84px}
+@media (max-width:640px){
+  .site-head .in{flex-wrap:nowrap;gap:14px;padding-block:10px}
+  .logo span{display:none}
+  .nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px 16px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:18px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap}
+}

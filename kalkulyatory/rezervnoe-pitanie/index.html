@@ -43,7 +43,7 @@ button.x:hover{color:var(--red)}
 label.f{display:grid;gap:4px;font-size:13px;color:var(--mut)}
 .hint{font-size:12.5px;color:var(--mut);margin:8px 0 0}
 .surge{font-size:12px;font-weight:600;color:var(--amber);min-width:84px;text-align:left}
-.res{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:grid;gap:14px}
+.res{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px);display:grid;gap:14px}
 .big{display:grid;gap:2px;padding:14px;border-radius:12px;background:var(--sunk)}
 .big .k{font-size:12.5px;color:var(--mut)}
 .big .v{font:700 26px/1.15 var(--display);font-variant-numeric:tabular-nums}
@@ -67,6 +67,9 @@ footer{font-size:12.5px;color:var(--mut)}
 .logo svg{width:44px;height:28px;flex:none}
 .nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:15px}.nav a{color:var(--mut);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
 .backlink{font-size:14px}
+.site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px)}
+@media (max-width:640px){.site-head .in{flex-wrap:nowrap;gap:14px;padding-block:10px}.logo span{display:none}
+.nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px 16px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:18px}.nav::-webkit-scrollbar{display:none}.nav a{white-space:nowrap}}
 </style></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/index.html">Алгоритмы</a><a href="../../kalkulyatory/index.html" aria-current="page">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header>
 
 <main class="gutter"><div class="wrap">
