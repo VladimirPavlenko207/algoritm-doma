@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Как устроен инвертор и как читать его паспорт — Алгоритм дома</title><meta name="description" content="Как инвертор делает 230 В из аккумулятора, чем чистая синусоида лучше модифицированной и как по паспорту проверить мощность, пик, холостой ход и входное напряжение."><link rel="canonical" href="https://algoritmdoma.com/algoritmy/invertor/"><meta property="og:url" content="https://algoritmdoma.com/algoritmy/invertor/"><meta property="og:title" content="Как устроен инвертор и как читать его паспорт — Алгоритм дома"><meta property="og:description" content="Как инвертор делает 230 В из аккумулятора, чем чистая синусоида лучше модифицированной и как по паспорту проверить мощность, пик, холостой ход и входное напряжение."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/" aria-current="page">Алгоритмы</a><a href="/kalkulyatory/">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<article>
+<div class="read">
+  <div class="eyebrow">Разбираемся в железе · выпуск 5</div>
+  <h1>Как устроен инвертор и как читать его паспорт</h1>
+  <p class="lead">Инвертор делает из 12 В постоянного тока аккумулятора 230 В переменного, как в розетке. Разбираем, что у него внутри, почему для холодильника, котла и насоса нужна только чистая синусоида и какие строчки паспорта проверить перед покупкой.</p>
+</div>
+
+<div class="video" data-yt="JJ6xVLTRx5A">
+  <button class="yt-play" type="button" aria-label="Смотреть ролик «Как устроен инвертор» (5:36)">
+    <img src="../../assets/img/ep05-oblozhka.jpg" alt="" width="1280" height="720">
+    <span class="yt-ico" style="left:47%;top:84%" aria-hidden="true"><svg viewBox="0 0 68 48"><rect width="68" height="48" rx="12" fill="#ffb020"/><path d="M27 14v20l18-10z" fill="#111"/></svg></span>
+  </button>
+</div>
+<p class="read small muted">Ролик, 5:36. Не открывается? <a href="https://youtu.be/JJ6xVLTRx5A">Смотреть на YouTube</a> или читайте разбор ниже — в нём всё то же самое.</p>
+<script>
+document.querySelectorAll('.video[data-yt]').forEach(function(v){
+  v.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';
+    f.title='Как устроен инвертор — Алгоритм дома';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; v.replaceChildren(f);
+  });
+});
+</script>
+
+<div class="read">
+  <div class="box note"><strong>Коротко:</strong> берите инвертор с чистой синусоидой. Длительная мощность в ваттах при 40 °C должна быть больше суммы ваших приборов, пиковая — больше пускового рывка. Холостой ход поменьше, хорошо, если есть режим поиска. Входное напряжение — под ваш аккумулятор: чем мощнее система, тем выгоднее 24 или 48 В.</div>
+  <div class="box tool">
+    <p>Впишите мощность своих приборов и самого мощного мотора — калькулятор покажет, какая нужна длительная и пиковая мощность и какой ток пойдёт от аккумулятора.</p>
+    <a class="btn" href="/kalkulyatory/invertor/">Открыть калькулятор</a>
+  </div>
+
+  <h2>Две задачи инвертора</h2>
+  <p>Аккумулятор даёт постоянное напряжение: 12 В, всегда в одну сторону. В розетке напряжение переменное: оно плавно растёт, падает, меняет направление, и полный цикл повторяется 50 раз в секунду. Поэтому у инвертора две задачи: поднять 12 В до 230 В и заставить напряжение качаться 50 раз в секунду.</p>
+
+  <h2>Как получается волна</h2>
+  <p>Внутри стоят электронные ключи — транзисторы, соединённые мостом; в эталонной схеме Infineon это четыре группы ключей. Они подключают аккумулятор к выходу то в одну сторону, то в другую. Если просто переключать их 50 раз в секунду, получится прямоугольник. Поэтому ключи щёлкают гораздо чаще — в схеме Infineon 20 000 раз в секунду — и меняют ширину импульсов: в середине полуволны импульсы длинные, по краям короткие. Обмотка трансформатора и конденсатор сглаживают импульсы, и на выходе получается синусоида.</p>
+</div>
+<figure><img src="../../assets/img/ep05-most.jpg" alt="Мост из четырёх ключей; прямоугольник при переключении 50 раз в секунду, ШИМ 20 000 раз в секунду, после обмотки и конденсатора — синусоида" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Почему инверторы одной мощности весят по-разному</h2>
+  <p>Напряжение поднимает трансформатор, и он бывает двух видов. Железный на 50 Гц Infineon в своей схеме описывает как большой и очень тяжёлый — его даже ставят отдельно от платы. Второй вид — трансформатор на ферритовом сердечнике, который работает на высокой частоте; Victron использует такую технологию в инверторах Phoenix и пишет, что они получаются компактными и лёгкими.</p>
+</div>
+<figure><img src="../../assets/img/ep05-transformator.jpg" alt="Железный трансформатор 50 Гц и ферритовый высокочастотный; весы: одна мощность — разный вес" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Чистая или модифицированная синусоида</h2>
+  <p>Дешёвые инверторы с модифицированной синусоидой не делают плавную волну: напряжение резко растёт и падает и какое-то время стоит на нуле, прежде чем сменить направление, — по сути это разновидность прямоугольной волны. По данным производителя инверторов Samlex, от неё двигатели и микроволновки сильнее греются, часы в микроволновках и хлебопечках могут сбиваться, диммеры и регуляторы скорости вентиляторов работают неправильно, а некоторые зарядки для аккумуляторов электроинструмента могут повредиться. Infineon тоже пишет, что инверторы с синусоидой предпочтительнее, чтобы не нагружать некоторые типы приборов. <b>Для холодильника, котла и насоса — только чистая синусоида.</b></p>
+</div>
+<figure><img src="../../assets/img/ep05-sinusoida.jpg" alt="Чистая и модифицированная синусоида; что страдает от модифицированной" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">1</span>Мощность: ватты при 40 °C и пик</h2>
+  <p>Пример — Victron Phoenix 12/1200. Первая строчка паспорта — 1200 ВА; это не ватты. Ниже: длительная мощность 1000 Вт при 25 °C и 900 Вт при 40 °C — в жару инвертор отдаёт меньше, поэтому считайте по ваттам и по худшей температуре. Пиковая мощность 2400 Вт — запас на короткий рывок, например на запуск компрессора холодильника. Пуск компрессора берём как 5 × рабочей мощности, как в <a href="/algoritmy/rezervnoe-pitanie/">выпуске 1</a>.</p>
+  <div class="formula">длительная (при 40 °C) ≥ ΣP · пиковая ≥ ΣP − Pмотора + 5 × Pмотора</div>
+</div>
+<figure><img src="../../assets/img/ep05-pasport.jpg" alt="Паспорт Victron Phoenix 12/1200: 1200 ВА, 1000 Вт при 25 °C, 900 Вт при 40 °C, пик 2400 Вт" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">2</span>КПД, холостой ход и режим поиска</h2>
+  <p>Максимальный КПД версии на 12 В — 92 %. Холостой ход — 6 Вт: столько инвертор берёт сам, даже когда ничего не подключено; за 10 часов это 60 Вт·ч. В режиме поиска инвертор почти засыпает и берёт около 2 Вт, пока не включится нагрузка. В выпуске 1 мы считали 8 Вт холостого хода — так в более старой версии паспорта (rev03), расчёт получился с запасом.</p>
+</div>
+<figure><img src="../../assets/img/ep05-ekonomiya.jpg" alt="КПД 92 %, холостой ход 6 Вт × 10 ч = 60 Вт·ч, режим поиска около 2 Вт" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">3</span>Входное напряжение</h2>
+  <p>Версия на 12 В работает от 9,2 до 17,3 В. При 10,9 В предупреждает, что аккумулятор садится, при 9,2 В отключается и снова включается, когда напряжение поднимется до 12,5 В. Это защита от глубокого разряда, но для своего аккумулятора всё равно смотрите его инструкцию и настройки.</p>
+</div>
+<figure><img src="../../assets/img/ep05-napryazhenie.jpg" alt="Шкала входного напряжения 9,2–17,3 В: 10,9 В предупреждение, 9,2 В отключение, 12,5 В снова включение" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">4</span>Почему мощным системам — 24 или 48 В</h2>
+  <div class="formula">I = P ÷ (U × КПД)</div>
+  <p>1000 Вт от литиевого аккумулятора на 12,8 В — около 85 А, на 25,6 В — около 42 А, на 51,2 В — около 21 А. Чем больше ток, тем толще провода и мощнее предохранитель. Infineon пишет, что в более мощных системах нужно более высокое напряжение аккумулятора, чтобы ограничить ток; поэтому Victron выпускает тот же инвертор на 12, 24 и 48 В.</p>
+</div>
+<figure><img src="../../assets/img/ep05-tok.jpg" alt="Ток при 1000 Вт: 12,8 В — около 85 А, 25,6 В — около 42 А, 51,2 В — около 21 А" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Чек-лист: как читать паспорт инвертора</h2>
+  <ol>
+    <li><b>Чистая синусоида</b> (pure sine wave).</li>
+    <li><b>Длительная мощность в ваттах при 40 °C</b>, а не только при 25 °C, — больше суммы ваших приборов.</li>
+    <li><b>Пиковая мощность</b> — больше пускового рывка.</li>
+    <li><b>Холостой ход</b> поменьше и, если есть, режим поиска.</li>
+    <li><b>Входное напряжение</b> — как у вашего аккумулятора; посмотрите, при каком напряжении инвертор отключается.</li>
+  </ol>
+  <p>Сечение кабеля и предохранитель — по инструкции вашего инвертора.</p>
+
+  <h2>Источники</h2>
+  <ul class="src">
+    <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-Phoenix-Inverter-180VA-1200VA-EN.pdf" rel="noopener" target="_blank">Victron Energy (Нидерланды) — паспорт Phoenix Inverter 180–1200 VA</a>: 230 В, 50 Гц; 12/1200: 1200 ВА, 1000/900 Вт при 25/40 °C, пик 2400 Вт, КПД 92 %, холостой ход 6 Вт, поиск 2 Вт, вход 9,2–17,3 В; «hybrid HF technology».</li>
+    <li><a href="https://www.arestipower.gr/wp-content/uploads/xmsAssets/Datasheet-PhoenixInverter180VA-1200VA-rev03-EN.pdf" rel="noopener" target="_blank">Victron Energy — паспорт Phoenix Inverter, rev03</a>: холостой ход 8 Вт.</li>
+    <li><a href="https://www.infineon.cn/assets/row/public/documents/30/42/infineon-ups-lowfrequency-transformer-soho-applicationnotes-en.pdf" rel="noopener" target="_blank">Infineon (Германия) — Low frequency transformer based SOHO UPS design</a>: полный мост, ШИМ 20 кГц, железный и ферритовый трансформаторы, напряжение аккумулятора и ток.</li>
+    <li><a href="https://samlexamerica.com/resources-support/faq/pure-sine-wave-versus-modified-sine-wave-inverters/" rel="noopener" target="_blank">Samlex (Канада) — Pure Sine Wave versus Modified Sine Wave</a>: форма модифицированной синусоиды и что от неё страдает. Европейского источника с таким списком мы не нашли.</li>
+  </ul>
+  <p class="muted small">Проверено 15 ноября 2026 г. Нашли ошибку — напишите в комментариях под роликом.</p>
+</div>
+</article>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>

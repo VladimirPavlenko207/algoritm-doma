@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: подбор инвертора — Алгоритм дома</title><meta name="description" content="Посчитайте, какая нужна длительная и пиковая мощность инвертора под ваши приборы, какой ток пойдёт от аккумулятора на 12, 24 или 48 В, и проверьте паспорт инвертора."><link rel="canonical" href="https://algoritmdoma.com/kalkulyatory/invertor/"><meta property="og:url" content="https://algoritmdoma.com/kalkulyatory/invertor/"><meta property="og:title" content="Калькулятор: подбор инвертора — Алгоритм дома"><meta property="og:description" content="Посчитайте, какая нужна длительная и пиковая мощность инвертора под ваши приборы, какой ток пойдёт от аккумулятора на 12, 24 или 48 В, и проверьте паспорт инвертора."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/">Алгоритмы</a><a href="/kalkulyatory/" aria-current="page">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Подбор инвертора</h1>
+  <p class="lead">Впишите мощность приборов, которые работают одновременно, и самый мощный мотор. Пример уже заполнен: квартира из <a href="/algoritmy/rezervnoe-pitanie/">выпуска 1</a> — 264 Вт, из них холодильник 120 Вт.</p>
+</div>
+<form class="calc" id="ic" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Ваши приборы</legend>
+    <label>Все приборы, работающие одновременно, Вт<input type="number" name="P" value="264" min="0" step="any"></label>
+    <label>Из них самый мощный мотор (холодильник, насос), Вт<input type="number" name="Pm" value="120" min="0" step="any"></label>
+    <label>Пуск мотора, во сколько раз больше рабочей<input type="number" name="km" value="5" min="1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Аккумулятор</legend>
+    <label>Напряжение<select name="U"><option value="12.8">12,8 В — литиевый LiFePO4 на 12 В</option><option value="25.6">25,6 В — LiFePO4 на 24 В</option><option value="51.2">51,2 В — LiFePO4 на 48 В</option><option value="12">12 В — свинцовый</option><option value="24">24 В — свинцовый</option><option value="48">48 В — свинцовый</option></select></label>
+    <label>КПД инвертора (из паспорта)<input type="number" name="eta" value="0.92" min="0.5" max="1" step="any"></label>
+    <label>Длительность отключения, ч (для холостого хода)<input type="number" name="T" value="6" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Паспорт инвертора (необязательно)</legend>
+    <label>Длительная мощность при 40 °C, Вт<input type="number" name="Pc" placeholder="например, 900" min="0" step="any"></label>
+    <label>Пиковая мощность, Вт<input type="number" name="Pp" placeholder="например, 2400" min="0" step="any"></label>
+    <label>Холостой ход, Вт<input type="number" name="P0" placeholder="например, 6" min="0" step="any"></label>
+    <label>Входное напряжение от, В<input type="number" name="Umin" placeholder="например, 9.2" min="0" step="any"></label>
+    <label>Входное напряжение до, В<input type="number" name="Umax" placeholder="например, 17.3" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="ires"></div>
+  <p id="iverd" class="box note"></p>
+  <div class="box warn"><strong>Чек-лист паспорта:</strong> чистая синусоида · длительная мощность в ваттах при 40 °C, а не только при 25 °C · пиковая мощность больше пускового рывка · холостой ход поменьше и режим поиска · входное напряжение под ваш аккумулятор и напряжение отключения при разряде. Сечение кабеля и предохранитель — по инструкции инвертора.</div>
+  <p class="muted small">Формулы: длительная ≥ ΣP; пиковая ≥ ΣP − Pмотора + k × Pмотора (k = 5 — оценка пуска компрессора из выпуска 1); ток I = P ÷ (U × КПД); холостой ход за отключение = P0 × часы. Расчёт ориентировочный: точную мощность приборов покажет ваттметр, пуск — паспорт прибора.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('ic');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function ok(b){return b?'<span style="color:var(--teal,#2ec4b6)">✓ подходит</span>':'<span style="color:var(--red,#ff5a5f)">✗ мало</span>'}
+function run(){
+  var P=v('P')||0,Pm=Math.min(v('Pm')||0,P),km=v('km')||5,U=parseFloat(f.elements.U.value),eta=v('eta')||0.92,T=v('T')||0;
+  var Pk=P-Pm+km*Pm,I=P/(U*eta),Ik=Pk/(U*eta);
+  var rows=[['Длительная мощность (при 40 °C)','<b>≥ '+n0(P)+' Вт</b>'],['Пиковая мощность ('+n0(P)+' − '+n0(Pm)+' + '+String(km).replace('.',',')+' × '+n0(Pm)+')','<b>≥ '+n0(Pk)+' Вт</b>'],
+   ['Ток от аккумулятора '+String(U).replace('.',',')+' В','<b>≈ '+n0(I)+' А</b> в работе, ≈ '+n0(Ik)+' А на пуске']];
+  var Pc=v('Pc'),Pp=v('Pp'),P0=v('P0'),Umin=v('Umin'),Umax=v('Umax'),bad=[],chk=0;
+  if(Pc){rows.push(['Ваш инвертор: длительная '+n0(Pc)+' Вт',ok(Pc>=P)]);chk++;if(Pc<P)bad.push('длительной мощности')}
+  if(Pp){rows.push(['Ваш инвертор: пиковая '+n0(Pp)+' Вт',ok(Pp>=Pk)]);chk++;if(Pp<Pk)bad.push('пиковой мощности')}
+  if(P0!=null&&P0>0)rows.push(['Холостой ход за '+n1(T)+' ч',n1(P0)+' × '+n1(T)+' = <b>'+n0(P0*T)+' Вт·ч</b>']);
+  if(Umin&&Umax){var inr=U>=Umin&&U<=Umax;rows.push(['Вход '+n1(Umin)+'–'+n1(Umax)+' В и аккумулятор '+String(U).replace('.',',')+' В',inr?'<span style="color:var(--teal,#2ec4b6)">✓ подходит</span>':'<span style="color:var(--red,#ff5a5f)">✗ другое напряжение</span>']);chk++;if(!inr)bad.push('входного напряжения')}
+  document.getElementById('ires').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('iverd').innerHTML=P<=0?'Впишите мощность приборов.':(chk===0?'Ищите инвертор с чистой синусоидой: длительно от '+n0(P)+' Вт при 40 °C и пик от '+n0(Pk)+' Вт. Впишите данные из паспорта — проверим.':
+   (bad.length?'<strong>Не подходит</strong> по '+bad.join(' и ')+'.':'<strong>Подходит</strong> по тем строчкам паспорта, что вы вписали. Проверьте ещё чистую синусоиду и отключение при разряде.'));
+}
+f.addEventListener('input',run);f.addEventListener('change',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Как устроен расчёт — в <a href="/algoritmy/invertor/">алгоритме выпуска 5</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>
