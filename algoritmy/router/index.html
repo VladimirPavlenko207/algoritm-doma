@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Резервное питание роутера: интернет без света — Алгоритм дома</title><meta name="description" content="Как оставить интернет при отключении света: что питать, сколько ватт берут роутер и терминал провайдера, мини-ИБП на 12 В или power bank и как посчитать часы работы."><meta property="og:title" content="Резервное питание роутера: интернет без света — Алгоритм дома"><meta property="og:description" content="Как оставить интернет при отключении света: что питать, сколько ватт берут роутер и терминал провайдера, мини-ИБП на 12 В или power bank и как посчитать часы работы."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/index.html" aria-current="page">Алгоритмы</a><a href="../../kalkulyatory/index.html">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<article>
+<div class="read">
+  <div class="eyebrow">Алгоритм · выпуск 4</div>
+  <h1>Резервное питание роутера: интернет без света</h1>
+  <p class="lead">Роутеру и терминалу провайдера нужно всего несколько ватт, поэтому интернет можно держать часами от небольшого аккумулятора. Разбираем, что именно питать, сколько ватт берёт ваш интернет, какой источник выбрать и как посчитать часы.</p>
+</div>
+
+<div class="video" data-yt="n5x3mRVRbBM">
+  <button class="yt-play" type="button" aria-label="Смотреть ролик «Резервное питание роутера» (6:01)">
+    <img src="../../assets/img/ep04-oblozhka.jpg" alt="" width="1280" height="720">
+    <span class="yt-ico" style="left:57%;top:58%" aria-hidden="true"><svg viewBox="0 0 68 48"><rect width="68" height="48" rx="12" fill="#ffb020"/><path d="M27 14v20l18-10z" fill="#111"/></svg></span>
+  </button>
+</div>
+<p class="read small muted">Ролик, 6:01. Не открывается? <a href="https://youtu.be/n5x3mRVRbBM">Смотреть на YouTube</a> или читайте разбор ниже — в нём всё то же самое.</p>
+<script>
+document.querySelectorAll('.video[data-yt]').forEach(function(v){
+  v.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';
+    f.title='Резервное питание роутера — Алгоритм дома';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; v.replaceChildren(f);
+  });
+});
+</script>
+
+<div class="read">
+  <div class="box note"><strong>Коротко:</strong> сначала спросите провайдера, работает ли его сеть без света. Потом сложите ватты терминала и роутера и возьмите мини-ИБП на 12 В или power bank, который умеет выдавать 12 В. Часы работы ≈ Вт·ч × 0,8 ÷ Вт: терминал на 5 Вт мини-ИБП на 27,75 Вт·ч держит около 4,4 ч, power bank на 74 Вт·ч — около 12 ч.</div>
+  <div class="box tool">
+    <p>Впишите ватты своих устройств и ёмкость источника — калькулятор посчитает часы работы и сколько Вт·ч нужно на ваше отключение.</p>
+    <a class="btn" href="../../kalkulyatory/router/index.html">Открыть калькулятор</a>
+  </div>
+
+  <h2>Что питать</h2>
+  <p>Обычно интернет в квартире — это два устройства: терминал провайдера и роутер; иногда они в одной коробке. В оптической сети между станцией провайдера и вашим терминалом стоят только пассивные разветвители без питания, поэтому для интернета без света нужно питание у вас дома и резервное питание на станции провайдера. Если интернет приходит по обычному кабелю, в доме обычно стоит оборудование провайдера, и ему тоже нужно питание. Поэтому первым делом спросите провайдера, работает ли его сеть при отключении.</p>
+</div>
+<figure><img src="../../assets/img/ep04-shema.jpg" alt="Станция провайдера — пассивный разветвитель без питания — терминал — роутер; питание нужно дома и на станции провайдера" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">1</span>Сколько ватт</h2>
+  <p>Посмотрите на наклейку блока питания: у TP-Link Archer AX1800 — 12 В, 1 А, то есть до 12 Вт. Это максимум блока, а не потребление. Напряжение бывает разным: у европейской версии Archer A64 блок на 9 В. У терминалов производитель иногда пишет два числа: у Huawei EchoLife EG8145V5 (терминал со встроенным Wi-Fi) статическая мощность 5 Вт, максимальная 12 Вт; реальное потребление — между ними. Точнее всего — измерить ваттметром, как в <a href="../../algoritmy/kotel/index.html">выпуске 3</a>.</p>
+</div>
+<figure><img src="../../assets/img/ep04-vatty.jpg" alt="Наклейка блока питания 12 В 1 А = 12 Вт максимум; Archer A64 EU на 9 В; Huawei EG8145V5: 5 Вт статическая, 12 Вт максимальная" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Чем питать: три способа</h2>
+  <h3>Мини-ИБП на 12 В</h3>
+  <p>Включается между блоком питания и роутером и отдаёт постоянное напряжение — без 230 В на выходе. Например, APC Back-UPS Connect CP12036LI: вход и выход 12 В, до 36 Вт, литий-ионный аккумулятор на 27,75 Вт·ч, три сменных штекера (2,5 · 2,1 · 1,7 мм); производитель пишет «до 4 часов для среднего роутера». Сверьте напряжение с наклейкой блока питания, мощность — с запасом, штекер — с гнездом, и хватит ли выходов на все устройства.</p>
+</div>
+<figure><img src="../../assets/img/ep04-mini-ibp.jpg" alt="Розетка — блок питания — мини-ИБП 12 В — терминал; характеристики APC CP12036LI и чек-лист перед покупкой" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h3>Power bank</h3>
+  <p>Подойдёт не любой: в правилах USB Power Delivery обязательные напряжения — 5, 9, 15 и 20 В, 12 В в этом списке нет. Кабель-переходник на 12 В заработает, только если power bank умеет выдавать 12 В — ищите это в характеристиках. Ёмкость смотрите в ватт-часах; если указаны только мА·ч — разделите на 1000 и умножьте на напряжение рядом: 20 000 мА·ч × 3,7 В = 74 Вт·ч.</p>
+  <h3>Обычный ИБП или зарядная станция</h3>
+  <p>Работать будет, но расточительно: постоянное напряжение превращается в 230 В, а блок питания роутера снова делает из них 12 В, и на каждом шаге часть энергии уходит в тепло. Плюс инвертор на холостом ходу сам берёт около 8 Вт (<a href="../../algoritmy/rezervnoe-pitanie/index.html">выпуск 1</a>) — больше, чем терминал на 5 Вт. Станция уже есть — включите роутер в неё; только ради интернета лучше мини-ИБП на 12 В.</p>
+
+  <h2 class="step-h"><span class="step-n">2</span>Сколько часов</h2>
+  <div class="formula">часы ≈ Вт·ч × 0,8 ÷ Вт</div>
+  <p>Коэффициент 0,8 — из паспорта того же APC: «45 минут при 80 % нагрузки». Это 28,8 Вт × 0,75 ч ≈ 21,6 Вт·ч из 27,75 Вт·ч, около 78 %. Для power bank берём тот же запас. Пример: терминал со встроенным Wi-Fi на 5 Вт — мини-ИБП на 27,75 Вт·ч продержит около 4,4 ч, power bank на 74 Вт·ч — около 12 ч.</p>
+</div>
+<figure><img src="../../assets/img/ep04-chasy.jpg" alt="Формула часы = Вт·ч × 0,8 ÷ Вт; вывод коэффициента 0,8 из паспорта APC; мини-ИБП ≈ 4,4 ч и power bank ≈ 12 ч при 5 Вт" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Пять ошибок</h2>
+  <ol>
+    <li><b>Питать только роутер, забыв терминал</b> — Wi-Fi будет, интернета нет.</li>
+    <li><b>12 В на роутер, которому нужно 9 В.</b> Питайте каждое устройство напряжением с его блока питания.</li>
+    <li><b>Power bank и кабель на 12 В, а power bank 12 В не выдаёт.</b></li>
+    <li><b>Один роутер на большом ИБП</b> — заметная часть заряда уйдёт на потери.</li>
+    <li><b>Не спросить провайдера</b> — если его сеть без света не работает, аккумулятор будет питать роутер без интернета.</li>
+  </ol>
+
+  <h2>Источники</h2>
+  <ul class="src">
+    <li><a href="https://www.cisco.com/c/en/us/products/switches/what-is-passive-optical-networking.html" rel="noopener" target="_blank">Cisco — What Is Passive Optical Networking</a>: разветвители без питания.</li>
+    <li><a href="https://static.tp-link.com/upload/product-overview/2025/202511/20251117/Archer%20AX1800(EU)2.0_Datasheet.pdf" rel="noopener" target="_blank">TP-Link Archer AX1800 (EU) — даташит</a>: 12 V/1A.</li>
+    <li><a href="https://static.tp-link.com/upload/product-overview/2026/202601/20260116/Archer%20A64(EU&US)2.0_Datasheet.pdf" rel="noopener" target="_blank">TP-Link Archer A64 — даташит</a>: EU-версия 9 V/0.85 A.</li>
+    <li><a href="https://e.huawei.com/de/products/optical-terminal/echolife-eg8145v5" rel="noopener" target="_blank">Huawei EchoLife EG8145V5</a>: 12 В, 1,5 А; 5 Вт статическая, 12 Вт максимальная.</li>
+    <li><a href="https://tw.element14.com/wcsstore/ExtendedSitesCatalogAssetStore/cms/asset/pdf/common/schneider-ups/apc-back-ups-connect_(one-pager)_en.pdf" rel="noopener" target="_blank">APC Back-UPS Connect CP12036LI</a>: 12 В, 36 Вт, 27,75 Вт·ч, 45 мин при 80 % нагрузки, до 4 ч для среднего роутера.</li>
+    <li><a href="https://www.ti.com/lit/pdf/slva782" rel="noopener" target="_blank">Texas Instruments — USB Power Delivery (SLVA782)</a>: 5, 9, 15 и 20 В.</li>
+    <li><a href="https://www.faa.gov/hazmat/packsafe/airline-passengers-and-batteries" rel="noopener" target="_blank">FAA — расчёт ватт-часов</a>.</li>
+  </ul>
+  <p class="muted small">Проверено 15 ноября 2026 г. Нашли ошибку — напишите в комментариях под роликом.</p>
+</div>
+</article>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>

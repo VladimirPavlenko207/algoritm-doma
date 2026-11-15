@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: резервное питание роутера — Алгоритм дома</title><meta name="description" content="Посчитайте, сколько часов проработают роутер и терминал провайдера от мини-ИБП или power bank, и сколько ватт-часов нужно на ваше отключение."><meta property="og:title" content="Калькулятор: резервное питание роутера — Алгоритм дома"><meta property="og:description" content="Посчитайте, сколько часов проработают роутер и терминал провайдера от мини-ИБП или power bank, и сколько ватт-часов нужно на ваше отключение."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/index.html">Алгоритмы</a><a href="../../kalkulyatory/index.html" aria-current="page">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Резервное питание роутера</h1>
+  <p class="lead">Впишите ватты своих устройств и ёмкость источника. Пример уже заполнен: терминал со встроенным Wi-Fi на 5 Вт и мини-ИБП на 27,75 Вт·ч из <a href="../../algoritmy/router/index.html">выпуска 4</a>.</p>
+</div>
+<form class="calc" id="rc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Устройства, Вт</legend>
+    <label>Терминал провайдера (или терминал с Wi-Fi)<input type="number" name="Pt" value="5" min="0" step="any"></label>
+    <label>Отдельный роутер (0, если всё в одной коробке)<input type="number" name="Pr" value="0" min="0" step="any"></label>
+    <label>Другое на том же источнике<input type="number" name="Po" value="0" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Источник</legend>
+    <label>Ёмкость, Вт·ч (с корпуса или паспорта)<input type="number" name="E" value="27.75" min="0" step="any"></label>
+    <label>…или мА·ч (если Вт·ч не указаны)<input type="number" name="mah" placeholder="например, 20000" min="0" step="any"></label>
+    <label>Напряжение рядом с мА·ч, В<input type="number" name="V" value="3.7" min="0.1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Отключение</legend>
+    <label>Длительность отключения, ч<input type="number" name="T" value="8" min="0.5" step="any"></label>
+    <label>Запас на потери (доля, что доходит до устройств)<input type="number" name="k" value="0.8" min="0.3" max="1" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="rres"></div>
+  <p id="rverd" class="box note"></p>
+  <div class="box warn"><strong>Перед покупкой:</strong> спросите провайдера, работает ли его сеть без света; питайте каждое устройство только тем напряжением, что на его блоке питания (бывает 12 В и 9 В); проверьте штекер и что выходов хватает на все устройства; power bank должен уметь выдавать 12 В — в USB Power Delivery это напряжение необязательное.</div>
+  <p class="muted small">Формулы: часы = Вт·ч × 0,8 ÷ Вт; нужно Вт·ч = Вт × часы ÷ 0,8; Вт·ч = мА·ч ÷ 1000 × В. Коэффициент 0,8 — из паспорта APC Back-UPS Connect (45 мин при 80 % нагрузки ≈ 78 % ёмкости). Расчёт ориентировочный: реальное потребление устройств зависит от нагрузки — точнее всего измерить ваттметром.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('rc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function run(){
+  var P=(v('Pt')||0)+(v('Pr')||0)+(v('Po')||0),T=v('T')||0,k=v('k')||0.8,mah=v('mah'),V=v('V')||3.7;
+  var E=(mah&&mah>0)?mah/1000*V:(v('E')||0);
+  var rows=[['Мощность устройств',n1(P)+' Вт'],['Ёмкость источника',E.toLocaleString('ru-RU',{maximumFractionDigits:2})+' Вт·ч'+(mah&&mah>0?' (из '+n0(mah)+' мА·ч × '+String(V).replace('.',',')+' В)':'')]];
+  var h=P>0?E*k/P:null,need=P*T/k;
+  if(h!=null)rows.push(['Продержит','<b>≈ '+n1(h)+' ч</b>']);
+  rows.push(['Нужно на '+n1(T)+' ч','<b>≈ '+n0(need)+' Вт·ч</b> (≈ '+n0(need/V*1000)+' мА·ч при '+String(V).replace('.',',')+' В)']);
+  document.getElementById('rres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('rverd').innerHTML=P<=0?'Впишите ватты устройств.':(E<=0?'Впишите ёмкость источника — покажем, на сколько часов его хватит.':
+   (h>=T?'<strong>Хватит:</strong> примерно '+n1(h)+' ч — больше, чем '+n1(T)+' ч отключения.':'<strong>Не хватит:</strong> примерно '+n1(h)+' ч, а нужно '+n1(T)+' ч. Нужен источник около '+n0(need)+' Вт·ч.'));
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Как устроен расчёт — в <a href="../../algoritmy/router/index.html">алгоритме выпуска 4</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>
