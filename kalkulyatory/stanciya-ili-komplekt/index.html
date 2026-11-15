@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: зарядная станция или свой комплект — Алгоритм дома</title><meta name="description" content="Сравните цену за ватт-час и время зарядки зарядной станции и комплекта из аккумулятора, инвертора и зарядного по ценам своего магазина."><meta property="og:title" content="Калькулятор: зарядная станция или свой комплект — Алгоритм дома"><meta property="og:description" content="Сравните цену за ватт-час и время зарядки зарядной станции и комплекта из аккумулятора, инвертора и зарядного по ценам своего магазина."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/index.html">Алгоритмы</a><a href="../../kalkulyatory/index.html" aria-current="page">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Зарядная станция или свой комплект</h1>
+  <p class="lead">Впишите цены своего магазина в любой валюте. Характеристики уже заполнены примером из <a href="../../algoritmy/stanciya-ili-komplekt/index.html">выпуска 2</a> — поменяйте на свои из паспортов.</p>
+</div>
+<form class="calc" id="sc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Задача</legend>
+    <label>Нужная ёмкость, Вт·ч<input type="number" name="E" value="1000" min="1" step="any"></label>
+    <label>Сколько часов дают свет между отключениями<input type="number" name="win" value="3" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Зарядная станция</legend>
+    <label>Цена станции<input type="number" name="Ps" placeholder="ваша цена" min="0" step="any"></label>
+    <label>Ёмкость, Вт·ч<input type="number" name="Es" value="1024" min="1" step="any"></label>
+    <label>Зарядка от сети до 100 %, мин (из паспорта)<input type="number" name="ts" value="56" min="1" step="any"></label>
+    <label>Цена доп. батареи<input type="number" name="Pe" placeholder="ваша цена" min="0" step="any"></label>
+    <label>Ёмкость доп. батареи, Вт·ч<input type="number" name="Ee" value="1024" min="1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Свой комплект</legend>
+    <label>Цена аккумулятора<input type="number" name="Pb" placeholder="ваша цена" min="0" step="any"></label>
+    <label>Напряжение аккумулятора, В<input type="number" name="U" value="12.8" min="1" step="any"></label>
+    <label>Ёмкость аккумулятора, А·ч<input type="number" name="Q" value="100" min="1" step="any"></label>
+    <label>Цена инвертора<input type="number" name="Pi" placeholder="ваша цена" min="0" step="any"></label>
+    <label>Цена зарядного<input type="number" name="Pc" placeholder="ваша цена" min="0" step="any"></label>
+    <label>Ток зарядного, А<input type="number" name="I" value="20" min="0.1" step="any"></label>
+    <label>Предохранитель, провода, клеммы<input type="number" name="Pm" placeholder="ваша цена" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th class="r">Станция</th><th class="r">Комплект</th></tr></thead>
+    <tbody id="res"></tbody></table></div>
+  <p id="verdict" class="box note"></p>
+  <h3>Как меняется цена с ёмкостью</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Нужно</th><th class="r">Станция: цена · за Вт·ч</th><th class="r">Комплект: цена · за Вт·ч</th></tr></thead>
+    <tbody id="scale"></tbody></table></div>
+  <p class="muted small">Время зарядки — оценка: для комплекта ёмкость ÷ ток зарядного без фазы дозаряда; для станции с доп. батареей время из паспорта умножено пропорционально ёмкости. Совместимость доп. батарей и параллельное подключение аккумуляторов проверяйте по инструкции производителя.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('sc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n0(x){return x==null?'—':Math.round(x).toLocaleString('ru-RU')}
+function n2(x){return x==null?'—':x.toLocaleString('ru-RU',{maximumFractionDigits:2,minimumFractionDigits:2})}
+function hrs(h){if(h==null)return '—';if(h<1)return Math.round(h*60)+' мин';return (Math.round(h*10)/10).toLocaleString('ru-RU')+' ч'}
+function calc(E){
+  var Es=v('Es')||1,Ee=v('Ee')||1,Ps=v('Ps'),Pe=v('Pe'),ts=v('ts')||0;
+  var nE=Math.max(0,Math.ceil((E-Es)/Ee-1e-9)),EsT=Es+nE*Ee;
+  var Cs=(Ps==null||(nE>0&&Pe==null))?null:Ps+nE*(Pe||0);
+  var U=v('U')||12.8,Q=v('Q')||1,Eb=U*Q,nB=Math.max(1,Math.ceil(E/Eb-1e-9)),EkT=nB*Eb;
+  var Pb=v('Pb'),Pi=v('Pi'),Pc=v('Pc'),Pm=v('Pm')||0,I=v('I')||1;
+  var Ck=(Pb==null||Pi==null||Pc==null)?null:nB*Pb+Pi+Pc+Pm;
+  return {nE:nE,EsT:EsT,Cs:Cs,psW:Cs==null?null:Cs/EsT,tS:ts/60*EsT/Es,nB:nB,EkT:EkT,Ck:Ck,pkW:Ck==null?null:Ck/EkT,tK:nB*Q/I};
+}
+function run(){
+  var E=v('E')||1,win=v('win'),r=calc(E);
+  var ok=function(t){return win==null?'':(t<=win?' ✓':' ✗')};
+  document.getElementById('res').innerHTML=
+   '<tr><td>Состав</td><td class="r">станция'+(r.nE?' + '+r.nE+' доп. бат.':'')+'</td><td class="r">'+r.nB+' акк. + инвертор + зарядное</td></tr>'+
+   '<tr><td>Ёмкость, Вт·ч</td><td class="r">'+n0(r.EsT)+'</td><td class="r">'+n0(r.EkT)+'</td></tr>'+
+   '<tr><td>Цена</td><td class="r">'+n0(r.Cs)+'</td><td class="r">'+n0(r.Ck)+'</td></tr>'+
+   '<tr class="total"><td>Цена за Вт·ч</td><td class="r">'+n2(r.psW)+'</td><td class="r">'+n2(r.pkW)+'</td></tr>'+
+   '<tr><td>Зарядка от сети</td><td class="r">'+hrs(r.tS)+ok(r.tS)+'</td><td class="r">'+hrs(r.tK)+ok(r.tK)+'</td></tr>';
+  var vd=document.getElementById('verdict');
+  if(r.psW==null||r.pkW==null){vd.innerHTML='Впишите цены станции и деталей комплекта — появится сравнение цены за ватт-час.'}
+  else{var a=r.psW,b=r.pkW,d=Math.abs(a-b)/Math.min(a,b)*100;
+   vd.innerHTML=(Math.abs(a-b)/Math.min(a,b)<0.05?'<strong>Почти поровну</strong> по цене за ватт-час.':'<strong>'+(a<b?'Станция':'Комплект')+' дешевле</strong> за ватт-час примерно на '+Math.round(d)+' %.')+
+    (win!=null?' За '+String(win).replace('.',',')+' ч со светом полностью зарядится: станция — '+(r.tS<=win?'да':'нет')+', комплект — '+(r.tK<=win?'да':'нет')+'.':'')}
+  var rows='';[1000,2000,3000,4000,5000].forEach(function(e){var x=calc(e);rows+='<tr><td>'+n0(e)+' Вт·ч</td><td class="r">'+n0(x.Cs)+' · '+n2(x.psW)+'<br><span class="muted small">'+n0(x.EsT)+' Вт·ч'+(x.nE?', +'+x.nE+' доп. бат.':'')+'</span></td><td class="r">'+n0(x.Ck)+' · '+n2(x.pkW)+'<br><span class="muted small">'+n0(x.EkT)+' Вт·ч, '+x.nB+' акк.</span></td></tr>'});
+  document.getElementById('scale').innerHTML=rows;
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Расчёт ориентировочный. Формулы и пример — в <a href="../../algoritmy/stanciya-ili-komplekt/index.html">алгоритме выпуска 2</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><a href="../../o-proekte/index.html">Как мы проверяем факты</a></div></footer></body></html>

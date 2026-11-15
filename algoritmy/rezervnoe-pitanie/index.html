@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Резервное питание квартиры: расчёт по шагам — Алгоритм дома</title><meta name="description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><meta property="og:title" content="Резервное питание квартиры: расчёт по шагам — Алгоритм дома"><meta property="og:description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/rezervnoe-pitanie/index.html" aria-current="page">Алгоритмы</a><a href="../../kalkulyatory/rezervnoe-pitanie/index.html">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Резервное питание квартиры: расчёт по шагам — Алгоритм дома</title><meta name="description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><meta property="og:title" content="Резервное питание квартиры: расчёт по шагам — Алгоритм дома"><meta property="og:description" content="Как посчитать аккумулятор и инвертор для резервного питания квартиры: 5 шагов, формулы, пример на 6 часов отключения и источники."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="../../index.html"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="../../index.html">Главная</a><a href="../../algoritmy/index.html" aria-current="page">Алгоритмы</a><a href="../../kalkulyatory/index.html">Калькуляторы</a><a href="../../o-proekte/index.html">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
 <article>
 <div class="read">
   <div class="eyebrow">Алгоритм · выпуск 1</div>
@@ -7,7 +7,24 @@
   <p class="lead">Свет отключили на шесть часов. Чтобы холодильник, интернет, свет и ноутбук продолжали работать, хватает аккумулятора с инвертором — если правильно их подобрать. Ниже пять шагов расчёта на понятном примере.</p>
 </div>
 
-<div class="video-slot"><span>Ролик к этому алгоритму появится здесь после публикации на YouTube.</span></div>
+<div class="video" data-yt="Rg46fcz0qWA">
+  <button class="yt-play" type="button" aria-label="Смотреть ролик «Резервное питание квартиры» (5:50)">
+    <img src="../../assets/img/ep01-oblozhka.jpg" alt="" width="1280" height="720">
+    <span class="yt-ico" aria-hidden="true"><svg viewBox="0 0 68 48"><rect width="68" height="48" rx="12" fill="#ffb020"/><path d="M27 14v20l18-10z" fill="#111"/></svg></span>
+  </button>
+</div>
+<p class="read small muted">Ролик, 5:50. Не открывается? <a href="https://youtu.be/Rg46fcz0qWA">Смотреть на YouTube</a> или читайте расчёт ниже — в нём всё то же самое.</p>
+<script>
+document.querySelectorAll('.video[data-yt]').forEach(function(v){
+  v.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';
+    f.title='Резервное питание квартиры — Алгоритм дома';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; v.replaceChildren(f);
+  });
+});
+</script>
 
 <div class="read">
   <div class="box note">
