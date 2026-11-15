@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>AGM или LiFePO4: какой аккумулятор для инвертора выгоднее за 10 лет — Алгоритм дома</title><meta name="description" content="Свинцовый AGM или литиевый LiFePO4 для резервного питания: циклы по паспорту, мороз и жара, потери на зарядку и как посчитать, что выгоднее за 10 лет по вашим ценам."><link rel="canonical" href="https://algoritmdoma.com/algoritmy/agm-ili-lifepo4/"><meta property="og:url" content="https://algoritmdoma.com/algoritmy/agm-ili-lifepo4/"><meta property="og:title" content="AGM или LiFePO4: какой аккумулятор для инвертора выгоднее за 10 лет — Алгоритм дома"><meta property="og:description" content="Свинцовый AGM или литиевый LiFePO4 для резервного питания: циклы по паспорту, мороз и жара, потери на зарядку и как посчитать, что выгоднее за 10 лет по вашим ценам."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/" aria-current="page">Алгоритмы</a><a href="/kalkulyatory/">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<article>
+<div class="read">
+  <div class="eyebrow">Разбираемся в железе · выпуск 6</div>
+  <h1>AGM или LiFePO4: какой аккумулятор для инвертора выгоднее за 10 лет</h1>
+  <p class="lead">Две соседние квартиры в один день покупают аккумулятор на одно и то же отключение: слева свинцовый AGM, справа литиевый LiFePO4. Соседи вымышленные, цифры — из паспортов Victron. Смотрим, что с ними происходит год за годом, и считаем, кто заплатит меньше.</p>
+</div>
+
+<div class="video" data-yt="GFyhcuMRF9A">
+  <button class="yt-play" type="button" aria-label="Смотреть ролик «AGM или LiFePO4» (5:05)">
+    <img src="../../assets/img/ep06-oblozhka.jpg" alt="" width="1280" height="720">
+    <span class="yt-ico" style="left:47%;top:84%" aria-hidden="true"><svg viewBox="0 0 68 48"><rect width="68" height="48" rx="12" fill="#ffb020"/><path d="M27 14v20l18-10z" fill="#111"/></svg></span>
+  </button>
+</div>
+<p class="read small muted">Ролик, 5:05. Не открывается? <a href="https://youtu.be/GFyhcuMRF9A">Смотреть на YouTube</a> или читайте разбор ниже — в нём всё то же самое.</p>
+<script>
+document.querySelectorAll('.video[data-yt]').forEach(function(v){
+  v.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';
+    f.title='AGM или LiFePO4 — Алгоритм дома';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; v.replaceChildren(f);
+  });
+});
+</script>
+
+<div class="read">
+  <div class="box note"><strong>Коротко:</strong> решает не цена аккумулятора, а сколько раз его придётся купить. При частых отключениях свинцовый AGM тратит циклы за несколько лет, литиевый за то же время проходит лишь часть своих. В примере ниже — три AGM против одного LiFePO4 за 10 лет: литиевый выгоднее, если дороже AGM меньше чем в три раза. LiFePO4 не ставьте на мороз, AGM — в жару.</div>
+  <div class="box tool">
+    <p>Впишите, сколько у вас отключений в год и сколько ватт-часов уходит за одно, и цены из своего магазина — калькулятор покажет, на сколько лет хватит каждого аккумулятора и что выгоднее за 10 лет.</p>
+    <a class="btn" href="/kalkulyatory/agm-ili-lifepo4/">Открыть калькулятор</a>
+  </div>
+
+  <h2>День покупки</h2>
+  <p>Обоим нужно около 750 Вт·ч на одно отключение — так мы посчитали в <a href="/algoritmy/rezervnoe-pitanie/">выпуске 1</a>. Слева — AGM Victron 12 В × 110 А·ч, это 1320 Вт·ч и 32 кг. Справа — LiFePO4 Victron 12,8 В × 100 А·ч: 1280 Вт·ч и 14 кг. На бумаге свинцовый даже больше.</p>
+</div>
+<figure><img src="../../assets/img/ep06-pokupka.jpg" alt="AGM 12 В 110 А·ч = 1320 Вт·ч, 32 кг; LiFePO4 12,8 В 100 А·ч = 1280 Вт·ч, 14 кг" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">1</span>Циклы по паспорту</h2>
+  <p>Каждое отключение забирает больше половины ёмкости у обоих: 57 % у AGM и 59 % у LiFePO4. Сколько таких циклов выдержит аккумулятор, написано в паспорте. AGM Victron: 600 циклов при разряде на 50 %, 400 — при 80 %, 1500 — при 30 %. LiFePO4 Victron: 2500 циклов при 80 %, 3000 — при 70 %, 5000 — при 50 %, до остаточной ёмкости 80 %. В выпуске 1 мы называли для AGM 250 циклов при 80 % — по книге Victron 2011 года; в актуальном паспорте — 400.</p>
+</div>
+<figure><img src="../../assets/img/ep06-cikly.jpg" alt="Заряд после отключения 43 % и 41 %; циклы AGM 600/400 при 50/80 %, LiFePO4 3000/5000 при 70/50 %" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">2</span>Свет на пару часов</h2>
+  <p>Когда свет дают ненадолго, свинцовый не успевает зарядиться полностью. Victron пишет, что после примерно 80 % заряда свинцовый заряжается особенно неэффективно, а если его долго не заряжать полностью, он раньше времени выходит из строя из-за сульфатации. Литиевому полный заряд не нужен — по данным Victron, при неполном заряде его срок службы даже немного растёт.</p>
+</div>
+<figure><img src="../../assets/img/ep06-zaryad.jpg" alt="Короткие окна света; AGM после 80 % заряжается медленно, сульфатация; LiFePO4 — полный заряд не нужен" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">3</span>Мороз и жара</h2>
+  <p>Литиевый Victron отдаёт энергию от −20 °C, а заряжается только от +5 °C: на морозном балконе система защиты не даст ему зарядиться. Свинцовый не любит жару: расчётный срок службы AGM Victron в буферном режиме — 7–10 лет при 20 °C, 4 года при 30 °C и 2 года при 40 °C. Оба — в комнату, подальше от радиатора.</p>
+</div>
+<figure><img src="../../assets/img/ep06-moroz.jpg" alt="LiFePO4 на балконе: разряд от −20 °C, заряд от +5 °C; AGM у радиатора: 7–10 лет при 20 °C, 4 года при 30 °C" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">4</span>Год за годом</h2>
+  <p>Допустим, отключений 150 в год — это 150 циклов. AGM при разряде на 57 % выдерживает около 555 циклов (между 600 и 400 по паспорту) — это примерно 3,7 года, за 10 лет придётся купить три аккумулятора. LiFePO4 за 10 лет проходит 1500 циклов — половину из 3000 по паспорту.</p>
+</div>
+<figure><img src="../../assets/img/ep06-gody.jpg" alt="Шкала 10 лет: три AGM по 3,7 года против одного LiFePO4, 1500 из 3000 циклов" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Потери на зарядку</h2>
+  <p>По данным Victron, средний свинцовый аккумулятор возвращает около 80 % энергии, которую в него зарядили, литиевый — 92 %. Чтобы вернуть 750 Вт·ч, AGM возьмёт из розетки около 938 Вт·ч, LiFePO4 — около 815 Вт·ч. Разница ≈ 120 Вт·ч на каждую зарядку, за 1500 циклов — около 180 кВт·ч.</p>
+
+  <h2 class="step-h"><span class="step-n">5</span>Деньги — без цен</h2>
+  <div class="formula">за 10 лет = число покупок × цена одного аккумулятора</div>
+  <p>В примере — три AGM против одного LiFePO4: литиевый выгоднее, если дороже AGM меньше чем в три раза. Точнее сравнивать цену за киловатт-час: цену аккумулятора делим на всю энергию, которую он отдаст за жизнь. При редких отключениях циклы почти не тратятся, и решают годы: AGM рассчитан на 7–10 лет при 20 °C. При частых — циклы у свинцового закончатся раньше, чем годы.</p>
+</div>
+<figure><img src="../../assets/img/ep06-dengi.jpg" alt="За 10 лет = число покупок × цена: 3 × AGM против 1 × LiFePO4" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Чек-лист</h2>
+  <ol>
+    <li>Сколько отключений в год и сколько Вт·ч уходит за одно.</li>
+    <li>Число циклов в паспорте — при вашей глубине разряда.</li>
+    <li>Циклы ÷ отключения в год = на сколько лет хватит; у AGM не больше расчётного срока службы.</li>
+    <li>Число покупок за 10 лет × цена.</li>
+    <li>LiFePO4 — не на мороз, AGM — не в жару.</li>
+  </ol>
+
+  <h2>Источники</h2>
+  <ul class="src">
+    <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-12,8-&amp;-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf" rel="noopener" target="_blank">Victron Energy (Нидерланды) — паспорт 12,8 &amp; 25,6 Volt lithium iron phosphate batteries Smart</a>: 1280 Вт·ч, 14 кг, циклы 2500/3000/5000 при 80/70/50 %, заряд от +5 °C, разряд от −20 °C, КПД цикла 92 % против 80 % у свинцового, сульфатация, неполный заряд.</li>
+    <li><a href="https://www.victronenergy.com/media/pg/Lithium_Battery_Smart/en/technical-data.html" rel="noopener" target="_blank">Victron Energy — Lithium Battery Smart, технические данные</a>.</li>
+    <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-GEL-and-AGM-Batteries-EN.pdf" rel="noopener" target="_blank">Victron Energy — паспорт GEL and AGM batteries</a>: AGM 12 В 110 А·ч — 32 кг; циклы 400/600/1500 при 80/50/30 %; срок 7–10 / 4 / 2 года при 20 / 30 / 40 °C.</li>
+  </ul>
+  <p class="muted small">Проверено 15 ноября 2026 г. Нашли ошибку — напишите в комментариях под роликом.</p>
+</div>
+</article>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>

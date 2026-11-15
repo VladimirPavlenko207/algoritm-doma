@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: AGM или LiFePO4 — что выгоднее за 10 лет — Алгоритм дома</title><meta name="description" content="Посчитайте, на сколько лет хватит свинцового AGM и литиевого LiFePO4 при ваших отключениях, сколько раз их придётся купить и цену за киловатт-час по ценам вашего магазина."><link rel="canonical" href="https://algoritmdoma.com/kalkulyatory/agm-ili-lifepo4/"><meta property="og:url" content="https://algoritmdoma.com/kalkulyatory/agm-ili-lifepo4/"><meta property="og:title" content="Калькулятор: AGM или LiFePO4 — что выгоднее за 10 лет — Алгоритм дома"><meta property="og:description" content="Посчитайте, на сколько лет хватит свинцового AGM и литиевого LiFePO4 при ваших отключениях, сколько раз их придётся купить и цену за киловатт-час по ценам вашего магазина."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/">Алгоритмы</a><a href="/kalkulyatory/" aria-current="page">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>AGM или LiFePO4: что выгоднее</h1>
+  <p class="lead">Впишите свои отключения и цены. Пример уже заполнен: 750 Вт·ч за отключение, 150 отключений в год, AGM 12 В 110 А·ч и LiFePO4 12,8 В 100 А·ч Victron из <a href="/algoritmy/agm-ili-lifepo4/">выпуска 6</a>. Цены пустые — впишите из своего магазина.</p>
+</div>
+<form class="calc" id="lc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Ваши отключения</legend>
+    <label>Энергия за одно отключение, Вт·ч<input type="number" name="E" value="750" min="1" step="any"></label>
+    <label>Отключений в год<input type="number" name="n" value="150" min="1" step="any"></label>
+    <label>Срок сравнения, лет<input type="number" name="Y" value="10" min="1" step="any"></label>
+    <label>Тариф за кВт·ч (необязательно)<input type="number" name="tar" placeholder="ваш тариф" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Свинцовый AGM</legend>
+    <label>Ёмкость, Вт·ч (В × А·ч)<input type="number" name="Ea" value="1320" min="1" step="any"></label>
+    <label>Цена<input type="number" name="Ca" placeholder="из вашего магазина" min="0" step="any"></label>
+    <label>Циклы при разряде 30 / 50 / 80 %<input type="text" name="Na" value="1500 / 600 / 400"></label>
+    <label>Расчётный срок службы при 20 °C, лет<input type="number" name="Ta" value="7" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Литиевый LiFePO4</legend>
+    <label>Ёмкость, Вт·ч (В × А·ч)<input type="number" name="El" value="1280" min="1" step="any"></label>
+    <label>Цена<input type="number" name="Cl" placeholder="из вашего магазина" min="0" step="any"></label>
+    <label>Циклы при разряде 50 / 70 / 80 %<input type="text" name="Nl" value="5000 / 3000 / 2500"></label>
+    <label>Срок службы, лет (если есть в паспорте)<input type="number" name="Tl" placeholder="необязательно" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="lres"></div>
+  <p id="lverd" class="box note"></p>
+  <div class="box warn"><strong>Не забудьте:</strong> LiFePO4 Victron заряжается только от +5 °C — не ставьте его на морозный балкон. AGM быстро стареет в жаре (Victron: 7–10 лет при 20 °C, 4 года при 30 °C) и не любит, когда его долго не заряжают полностью. Циклы и сроки берите из паспорта своей модели.</div>
+  <p class="muted small">Как считаем: глубина разряда = Вт·ч за отключение ÷ ёмкость; циклы при этой глубине — по прямой между точками паспорта (мельче самой мелкой точки — берём её значение, глубже самой глубокой — тоже её, с предупреждением); лет службы = циклы ÷ отключения в год, но не больше срока службы, если он указан; покупок = срок сравнения ÷ лет службы, с округлением вверх; цена за кВт·ч = цена ÷ (кВт·ч за отключение × циклы, которые аккумулятор успеет пройти). Потери на зарядку: средний свинцовый возвращает 80 % энергии, литиевый — 92 % (Victron). Расчёт ориентировочный.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('lc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function pts(n,ds){var a=(f.elements[n].value||'').split('/').map(function(s){return parseFloat(s.replace(',','.'))});return ds.map(function(d,i){return [d,a[i]]}).filter(function(p){return isFinite(p[1])&&p[1]>0})}
+function cyc(P,D){if(!P.length)return null;P.sort(function(a,b){return a[0]-b[0]});if(D<=P[0][0])return P[0][1];if(D>=P[P.length-1][0])return P[P.length-1][1];
+ for(var i=0;i<P.length-1;i++){if(D>=P[i][0]&&D<=P[i+1][0]){var k=(D-P[i][0])/(P[i+1][0]-P[i][0]);return P[i][1]+(P[i+1][1]-P[i][1])*k}}return null}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function money(x){return x.toLocaleString('ru-RU',{maximumFractionDigits:x<10?2:0})}
+function one(E,n,Y,cap,P,Tc,price,eta,name){
+  var D=E/cap,N=cyc(P,D),deep=P.length&&D>Math.max.apply(null,P.map(function(p){return p[0]}));
+  if(N==null)return {name:name,err:'впишите циклы из паспорта'};
+  var T=N/n,lim=false;if(Tc&&Tc>0&&Tc<T){T=Tc;lim=true}
+  var buys=Math.ceil(Y/T-1e-9),cycLife=Math.min(N,n*T),kwh=E/1000*cycLife,grid=E*n*Y/eta/1000;
+  return {name:name,noCal:!(Tc&&Tc>0),D:D,N:N,T:T,lim:lim,buys:buys,kwh:kwh,grid:grid,price:price,deep:deep,over:D>1}}
+function run(){
+  var E=v('E')||0,n=v('n')||0,Y=v('Y')||10,tar=v('tar');
+  if(E<=0||n<=0){document.getElementById('lres').innerHTML='';document.getElementById('lverd').innerHTML='Впишите энергию за отключение и число отключений в год.';return}
+  var A=one(E,n,Y,v('Ea')||1,pts('Na',[.3,.5,.8]),v('Ta'),v('Ca'),.8,'AGM'),L=one(E,n,Y,v('El')||1,pts('Nl',[.5,.7,.8]),v('Tl'),v('Cl'),.92,'LiFePO4');
+  var rows=[];
+  [A,L].forEach(function(r){if(r.err){rows.push([r.name,r.err]);return}
+    rows.push([r.name+': глубина разряда',n0(r.D*100)+' %'+(r.over?' — <b>ёмкости не хватит на одно отключение</b>':(r.deep?' — глубже, чем есть в паспорте':''))]);
+    rows.push([r.name+': циклов при этой глубине','≈ '+n0(r.N)]);
+    rows.push([r.name+': хватит на',' <b>≈ '+n1(r.T)+' года</b>'+(r.lim?' (ограничено сроком службы)':(r.noCal?' по циклам; срок службы в годах не вписан':''))]);
+    rows.push([r.name+': покупок за '+n1(Y)+' лет','<b>'+r.buys+'</b>'+(r.price?' → '+money(r.buys*r.price)+' за '+n1(Y)+' лет':'')]);
+    if(r.price)rows.push([r.name+': цена за кВт·ч','≈ '+money(r.price/r.kwh)+' за кВт·ч ('+n0(r.kwh)+' кВт·ч за жизнь)']);});
+  if(!A.err&&!L.err){var d=A.grid-L.grid;rows.push(['Зарядка за '+n1(Y)+' лет: AGM больше на','≈ '+n0(d)+' кВт·ч'+(tar?' ≈ '+money(d*tar):'')])}
+  document.getElementById('lres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  var vd='';if(!A.err&&!L.err){var ratio=A.buys/L.buys;
+   vd='За '+n1(Y)+' лет: '+A.buys+' × AGM против '+L.buys+' × LiFePO4. LiFePO4 выгоднее, если дороже AGM меньше чем в <b>'+n1(ratio)+' раза</b>.';
+   if(A.price&&L.price){var ca=A.buys*A.price,cl=L.buys*L.price;vd+=' По вашим ценам: AGM '+money(ca)+', LiFePO4 '+money(cl)+' — '+(cl<ca?'<strong>LiFePO4 дешевле</strong>':cl>ca?'<strong>AGM дешевле</strong>':'одинаково')+'.'}
+   else vd+=' Впишите цены — покажем итог.'}
+  document.getElementById('lverd').innerHTML=vd;
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Как устроен расчёт — в <a href="/algoritmy/agm-ili-lifepo4/">алгоритме выпуска 6</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>
