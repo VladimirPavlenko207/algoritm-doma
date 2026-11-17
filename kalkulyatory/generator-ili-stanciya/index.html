@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: генератор или зарядная станция — бензин, моточасы, масло — Алгоритм дома</title><meta name="description" content="Хватит ли зарядной станции на ваше отключение, сколько бензина и моточасов уйдёт у генератора и сколько экономит связка «генератор + станция»."><link rel="canonical" href="https://algoritmdoma.com/kalkulyatory/generator-ili-stanciya/"><meta property="og:url" content="https://algoritmdoma.com/kalkulyatory/generator-ili-stanciya/"><meta property="og:title" content="Калькулятор: генератор или зарядная станция — бензин, моточасы, масло — Алгоритм дома"><meta property="og:description" content="Хватит ли зарядной станции на ваше отключение, сколько бензина и моточасов уйдёт у генератора и сколько экономит связка «генератор + станция»."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../assets/style.css?v=a452b608"><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/">Алгоритмы</a><a href="/kalkulyatory/" aria-current="page">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Генератор или зарядная станция</h1>
+  <p class="lead">Пример уже заполнен: дом 300 Вт, отключение 12 часов, станция 1024 Вт·ч с зарядом 1200 Вт, генератор 1800 Вт с баком 3,6 л — как в <a href="/algoritmy/generator-ili-stanciya/">выпуске 7</a>. Поменяйте на свои данные из паспортов.</p>
+</div>
+<form class="calc" id="gc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Где и сколько</legend>
+    <label>Где живёте<select name="where"><option value="house">частный дом</option><option value="flat">квартира</option></select></label>
+    <label>Средняя нагрузка, Вт<input type="number" name="P" value="300" min="1" step="any"></label>
+    <label>Длительность отключения, ч<input type="number" name="H" value="12" min="0.1" step="any"></label>
+    <label>Окно со светом между отключениями, ч<input type="number" name="W" value="4" min="0" step="any"></label>
+    <label>Отключений в месяц<input type="number" name="n" value="15" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Зарядная станция</legend>
+    <label>Ёмкость, Вт·ч<input type="number" name="Cs" value="1024" min="1" step="any"></label>
+    <label>Мощность зарядки от сети, Вт<input type="number" name="Pc" value="1200" min="1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox" id="genbox"><legend>Генератор</legend>
+    <label>Номинальная мощность, Вт<input type="number" name="Pg" value="1800" min="1" step="any"></label>
+    <label>Бак, л<input type="number" name="T" value="3.6" min="0.1" step="any"></label>
+    <label>Часов на баке при номинале<input type="number" name="hr" value="3.2" min="0.1" step="any"></label>
+    <label>Часов на баке при ¼ мощности<input type="number" name="hq" value="8.1" min="0.1" step="any"></label>
+    <label>Замена масла каждые, ч<input type="number" name="oil" value="50" min="1" step="any"></label>
+    <label>Цена бензина за литр (необязательно)<input type="number" name="fp" placeholder="ваша цена" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="gres"></div>
+  <p id="gverd" class="box note"></p>
+  <div class="box warn" id="gwarn"><strong>Безопасность:</strong> генератор — только на улице, не ближе 6 м от окон, дверей и стен (Держпраці); в квартире и на балконе нельзя (Держенергонагляд). К проводке дома — только через перекидной рубильник или АВР после счётчика и вводного автомата, подключает электрик. Станцию заряжайте при 0…+45 °C.</div>
+  <p class="muted small">Как считаем: энергия отключения = нагрузка × часы; станция отдаёт ёмкость × 0,9 (КПД инвертора), продержится = ёмкость × 0,9 ÷ нагрузка; полная зарядка ≈ ёмкость × 1,4 ÷ мощность зарядки (у DELTA 2 — 1024 Вт·ч за ≈ 1,2 ч при 1200 Вт). Расход генератора: на ¼ мощности и ниже — бак ÷ часы на ¼, выше — по прямой до бак ÷ часы на номинале. Связка: генератор питает дом и заряжает станцию, потом дом живёт от станции; цикл повторяется до конца отключения, начинаем с генератора. Замены масла = моточасы ÷ интервал. Расчёт ориентировочный, расход при малой нагрузке у разных моделей отличается.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('gc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function money(x){return x.toLocaleString('ru-RU',{maximumFractionDigits:x<10?2:0})}
+function run(){
+  var flat=f.elements.where.value==='flat',P=v('P'),H=v('H'),W=v('W'),n=v('n')||0,Cs=v('Cs'),Pc=v('Pc'),Pg=v('Pg'),T=v('T'),hr=v('hr'),hq=v('hq'),oil=v('oil')||50,fp=v('fp');
+  document.getElementById('genbox').style.display=flat?'none':'';
+  var rows=[],vd='';
+  if(!(P>0&&H>0&&Cs>0&&Pc>0)){document.getElementById('gres').innerHTML='';document.getElementById('gverd').textContent='Заполните нагрузку, часы и данные станции.';return}
+  var E=P*H,use=Cs*0.9,hs=use/P,tc=Cs*1.4/Pc,need=E/use;
+  rows.push(['Энергия одного отключения',n0(E)+' Вт·ч']);
+  rows.push(['Станция продержит','≈ '+n1(hs)+' ч'+(hs>=H?' — хватит':' — нужно ≈ '+n1(need)+' таких станций')]);
+  rows.push(['Полная зарядка станции','≈ '+n1(tc)+' ч'+(W!=null?(tc<=W?' — успеет в окно '+n1(W)+' ч':' — в окно '+n1(W)+' ч не успеет полностью'):'')]);
+  if(flat){
+    vd='Квартира: генератор нельзя даже на балконе. '+(hs>=H?(W==null||tc<=W?'<strong>Станции хватает</strong> и она успевает зарядиться.':'Ёмкости хватает, но станция не успевает зарядиться в окно со светом — нужна мощнее зарядка или вторая станция.'):'Ёмкости мало: нужна станция ≈ '+n0(E/0.9)+' Вт·ч или свой комплект (выпуск 2).');
+  } else if(Pg>0&&T>0&&hr>0&&hq>0){
+    var q=T/hq,r=T/hr,lph=function(L){return L<=Pg/4?q:q+(Math.min(L,Pg)-Pg/4)*(r-q)/(Pg*0.75)};
+    var L1=H*lph(P),M1=H;
+    var Pl=P+Pc,cyc=tc+hs,gh=Math.min(H,H/cyc*tc),L2=gh*lph(Pl);
+    rows.push(['Только генератор: бензин за отключение','≈ '+n1(L1)+' л, '+n1(M1)+' моточасов']);
+    rows.push(['Генератор + станция: бензин за отключение','≈ '+n1(L2)+' л, '+n1(gh)+' моточасов']);
+    if(n>0){rows.push(['За месяц: только генератор','≈ '+n0(L1*n)+' л, '+n0(M1*n)+' моточасов, замен масла ≈ '+n1(M1*n/oil)+(fp?' · бензин ≈ '+money(L1*n*fp):'')]);
+            rows.push(['За месяц: генератор + станция','≈ '+n0(L2*n)+' л, '+n0(gh*n)+' моточасов, замен масла ≈ '+n1(gh*n/oil)+(fp?' · бензин ≈ '+money(L2*n*fp):'')]);}
+    vd=(hs>=H&&(W==null||tc<=W))?'<strong>Станции хватает</strong> на ваше отключение — генератор нужен только для запаса.':'Станции одной мало — нужен генератор. ';
+    if(!(hs>=H))vd+='Связка «генератор + станция» экономит ≈ '+n0((1-L2/L1)*100)+' % бензина, моточасов — в '+n1(M1/Math.max(gh,0.01))+' раза меньше.';
+    if(Pl>Pg)vd+=' <strong>Внимание:</strong> нагрузка + зарядка ('+n0(Pl)+' Вт) больше номинала генератора — уменьшите мощность зарядки станции.';
+  }
+  document.getElementById('gres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('gverd').innerHTML=vd;
+}
+f.addEventListener('input',run);f.addEventListener('change',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Как устроен расчёт — в <a href="/algoritmy/generator-ili-stanciya/">алгоритме выпуска 7</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>
