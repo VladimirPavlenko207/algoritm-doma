@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: зарядна станція чи власний комплект — Алгоритм дома</title><meta name="description" content="Порівняйте ціну за ват-годину й час заряджання зарядної станції та комплекту з акумулятора, інвертора й зарядного за цінами свого магазину."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/stanciya-ili-komplekt/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/stanciya-ili-komplekt/"><meta property="og:title" content="Калькулятор: зарядна станція чи власний комплект — Алгоритм дома"><meta property="og:description" content="Порівняйте ціну за ват-годину й час заряджання зарядної станції та комплекту з акумулятора, інвертора й зарядного за цінами свого магазину."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/stanciya-ili-komplekt/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/stanciya-ili-komplekt/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/stanciya-ili-komplekt/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-stanciya-ili-komplekt.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-stanciya-ili-komplekt.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "Зарядна станція чи власний комплект", "item": "https://algoritmdoma.com/uk/kalkulyatory/stanciya-ili-komplekt/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/stanciya-ili-komplekt/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/stanciya-ili-komplekt/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Зарядна станція чи власний комплект</h1>
+  <p class="lead">Впишіть ціни свого магазину в будь-якій валюті. Характеристики вже заповнено прикладом з <a href="/uk/algoritmy/stanciya-ili-komplekt/">випуску 2</a> — замініть на свої з паспортів.</p>
+</div>
+<form class="calc" id="sc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Завдання</legend>
+    <label>Потрібна ємність, Вт·год<input type="number" name="E" value="1000" min="1" step="any"></label>
+    <label>Скільки годин дають світло між відключеннями<input type="number" name="win" value="3" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Зарядна станція</legend>
+    <label>Ціна станції<input type="number" name="Ps" placeholder="ваша ціна" min="0" step="any"></label>
+    <label>Ємність, Вт·год<input type="number" name="Es" value="1024" min="1" step="any"></label>
+    <label>Заряджання від мережі до 100 %, хв (з паспорта)<input type="number" name="ts" value="56" min="1" step="any"></label>
+    <label>Ціна дод. батареї<input type="number" name="Pe" placeholder="ваша ціна" min="0" step="any"></label>
+    <label>Ємність дод. батареї, Вт·год<input type="number" name="Ee" value="1024" min="1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Власний комплект</legend>
+    <label>Ціна акумулятора<input type="number" name="Pb" placeholder="ваша ціна" min="0" step="any"></label>
+    <label>Напруга акумулятора, В<input type="number" name="U" value="12.8" min="1" step="any"></label>
+    <label>Ємність акумулятора, А·год<input type="number" name="Q" value="100" min="1" step="any"></label>
+    <label>Ціна інвертора<input type="number" name="Pi" placeholder="ваша ціна" min="0" step="any"></label>
+    <label>Ціна зарядного<input type="number" name="Pc" placeholder="ваша ціна" min="0" step="any"></label>
+    <label>Струм зарядного, А<input type="number" name="I" value="20" min="0.1" step="any"></label>
+    <label>Запобіжник, дроти, клеми<input type="number" name="Pm" placeholder="ваша ціна" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th class="r">Станція</th><th class="r">Комплект</th></tr></thead>
+    <tbody id="res"></tbody></table></div>
+  <p id="verdict" class="box note"></p>
+  <h3>Як змінюється ціна з ємністю</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Потрібно</th><th class="r">Станція: ціна · за Вт·год</th><th class="r">Комплект: ціна · за Вт·год</th></tr></thead>
+    <tbody id="scale"></tbody></table></div>
+  <p class="muted small">Час заряджання — оцінка: для комплекту ємність ÷ струм зарядного без фази дозаряджання; для станції з дод. батареєю час із паспорта збільшено пропорційно до ємності. Сумісність дод. батарей і паралельне підключення акумуляторів перевіряйте за інструкцією виробника.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('sc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n0(x){return x==null?'—':Math.round(x).toLocaleString('ru-RU')}
+function n2(x){return x==null?'—':x.toLocaleString('ru-RU',{maximumFractionDigits:2,minimumFractionDigits:2})}
+function hrs(h){if(h==null)return '—';if(h<1)return Math.round(h*60)+' хв';return (Math.round(h*10)/10).toLocaleString('ru-RU')+' год'}
+function calc(E){
+  var Es=v('Es')||1,Ee=v('Ee')||1,Ps=v('Ps'),Pe=v('Pe'),ts=v('ts')||0;
+  var nE=Math.max(0,Math.ceil((E-Es)/Ee-1e-9)),EsT=Es+nE*Ee;
+  var Cs=(Ps==null||(nE>0&&Pe==null))?null:Ps+nE*(Pe||0);
+  var U=v('U')||12.8,Q=v('Q')||1,Eb=U*Q,nB=Math.max(1,Math.ceil(E/Eb-1e-9)),EkT=nB*Eb;
+  var Pb=v('Pb'),Pi=v('Pi'),Pc=v('Pc'),Pm=v('Pm')||0,I=v('I')||1;
+  var Ck=(Pb==null||Pi==null||Pc==null)?null:nB*Pb+Pi+Pc+Pm;
+  return {nE:nE,EsT:EsT,Cs:Cs,psW:Cs==null?null:Cs/EsT,tS:ts/60*EsT/Es,nB:nB,EkT:EkT,Ck:Ck,pkW:Ck==null?null:Ck/EkT,tK:nB*Q/I};
+}
+function run(){
+  var E=v('E')||1,win=v('win'),r=calc(E);
+  var ok=function(t){return win==null?'':(t<=win?' ✓':' ✗')};
+  document.getElementById('res').innerHTML=
+   '<tr><td>Склад</td><td class="r">станція'+(r.nE?' + '+r.nE+' дод. бат.':'')+'</td><td class="r">'+r.nB+' акум. + інвертор + зарядний</td></tr>'+
+   '<tr><td>Ємність, Вт·год</td><td class="r">'+n0(r.EsT)+'</td><td class="r">'+n0(r.EkT)+'</td></tr>'+
+   '<tr><td>Ціна</td><td class="r">'+n0(r.Cs)+'</td><td class="r">'+n0(r.Ck)+'</td></tr>'+
+   '<tr class="total"><td>Ціна за Вт·год</td><td class="r">'+n2(r.psW)+'</td><td class="r">'+n2(r.pkW)+'</td></tr>'+
+   '<tr><td>Заряджання від мережі</td><td class="r">'+hrs(r.tS)+ok(r.tS)+'</td><td class="r">'+hrs(r.tK)+ok(r.tK)+'</td></tr>';
+  var vd=document.getElementById('verdict');
+  if(r.psW==null||r.pkW==null){vd.innerHTML='Впишіть ціни станції та деталей комплекту — з\'явиться порівняння ціни за ват-годину.'}
+  else{var a=r.psW,b=r.pkW,d=Math.abs(a-b)/Math.min(a,b)*100;
+   vd.innerHTML=(Math.abs(a-b)/Math.min(a,b)<0.05?'<strong>Майже порівну</strong> за ціною за ват-годину.':'<strong>'+(a<b?'Станція':'Комплект')+' дешевше</strong> за ват-годину приблизно на '+Math.round(d)+' %.')+
+    (win!=null?' За '+String(win).replace('.',',')+' год зі світлом повністю зарядиться: станція — '+(r.tS<=win?'так':'ні')+', комплект — '+(r.tK<=win?'так':'ні')+'.':'')}
+  var rows='';[1000,2000,3000,4000,5000].forEach(function(e){var x=calc(e);rows+='<tr><td>'+n0(e)+' Вт·год</td><td class="r">'+n0(x.Cs)+' · '+n2(x.psW)+'<br><span class="muted small">'+n0(x.EsT)+' Вт·год'+(x.nE?', +'+x.nE+' дод. бат.':'')+'</span></td><td class="r">'+n0(x.Ck)+' · '+n2(x.pkW)+'<br><span class="muted small">'+n0(x.EkT)+' Вт·год, '+x.nB+' акум.</span></td></tr>'});
+  document.getElementById('scale').innerHTML=rows;
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Розрахунок орієнтовний. Формули й приклад — в <a href="/uk/algoritmy/stanciya-ili-komplekt/">алгоритмі випуску 2</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>

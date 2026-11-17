@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор резервного живлення — Алгоритм дома</title><meta name="description" content="Порахуйте акумулятор та інвертор для резервного живлення квартири під свої прилади й час відключення."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/rezervnoe-pitanie/"><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><style>
+/* Layout: one working sheet — inputs on the left, a sticky result card on the right; stacks to one column on phones. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --sunk:#eef1f6; --line:#d9e0ea; --ink:#0f1a28; --mut:#5d6b7e;
+  --amber:#c27a00; --amber-bg:#fff3d6; --teal:#0f8f84; --teal-bg:#dcf5f2; --red:#c8343a; --red-bg:#fde6e6;
+  --display:"Unbounded","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1520; --surface:#152131; --sunk:#101a27; --line:#26364a; --ink:#eef3f8; --mut:#8ea0b6;
+  --amber:#ffb020; --amber-bg:#3a2a0a; --teal:#2ec4b6; --teal-bg:#0d3330; --red:#ff6b70; --red-bg:#3a1416; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1520; --surface:#152131; --sunk:#101a27; --line:#26364a; --ink:#eef3f8; --mut:#8ea0b6;
+  --amber:#ffb020; --amber-bg:#3a2a0a; --teal:#2ec4b6; --teal-bg:#0d3330; --red:#ff6b70; --red-bg:#3a1416; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:20px;padding-block:24px 48px}
+.wrap>header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+.brand{font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+h1{font:700 clamp(22px,3.2vw,32px)/1.15 var(--display);margin:6px 0 0;text-wrap:balance}
+.lead{color:var(--mut);margin:6px 0 0;max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+h2{font:700 15px/1.3 var(--body);margin:0 0 12px;display:flex;gap:10px;align-items:center}
+.step{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--amber);color:#111;font:800 12px var(--body)}
+.tbl{overflow-x:auto;margin:0 -4px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-variant-numeric:tabular-nums}
+th{font:600 12px/1.3 var(--body);color:var(--mut);text-align:left;padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:bottom}
+td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.num{text-align:right;font-weight:600;white-space:nowrap}
+input[type=text],input[type=number],select{font:inherit;color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:7px 8px;width:100%}
+input[type=number]{text-align:right;font-variant-numeric:tabular-nums}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--amber)}
+.w-name{min-width:150px}.w-n{width:96px}
+button{font:600 14px var(--body);border-radius:9px;border:1px solid var(--line);background:var(--sunk);color:var(--ink);padding:8px 12px;cursor:pointer}
+button.primary{background:var(--amber);border-color:var(--amber);color:#111}
+button.x{background:none;border:none;color:var(--mut);font-size:18px;padding:4px 8px}
+button.x:hover{color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+label.f{display:grid;gap:4px;font-size:13px;color:var(--mut)}
+.hint{font-size:12.5px;color:var(--mut);margin:8px 0 0}
+.surge{font-size:12px;font-weight:600;color:var(--amber);min-width:84px;text-align:left}
+.res{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px);display:grid;gap:14px}
+.big{display:grid;gap:2px;padding:14px;border-radius:12px;background:var(--sunk)}
+.big .k{font-size:12.5px;color:var(--mut)}
+.big .v{font:700 26px/1.15 var(--display);font-variant-numeric:tabular-nums}
+.big .s{font-size:13px;color:var(--mut)}
+.big.batt .v{color:var(--teal)}.big.inv .v{color:var(--amber)}
+.lines{display:grid;gap:6px;font-variant-numeric:tabular-nums;font-size:14px}
+.lines div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:5px}
+.lines b{white-space:nowrap}
+.warn{background:var(--red-bg);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.warn strong{color:var(--red)}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--amber-bg);color:var(--amber)}
+.src{font-size:12.5px;color:var(--mut)}
+.src a{color:var(--mut)}
+footer{font-size:12.5px;color:var(--mut)}
+@media (prefers-reduced-motion:no-preference){.big .v{transition:color .2s}}
+
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.site-head{border-bottom:1px solid var(--line);background:var(--surface)}
+.site-head .in{max-width:1180px;margin:0 auto;padding-block:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:700 17px/1 var(--display)}
+.logo svg{width:44px;height:28px;flex:none}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:15px}.nav a{color:var(--mut);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.backlink{font-size:14px}
+.site-head .nav{margin-left:auto}.lang{position:relative;flex:0 0 auto;font-size:14px}.lang summary{list-style:none;cursor:pointer;padding:5px 10px;border:1px solid var(--line);border-radius:8px;color:var(--mut);font-weight:600;letter-spacing:.03em;user-select:none;white-space:nowrap}.lang summary::-webkit-details-marker{display:none}.lang summary::after{content:"";display:inline-block;margin-left:7px;border:4px solid transparent;border-top-color:currentColor;border-bottom:0;vertical-align:2px}.lang[open] summary,.lang summary:hover{color:var(--ink);border-color:var(--mut)}.lang-menu{position:absolute;right:0;top:calc(100% + 6px);display:flex;flex-direction:column;min-width:160px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgb(0 0 0/.22);z-index:40}.lang-menu a{padding:9px 12px;border-radius:6px;color:var(--ink);text-decoration:none}.lang-menu a:hover{background:color-mix(in srgb,var(--line) 70%,transparent)}.lang-menu a[aria-current]{font-weight:700}.lang-menu a[aria-current]::after{content:" ✓";color:var(--mut)}
+.site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px)}
+@media (max-width:640px){.site-head .in{flex-wrap:nowrap;gap:14px;padding-block:10px}.logo span{display:none}
+.nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px 16px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:18px}.nav::-webkit-scrollbar{display:none}.nav a{white-space:nowrap}}
+</style><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/rezervnoe-pitanie/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/rezervnoe-pitanie/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/rezervnoe-pitanie/"><meta property="og:title" content="Калькулятор резервного живлення — Алгоритм дома"><meta property="og:description" content="Порахуйте акумулятор та інвертор для резервного живлення квартири під свої прилади й час відключення."><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/rezervnoe-pitanie/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-rezervnoe-pitanie.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-rezervnoe-pitanie.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "Калькулятор резервного живлення", "item": "https://algoritmdoma.com/uk/kalkulyatory/rezervnoe-pitanie/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/rezervnoe-pitanie/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/rezervnoe-pitanie/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header>
+
+<main class="gutter"><div class="wrap">
+  <header>
+    <div>
+      <div class="brand">Алгоритм дома</div>
+      <h1>Калькулятор резервного живлення</h1>
+      <p class="lead">Акумулятор та інвертор під ваші прилади. Введіть потужність з наліпок і час відключення — ємність і потужність порахуються за тими самими формулами, що в ролику.</p>
+    </div>
+    <span class="chip" id="sample-chip">Зараз: приклад із ролика</span>
+  </header>
+
+  <div class="grid">
+    <div style="display:grid;gap:20px;min-width:0">
+      <section class="card">
+        <h2><span class="step">1</span>Прилади, які мають працювати</h2>
+        <div class="tbl">
+          <table>
+            <thead><tr>
+              <th class="w-name">Прилад</th>
+              <th class="w-n">Потужність, Вт<br><span style="font-weight:400">з наліпки</span></th>
+              <th class="w-n">Годин роботи</th>
+              <th class="w-n">кВт·год на рік<br><span style="font-weight:400">для холодильника</span></th>
+              <th>Мотор, компресор</th>
+              <th class="w-n" style="text-align:right">Енергія, Вт·год</th>
+              <th></th>
+            </tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="row">
+          <button id="add" type="button">+ Додати прилад</button>
+          <button id="reset" type="button">Повернути приклад із ролика</button>
+          <button id="share" type="button">Скопіювати посилання на розрахунок</button>
+        </div>
+        <div class="share-box"></div>
+        <p class="hint">Якщо вказано річне споживання (енергетична наліпка), енергія за відключення рахується за ним, а «Потужність» потрібна тільки для підбору інвертора. Години роботи не можуть бути більшими за тривалість відключення. Позначка «Мотор, компресор» — для холодильника, морозильника, насоса: під час запуску такий прилад бере приблизно в 5 разів більше. Для запасу вважаємо, що всі позначені мотори можуть запуститися одночасно, наприклад коли світло повернули. Потужність типових приладів — у таблиці <a href="/uk/skolko-vatt/">«Скільки ват споживає»</a>.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">2</span>Відключення та обладнання</h2>
+        <div class="settings">
+          <label class="f">Тривалість відключення, год<input id="T" type="number" min="0.5" step="0.5"></label>
+          <label class="f">Тип акумулятора
+            <select id="chem"><option value="lfp">LiFePO4 (літій-залізо-фосфат)</option><option value="agm">Свинцево-кислотний AGM</option></select></label>
+          <label class="f">Напруга системи
+            <select id="volt"><option value="1">12 В</option><option value="2">24 В</option><option value="4">48 В</option></select></label>
+          <label class="f">ККД інвертора, %<input id="eff" type="number" min="50" max="99" step="1"></label>
+          <label class="f">Холостий хід інвертора, Вт<input id="idle" type="number" min="0" step="1"></label>
+        </div>
+        <p class="hint">ККД і холостий хід візьміть із паспорта інвертора. За замовчуванням — 90 % (трохи нижче максимуму 92 % у моделей на 12 В) і 8 Вт, як в інвертора на 1200 ВА.</p>
+      </section>
+    </div>
+
+    <aside class="res" aria-live="polite">
+      <section class="card" style="display:grid;gap:14px">
+        <h2 style="margin:0">Результат</h2>
+        <div class="big batt"><span class="k">Акумулятор</span><span class="v" id="r-batt">—</span><span class="s" id="r-batt-s"></span></div>
+        <div class="big inv"><span class="k">Інвертор, тривала потужність</span><span class="v" id="r-inv">—</span><span class="s" id="r-inv-s"></span></div>
+        <div class="lines">
+          <div><span>Енергія приладів</span><b id="l-e">—</b></div>
+          <div><span>З урахуванням ККД і холостого ходу</span><b id="l-e2">—</b></div>
+          <div><span id="l-dod-k">З урахуванням глибини розряду</span><b id="l-e3">—</b></div>
+          <div><span>Усе ввімкнено одночасно</span><b id="l-p">—</b></div>
+          <div><span>Пік під час запуску мотора</span><b id="l-peak">—</b></div>
+          <div><span>Струм від акумулятора на повній потужності</span><b id="l-i">—</b></div>
+          <div><span>Вистачить вибраного акумулятора</span><b id="l-run">—</b></div>
+        </div>
+      </section>
+      <div class="warn"><strong>Не можна</strong> вмикати інвертор у розетку або щиток квартири, щоб живити всю проводку: зворотна подача небезпечна для електриків на лінії та для сусідів. Підключення до проводки — тільки через електрика. Переріз кабелю і запобіжник — за інструкцією до інвертора.</div>
+    </aside>
+  </div>
+
+  <section class="card src">
+    <h2>Звідки цифри</h2>
+    <ul style="margin:0;padding-left:18px;display:grid;gap:4px">
+      <li>Розряд LiFePO4 до 80 % — близько 2500 циклів; комірка 3,2 В, акумулятор 12,8 В: <a href="https://www.victronenergy.com/upload/documents/Datasheet-12,8-&-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf" target="_blank" rel="noopener">Victron, даташит LiFePO4 Smart</a></li>
+      <li>Свинцевий акумулятор не залишати розрядженим більш ніж на 50 %: <a href="https://www.victronenergy.com/upload/documents/Book-Energy-Unlimited-EN.pdf" target="_blank" rel="noopener">Victron, «Energy Unlimited»</a></li>
+      <li>ККД до 92 % (12 В), холостий хід 8 Вт, 1200 ВА = 1000 Вт тривало: даташит Victron Phoenix 180–1200 VA</li>
+      <li>Холодильнику на старті потрібно ≈ 5× робочої потужності, до 5 секунд; для моторів підбирати інвертор за тривалою потужністю: <a href="https://samlexamerica.com/resources-support/faq/inverters-general-information/" target="_blank" rel="noopener">Samlex, FAQ з інверторів</a></li>
+      <li>Зворотна подача небезпечна: <a href="https://www.cpsc.gov/s3fs-public/pdfs/blk_media_portgen.pdf" target="_blank" rel="noopener">CPSC, пам'ятка щодо генераторів</a></li>
+    </ul>
+  </section>
+  <footer><a class="backlink" href="/uk/algoritmy/rezervnoe-pitanie/">Як влаштований цей розрахунок — алгоритм покроково</a><br>Розрахунок орієнтовний. Перевіряйте паспортні дані своїх приладів та обладнання.</footer>
+</div>
+
+</main>
+<script>
+const SAMPLE={T:6,chem:'lfp',volt:'1',eff:90,idle:8,rows:[
+  {n:'Холодильник',p:120,h:6,y:250,m:true},
+  {n:'Роутер',p:12,h:6,y:'',m:false},
+  {n:'3 світлодіодні лампи',p:27,h:6,y:'',m:false},
+  {n:'Ноутбук',p:65,h:3,y:'',m:false},
+  {n:'2 зарядки телефона',p:40,h:0.75,y:'',m:false}]};
+const KEY='algoritm-doma-calc-v1';
+const STD_AH=[50,100,150,200,280,300,400,560];
+const STD_INV=[300,500,800,1000,1200,1500,2000,2500,3000,4000,5000];
+const SURGE=5; // Samlex: refrigerator / freezer surge factor
+
+function compute(s){
+  const T=+s.T||0, eff=Math.min(Math.max((+s.eff||90)/100,.5),.99), idle=+s.idle||0, mult=+s.volt||1;
+  const lfp=s.chem==='lfp', dod=lfp?.8:.5, V=(lfp?12.8:12)*mult;
+  let E=0,P=0,motorMax=0,motorSum=0;
+  const per=s.rows.map(r=>{const p=+r.p||0, h=Math.min(+r.h||0,T), y=+r.y||0;
+    const e=y>0? y*1000/8760*T : p*h; E+=e; P+=p; if(r.m){motorMax=Math.max(motorMax,p);motorSum+=p;} return e;});
+  const E2=E/eff+idle*T, E3=E2/dod, ah=E3/V;
+  const ahStd=STD_AH.find(a=>a>=ah)||Math.ceil(ah/50)*50, whStd=ahStd*V;
+  const peak=P+(SURGE-1)*motorSum, need=Math.max(P,peak), inv=STD_INV.find(w=>w>=need)||Math.ceil(need/500)*500;
+  const I=inv/(V*eff);
+  const avg=T>0?(E/eff/T+idle):0, run=avg>0? whStd*dod/avg : 0;
+  return {per,E,E2,E3,ah,ahStd,whStd,V,P,peak,motorMax,inv,I,run,dod,lfp};
+}
+
+const $=id=>document.getElementById(id), rowsEl=$('rows');
+let state;
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.rows)return s}catch(e){}return JSON.parse(JSON.stringify(SAMPLE))}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+const f0=x=>Math.round(x).toLocaleString('ru-RU'), f1=x=>(Math.round(x*10)/10).toLocaleString('ru-RU');
+
+function renderRows(){
+  rowsEl.innerHTML='';
+  state.rows.forEach((r,i)=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td><input type="text" id="n${i}" aria-label="Прилад" value="${String(r.n).replace(/"/g,'&quot;')}"></td>
+      <td><input type="number" id="p${i}" aria-label="Потужність, Вт" min="0" step="1" value="${r.p}"></td>
+      <td><input type="number" id="h${i}" aria-label="Годин роботи" min="0" step="0.25" value="${r.h}"></td>
+      <td><input type="number" id="y${i}" aria-label="кВт·год на рік" min="0" step="1" value="${r.y}" placeholder="—"></td>
+      <td style="text-align:center;white-space:nowrap"><label style="display:inline-flex;gap:6px;align-items:center;cursor:pointer"><input type="checkbox" id="m${i}" aria-label="Мотор або компресор" ${r.m?'checked':''}><span class="surge" id="s${i}"></span></label></td>
+      <td class="num" id="e${i}">—</td>
+      <td><button type="button" class="x" aria-label="Видалити прилад" data-del="${i}">×</button></td>`;
+    rowsEl.appendChild(tr);});
+}
+function readAll(){
+  state.T=$('T').value; state.chem=$('chem').value; state.volt=$('volt').value; state.eff=$('eff').value; state.idle=$('idle').value;
+  state.rows=state.rows.map((r,i)=>({n:$('n'+i).value,p:$('p'+i).value,h:$('h'+i).value,y:$('y'+i).value,m:$('m'+i).checked}));
+}
+function isSample(){return JSON.stringify(state)===JSON.stringify(SAMPLE)}
+function update(){
+  const r=compute(state);
+  r.per.forEach((e,i)=>{const c=$('e'+i); if(c) c.textContent=f0(e); const s=$('s'+i), row=state.rows[i]; if(s) s.textContent=row&&row.m?`пуск ≈ ${f0((+row.p||0)*SURGE)} Вт`:'';});
+  $('r-batt').textContent=`${f0(r.E3)} Вт·год`;
+  $('r-batt-s').textContent=`≈ ${f0(r.ah)} А·год при ${f1(r.V)} В → беріть ${r.ahStd} А·год (${f0(r.whStd)} Вт·год)`;
+  $('r-inv').textContent=`від ${f0(Math.max(r.P,r.peak))} Вт`;
+  $('r-inv-s').textContent=`найближчий типовий: ${f0(r.inv)} Вт, чиста синусоїда`;
+  $('l-e').textContent=`${f0(r.E)} Вт·год`; $('l-e2').textContent=`${f0(r.E2)} Вт·год`;
+  $('l-dod-k').textContent=`З урахуванням розряду (${r.lfp?'80':'50'} %)`; $('l-e3').textContent=`${f0(r.E3)} Вт·год`;
+  $('l-p').textContent=`${f0(r.P)} Вт`;
+  $('l-peak').textContent=r.motorMax?`${f0(r.peak)} Вт`:'немає моторів';
+  $('l-i').textContent=`≈ ${f0(r.I)} А`;
+  $('l-run').textContent=r.run?`≈ ${f1(r.run)} год`:'—';
+  $('sample-chip').hidden=!isSample();
+}
+function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))}
+function fromHash(){
+  const h=location.hash.slice(1); if(!h) return null;
+  try{
+    if(h.startsWith('s=')){const s=JSON.parse(b64d(h.slice(2)));if(s&&Array.isArray(s.rows))return s}
+    if(h.startsWith('add=')){const [n,p,y,m,hh]=decodeURIComponent(h.slice(4)).split('|');const s=load();
+      s.rows.push({n:n||'Прилад',p:+p||0,h:hh?Math.min(+hh,+s.T||6):(+s.T||6),y:y?+y:'',m:m==='1'});return s}
+  }catch(e){}
+  return null;
+}
+function init(){
+  const fh=fromHash();
+  state=fh||load();
+  if(fh){save();try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+  $('T').value=state.T; $('chem').value=state.chem; $('volt').value=state.volt; $('eff').value=state.eff; $('idle').value=state.idle;
+  renderRows(); update();
+}
+document.addEventListener('input',()=>{readAll();save();update();});
+document.addEventListener('change',()=>{readAll();save();update();});
+$('add').addEventListener('click',()=>{readAll();state.rows.push({n:'Новий прилад',p:50,h:state.T,y:'',m:false});renderRows();save();update();$('n'+(state.rows.length-1)).focus();});
+$('reset').addEventListener('click',()=>{state=JSON.parse(JSON.stringify(SAMPLE));try{localStorage.removeItem(KEY)}catch(e){};init();});
+rowsEl.addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(!b)return;readAll();state.rows.splice(+b.dataset.del,1);renderRows();save();update();});
+$('share').addEventListener('click',()=>{readAll();const url=location.href.split('#')[0]+'#s='+b64e(JSON.stringify(state));
+  if(window.__shareCopy)window.__shareCopy(url,document.querySelector('.share-box'));});
+init();
+window.__compute=compute; window.__SAMPLE=SAMPLE;
+</script>
+<script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>

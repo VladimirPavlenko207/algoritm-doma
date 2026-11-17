@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: резервне живлення роутера — Алгоритм дома</title><meta name="description" content="Порахуйте, скільки годин пропрацюють роутер і термінал провайдера від міні-ДБЖ чи павербанка, і скільки ват-годин потрібно на ваше відключення."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/router/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/router/"><meta property="og:title" content="Калькулятор: резервне живлення роутера — Алгоритм дома"><meta property="og:description" content="Порахуйте, скільки годин пропрацюють роутер і термінал провайдера від міні-ДБЖ чи павербанка, і скільки ват-годин потрібно на ваше відключення."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/router/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/router/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/router/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-router.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-router.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "Резервне живлення роутера", "item": "https://algoritmdoma.com/uk/kalkulyatory/router/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/router/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/router/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Резервне живлення роутера</h1>
+  <p class="lead">Впишіть вати своїх пристроїв і ємність джерела. Приклад уже заповнено: термінал із вбудованим Wi-Fi на 5 Вт і міні-ДБЖ на 27,75 Вт·год з <a href="/uk/algoritmy/router/">випуску 4</a>.</p>
+</div>
+<form class="calc" id="rc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Пристрої, Вт</legend>
+    <label>Термінал провайдера (або термінал із Wi-Fi)<input type="number" name="Pt" value="5" min="0" step="any"></label>
+    <label>Окремий роутер (0, якщо все в одній коробці)<input type="number" name="Pr" value="0" min="0" step="any"></label>
+    <label>Інше на тому самому джерелі<input type="number" name="Po" value="0" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Джерело</legend>
+    <label>Ємність, Вт·год (з корпусу або паспорта)<input type="number" name="E" value="27.75" min="0" step="any"></label>
+    <label>…або мА·год (якщо Вт·год не вказано)<input type="number" name="mah" placeholder="наприклад, 20000" min="0" step="any"></label>
+    <label>Напруга поруч із мА·год, В<input type="number" name="V" value="3.7" min="0.1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Відключення</legend>
+    <label>Тривалість відключення, год<input type="number" name="T" value="8" min="0.5" step="any"></label>
+    <label>Запас на втрати (частка, що доходить до пристроїв)<input type="number" name="k" value="0.8" min="0.3" max="1" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="rres"></div>
+  <p id="rverd" class="box note"></p>
+  <div class="box warn"><strong>Перед покупкою:</strong> запитайте провайдера, чи працює його мережа без світла; живіть кожен пристрій тільки тією напругою, що на його блоці живлення (буває 12 В і 9 В); перевірте штекер і чи вистачає виходів на всі пристрої; павербанк має вміти видавати 12 В — у USB Power Delivery ця напруга необов'язкова.</div>
+  <p class="muted small">Формули: години = Вт·год × 0,8 ÷ Вт; потрібно Вт·год = Вт × години ÷ 0,8; Вт·год = мА·год ÷ 1000 × В. Коефіцієнт 0,8 — з паспорта APC Back-UPS Connect (45 хв при 80 % навантаження ≈ 78 % ємності). Розрахунок орієнтовний: реальне споживання пристроїв залежить від навантаження — найточніше виміряти ватметром.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('rc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function run(){
+  var P=(v('Pt')||0)+(v('Pr')||0)+(v('Po')||0),T=v('T')||0,k=v('k')||0.8,mah=v('mah'),V=v('V')||3.7;
+  var E=(mah&&mah>0)?mah/1000*V:(v('E')||0);
+  var rows=[['Потужність пристроїв',n1(P)+' Вт'],['Ємність джерела',E.toLocaleString('ru-RU',{maximumFractionDigits:2})+' Вт·год'+(mah&&mah>0?' (з '+n0(mah)+' мА·год × '+String(V).replace('.',',')+' В)':'')]];
+  var h=P>0?E*k/P:null,need=P*T/k;
+  if(h!=null)rows.push(['Протримає','<b>≈ '+n1(h)+' год</b>']);
+  rows.push(['Потрібно на '+n1(T)+' год','<b>≈ '+n0(need)+' Вт·год</b> (≈ '+n0(need/V*1000)+' мА·год при '+String(V).replace('.',',')+' В)']);
+  document.getElementById('rres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('rverd').innerHTML=P<=0?'Впишіть вати пристроїв.':(E<=0?'Впишіть ємність джерела — покажемо, на скільки годин його вистачить.':
+   (h>=T?'<strong>Вистачить:</strong> приблизно '+n1(h)+' год — більше, ніж '+n1(T)+' год відключення.':'<strong>Не вистачить:</strong> приблизно '+n1(h)+' год, а потрібно '+n1(T)+' год. Потрібне джерело близько '+n0(need)+' Вт·год.'));
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Як влаштований розрахунок — в <a href="/uk/algoritmy/router/">алгоритмі випуску 4</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>

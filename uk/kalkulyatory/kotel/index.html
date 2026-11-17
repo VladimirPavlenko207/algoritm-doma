@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: резервне живлення газового котла — Алгоритм дома</title><meta name="description" content="Порахуйте акумулятор та інвертор для газового котла: скільки Вт·год і А·год потрібно на час відключення і скільки годин протримається ваш акумулятор."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/kotel/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/kotel/"><meta property="og:title" content="Калькулятор: резервне живлення газового котла — Алгоритм дома"><meta property="og:description" content="Порахуйте акумулятор та інвертор для газового котла: скільки Вт·год і А·год потрібно на час відключення і скільки годин протримається ваш акумулятор."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/kotel/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/kotel/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/kotel/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-kotel.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-kotel.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "Резервне живлення газового котла", "item": "https://algoritmdoma.com/uk/kalkulyatory/kotel/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/kotel/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/kotel/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Резервне живлення газового котла</h1>
+  <p class="lead">Впишіть потужність котла з паспорта й час відключення. Приклад уже заповнено: двоконтурний котел на 110 Вт з <a href="/uk/algoritmy/kotel/">випуску 3</a>.</p>
+</div>
+<form class="calc" id="kc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Котел</legend>
+    <label>Максимальна споживана потужність з паспорта, Вт<input type="number" name="P" value="110" min="1" step="any"></label>
+    <label>Виміряно ватметром за добу, кВт·год (якщо міряли)<input type="number" name="kwh" placeholder="необов'язково" min="0" step="any"></label>
+    <label>Інші прилади на інверторі, Вт (другий насос, роутер)<input type="number" name="Po" value="0" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Відключення та інвертор</legend>
+    <label>Тривалість відключення, год<input type="number" name="T" value="6" min="0.5" step="any"></label>
+    <label>ККД інвертора, %<input type="number" name="eff" value="90" min="50" max="100" step="any"></label>
+    <label>Холостий хід інвертора, Вт<input type="number" name="idle" value="8" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Акумулятор</legend>
+    <label>Тип<select name="chem"><option value="lfp">LiFePO4 — розряд до 80 %</option><option value="agm">Свинцевий для глибоких циклів (AGM, гелевий) — до 50 %</option></select></label>
+    <label>Напруга, В<input type="number" name="U" value="12.8" min="1" step="any"></label>
+    <label>Ємність вашого акумулятора, А·год (якщо є)<input type="number" name="Q" value="100" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="kres"></div>
+  <p id="kverd" class="box note"></p>
+  <div class="box warn"><strong>Безпека:</strong> інвертор тільки з чистою синусоїдою; котел — в окрему розетку інвертора, не в трійник з іншими приладами; фазування й заземлення на виході інвертора перевіряє електрик; котел без вилки підключають через перемикач «мережа — резерв». Ніколи не вмикайте інвертор у розетку квартири — це зворотна подача.</div>
+  <p class="muted small">Формули: E = P·T/ККД + холостий хід·T; ємність = E ÷ глибина розряду; час роботи = U·Q·розряд ÷ (P/ККД + холостий хід); інвертор ≥ 5 × потужність (запас на пуск моторів — правило нашого каналу). Якщо вписано кВт·год за добу, енергія рахується за середньою потужністю, а інвертор — усе одно за паспортною. Розрахунок орієнтовний: перевіряйте паспорти свого обладнання.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('kc');
+var INV=[300,350,500,600,800,1000,1200,1500,2000,2500,3000];
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function run(){
+  var P=v('P')||0,kwh=v('kwh'),Po=v('Po')||0,T=v('T')||0,eff=(v('eff')||90)/100,idle=v('idle')||0,lfp=f.elements.chem.value==='lfp',U=v('U')||12.8,Q=v('Q');
+  var dod=lfp?.8:.5,Pmax=P+Po,Pavg=(kwh!=null&&kwh>0?kwh*1000/24:P)+Po;
+  var E=Pavg*T/eff+idle*T,Eb=E/dod,Ah=Eb/U,n100=Math.max(1,Math.ceil(Ah/100-1e-9));
+  var pinv=5*Pmax,std=INV.filter(function(x){return x>=pinv})[0];
+  var run=(Q&&Q>0)?U*Q*dod/(Pavg/eff+idle):null;
+  var rows=[['Потужність для розрахунку енергії',n0(Pavg)+' Вт'+(kwh?' (середня за ватметром'+(Po?' + інші прилади':'')+')':' (за паспортом'+(Po?' + інші прилади':'')+')')],
+   ['Енергія на '+n1(T)+' год з урахуванням ККД і холостого ходу',n0(E)+' Вт·год'],
+   ['Ємність акумулятора з урахуванням розряду ('+(lfp?'80':'50')+' %)','<b>'+n0(Eb)+' Вт·год ≈ '+n0(Ah)+' А·год</b> при '+String(U).replace('.',',')+' В'],
+   ['Типові акумулятори',n100+' × 100 А·год'],
+   ['Інвертор, чиста синусоїда','≥ 5 × '+n0(Pmax)+' = '+n0(pinv)+' Вт → <b>'+(std?'від '+n0(std)+' Вт':'від '+n0(pinv)+' Вт')+'</b>']];
+  if(run!=null)rows.push(['Ваш акумулятор '+n0(Q)+' А·год протримає','<b>≈ '+n1(run)+' год</b>']);
+  document.getElementById('kres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('kverd').innerHTML=run==null?'Впишіть ємність свого акумулятора — покажемо, на скільки годин його вистачить.':
+   (run>=T?'<strong>Вистачить:</strong> акумулятор '+n0(Q)+' А·год розрахований приблизно на '+n1(run)+' год — більше, ніж '+n1(T)+' год відключення.':'<strong>Не вистачить:</strong> акумулятор '+n0(Q)+' А·год протримає приблизно '+n1(run)+' год, а потрібно '+n1(T)+' год. Потрібно близько '+n0(Ah)+' А·год.')+(kwh?'':' Розрахунок за максимальною потужністю — насправді котел протримається довше.');
+}
+f.elements.chem.addEventListener('change',function(){var u=f.elements.U;if(this.value==='agm'&&u.value==='12.8')u.value='12';if(this.value==='lfp'&&u.value==='12')u.value='12.8'});
+f.addEventListener('input',run);f.addEventListener('change',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Як влаштований розрахунок — в <a href="/uk/algoritmy/kotel/">алгоритмі випуску 3</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>

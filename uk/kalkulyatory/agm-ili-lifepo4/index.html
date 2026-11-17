@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: AGM чи LiFePO4 — що вигідніше за 10 років — Алгоритм дома</title><meta name="description" content="Порахуйте, на скільки років вистачить свинцевого AGM і літієвого LiFePO4 при ваших відключеннях, скільки разів їх доведеться купити і ціну за кіловат-годину за цінами вашого магазину."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/agm-ili-lifepo4/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/agm-ili-lifepo4/"><meta property="og:title" content="Калькулятор: AGM чи LiFePO4 — що вигідніше за 10 років — Алгоритм дома"><meta property="og:description" content="Порахуйте, на скільки років вистачить свинцевого AGM і літієвого LiFePO4 при ваших відключеннях, скільки разів їх доведеться купити і ціну за кіловат-годину за цінами вашого магазину."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/agm-ili-lifepo4/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/agm-ili-lifepo4/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/agm-ili-lifepo4/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-agm-ili-lifepo4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-agm-ili-lifepo4.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "AGM чи LiFePO4: що вигідніше", "item": "https://algoritmdoma.com/uk/kalkulyatory/agm-ili-lifepo4/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/agm-ili-lifepo4/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/agm-ili-lifepo4/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>AGM чи LiFePO4: що вигідніше</h1>
+  <p class="lead">Впишіть свої відключення й ціни. Приклад уже заповнено: 750 Вт·год за відключення, 150 відключень на рік, AGM 12 В 110 А·год і LiFePO4 12,8 В 100 А·год Victron з <a href="/uk/algoritmy/agm-ili-lifepo4/">випуску 6</a>. Ціни порожні — впишіть зі свого магазину.</p>
+</div>
+<form class="calc" id="lc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Ваші відключення</legend>
+    <label>Енергія за одне відключення, Вт·год<input type="number" name="E" value="750" min="1" step="any"></label>
+    <label>Відключень на рік<input type="number" name="n" value="150" min="1" step="any"></label>
+    <label>Строк порівняння, років<input type="number" name="Y" value="10" min="1" step="any"></label>
+    <label>Тариф за кВт·год (необов'язково)<input type="number" name="tar" placeholder="ваш тариф" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Свинцевий AGM</legend>
+    <label>Ємність, Вт·год (В × А·год)<input type="number" name="Ea" value="1320" min="1" step="any"></label>
+    <label>Ціна<input type="number" name="Ca" placeholder="з вашого магазину" min="0" step="any"></label>
+    <label>Цикли при розряді 30 / 50 / 80 %<input type="text" name="Na" value="1500 / 600 / 400"></label>
+    <label>Розрахунковий строк служби при 20 °C, років<input type="number" name="Ta" value="7" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Літієвий LiFePO4</legend>
+    <label>Ємність, Вт·год (В × А·год)<input type="number" name="El" value="1280" min="1" step="any"></label>
+    <label>Ціна<input type="number" name="Cl" placeholder="з вашого магазину" min="0" step="any"></label>
+    <label>Цикли при розряді 50 / 70 / 80 %<input type="text" name="Nl" value="5000 / 3000 / 2500"></label>
+    <label>Строк служби, років (якщо є в паспорті)<input type="number" name="Tl" placeholder="необов'язково" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="lres"></div>
+  <p id="lverd" class="box note"></p>
+  <div class="box warn"><strong>Не забудьте:</strong> LiFePO4 Victron заряджається тільки від +5 °C — не ставте його на морозний балкон. AGM швидко старіє в спеку (Victron: 7–10 років при 20 °C, 4 роки при 30 °C) і не любить, коли його довго не заряджають повністю. Цикли й строки беріть з паспорта своєї моделі.</div>
+  <p class="muted small">Як рахуємо: глибина розряду = Вт·год за відключення ÷ ємність; цикли при цій глибині — по прямій між точками паспорта (мілкіше за наймілкішу точку — беремо її значення, глибше за найглибшу — теж її, з попередженням); років служби = цикли ÷ відключення на рік, але не більше строку служби, якщо його вказано; покупок = строк порівняння ÷ років служби, з округленням угору; ціна за кВт·год = ціна ÷ (кВт·год за відключення × цикли, які акумулятор встигне пройти). Втрати на заряджання: середній свинцевий повертає 80 % енергії, літієвий — 92 % (Victron). Розрахунок орієнтовний.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('lc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function pts(n,ds){var a=(f.elements[n].value||'').split('/').map(function(s){return parseFloat(s.replace(',','.'))});return ds.map(function(d,i){return [d,a[i]]}).filter(function(p){return isFinite(p[1])&&p[1]>0})}
+function cyc(P,D){if(!P.length)return null;P.sort(function(a,b){return a[0]-b[0]});if(D<=P[0][0])return P[0][1];if(D>=P[P.length-1][0])return P[P.length-1][1];
+ for(var i=0;i<P.length-1;i++){if(D>=P[i][0]&&D<=P[i+1][0]){var k=(D-P[i][0])/(P[i+1][0]-P[i][0]);return P[i][1]+(P[i+1][1]-P[i][1])*k}}return null}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function money(x){return x.toLocaleString('ru-RU',{maximumFractionDigits:x<10?2:0})}
+function one(E,n,Y,cap,P,Tc,price,eta,name){
+  var D=E/cap,N=cyc(P,D),deep=P.length&&D>Math.max.apply(null,P.map(function(p){return p[0]}));
+  if(N==null)return {name:name,err:'впишіть цикли з паспорта'};
+  var T=N/n,lim=false;if(Tc&&Tc>0&&Tc<T){T=Tc;lim=true}
+  var buys=Math.ceil(Y/T-1e-9),cycLife=Math.min(N,n*T),kwh=E/1000*cycLife,grid=E*n*Y/eta/1000;
+  return {name:name,noCal:!(Tc&&Tc>0),D:D,N:N,T:T,lim:lim,buys:buys,kwh:kwh,grid:grid,price:price,deep:deep,over:D>1}}
+function run(){
+  var E=v('E')||0,n=v('n')||0,Y=v('Y')||10,tar=v('tar');
+  if(E<=0||n<=0){document.getElementById('lres').innerHTML='';document.getElementById('lverd').innerHTML='Впишіть енергію за відключення і кількість відключень на рік.';return}
+  var A=one(E,n,Y,v('Ea')||1,pts('Na',[.3,.5,.8]),v('Ta'),v('Ca'),.8,'AGM'),L=one(E,n,Y,v('El')||1,pts('Nl',[.5,.7,.8]),v('Tl'),v('Cl'),.92,'LiFePO4');
+  var rows=[];
+  [A,L].forEach(function(r){if(r.err){rows.push([r.name,r.err]);return}
+    rows.push([r.name+': глибина розряду',n0(r.D*100)+' %'+(r.over?' — <b>ємності не вистачить на одне відключення</b>':(r.deep?' — глибше, ніж є в паспорті':''))]);
+    rows.push([r.name+': циклів при цій глибині','≈ '+n0(r.N)]);
+    rows.push([r.name+': вистачить на',' <b>≈ '+n1(r.T)+' року</b>'+(r.lim?' (обмежено строком служби)':(r.noCal?' за циклами; строк служби в роках не вписано':''))]);
+    rows.push([r.name+': покупок за '+n1(Y)+' років','<b>'+r.buys+'</b>'+(r.price?' → '+money(r.buys*r.price)+' за '+n1(Y)+' років':'')]);
+    if(r.price)rows.push([r.name+': ціна за кВт·год','≈ '+money(r.price/r.kwh)+' за кВт·год ('+n0(r.kwh)+' кВт·год за життя)']);});
+  if(!A.err&&!L.err){var d=A.grid-L.grid;rows.push(['Заряджання за '+n1(Y)+' років: AGM більше на','≈ '+n0(d)+' кВт·год'+(tar?' ≈ '+money(d*tar):'')])}
+  document.getElementById('lres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  var vd='';if(!A.err&&!L.err){var ratio=A.buys/L.buys;
+   vd='За '+n1(Y)+' років: '+A.buys+' × AGM проти '+L.buys+' × LiFePO4. LiFePO4 вигідніший, якщо дорожчий за AGM менш ніж у <b>'+n1(ratio)+' рази</b>.';
+   if(A.price&&L.price){var ca=A.buys*A.price,cl=L.buys*L.price;vd+=' За вашими цінами: AGM '+money(ca)+', LiFePO4 '+money(cl)+' — '+(cl<ca?'<strong>LiFePO4 дешевший</strong>':cl>ca?'<strong>AGM дешевший</strong>':'однаково')+'.'}
+   else vd+=' Впишіть ціни — покажемо підсумок.'}
+  document.getElementById('lverd').innerHTML=vd;
+}
+f.addEventListener('input',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Як влаштований розрахунок — в <a href="/uk/algoritmy/agm-ili-lifepo4/">алгоритмі випуску 6</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>

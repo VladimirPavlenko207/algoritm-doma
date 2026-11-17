@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Резервне живлення квартири: розрахунок покроково — Алгоритм дома</title><meta name="description" content="Як порахувати акумулятор та інвертор для резервного живлення квартири: 5 кроків, формули, приклад на 6 годин відключення та джерела."><link rel="canonical" href="https://algoritmdoma.com/uk/algoritmy/rezervnoe-pitanie/"><meta property="og:url" content="https://algoritmdoma.com/uk/algoritmy/rezervnoe-pitanie/"><meta property="og:title" content="Резервне живлення квартири: розрахунок покроково — Алгоритм дома"><meta property="og:description" content="Як порахувати акумулятор та інвертор для резервного живлення квартири: 5 кроків, формули, приклад на 6 годин відключення та джерела."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/algoritmy/rezervnoe-pitanie/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/algoritmy/rezervnoe-pitanie/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/algoritmy/rezervnoe-pitanie/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/img/ep01-oblozhka.jpg"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="720"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/img/ep01-oblozhka.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Алгоритми", "item": "https://algoritmdoma.com/uk/algoritmy/"}, {"@type": "ListItem", "position": 3, "name": "Резервне живлення квартири: розрахунок покроково", "item": "https://algoritmdoma.com/uk/algoritmy/rezervnoe-pitanie/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "Резервне живлення квартири: розрахунок покроково", "description": "Як порахувати акумулятор та інвертор для резервного живлення квартири: 5 кроків, формули, приклад на 6 годин відключення та джерела.", "thumbnailUrl": ["https://algoritmdoma.com/assets/img/ep01-oblozhka.jpg", "https://i.ytimg.com/vi/Rg46fcz0qWA/hqdefault.jpg"], "uploadDate": "2026-11-15T11:00:00+02:00", "duration": "PT5M50S", "embedUrl": "https://www.youtube.com/embed/Rg46fcz0qWA", "inLanguage": "ru", "publisher": {"@type": "Organization", "name": "Алгоритм дома", "url": "https://algoritmdoma.com/"}}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/" aria-current="page">Алгоритми</a><a href="/uk/kalkulyatory/">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/algoritmy/rezervnoe-pitanie/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/algoritmy/rezervnoe-pitanie/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<article>
+<div class="read">
+  <div class="eyebrow">Алгоритм · випуск 1</div>
+  <h1>Резервне живлення квартири: розрахунок покроково</h1>
+  <p class="lead">Світло вимкнули на шість годин. Щоб холодильник, інтернет, світло й ноутбук продовжували працювати, вистачає акумулятора з інвертором — якщо правильно їх підібрати. Нижче п'ять кроків розрахунку на зрозумілому прикладі.</p>
+</div>
+
+<div class="video" data-yt="Rg46fcz0qWA">
+  <button class="yt-play" type="button" aria-label="Дивитися ролик «Резервне живлення квартири» (5:50)">
+    <img src="../../../assets/img/ep01-oblozhka.jpg" alt="" width="1280" height="720">
+    <span class="yt-ico" aria-hidden="true"><svg viewBox="0 0 68 48"><rect width="68" height="48" rx="12" fill="#ffb020"/><path d="M27 14v20l18-10z" fill="#111"/></svg></span>
+  </button>
+</div>
+<p class="read small muted">Ролик російською, 5:50. Не відкривається? <a href="https://youtu.be/Rg46fcz0qWA">Дивитися на YouTube</a> або читайте розрахунок нижче — у ньому все те саме.</p>
+<script>
+document.querySelectorAll('.video[data-yt]').forEach(function(v){
+  v.querySelector('button').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';
+    f.title='Резервне живлення квартири — Алгоритм дома';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; v.replaceChildren(f);
+  });
+});
+</script>
+
+<div class="read">
+  <div class="box note">
+    <strong>Підсумок прикладу:</strong> на 6 годин для холодильника, роутера, трьох ламп, ноутбука і двох телефонів потрібен акумулятор LiFePO4 <b>12,8 В × 100 А·год</b> (1280 Вт·год) та інвертор з <b>чистою синусоїдою</b> не менше <b>≈ 750 Вт</b> тривалої потужності. У ролику взято інвертор на 1000 Вт — із запасом.
+  </div>
+  <div class="box tool">
+    <p>Підставте свої прилади й час відключення — калькулятор порахує за тими самими формулами.</p>
+    <a class="btn" href="/uk/kalkulyatory/rezervnoe-pitanie/">Відкрити калькулятор</a>
+  </div>
+
+  <h2>Як влаштована система</h2>
+  <p>Акумулятор зберігає енергію. Інвертор перетворює його постійний струм на звичайні 220 В, як у розетці. Між ними обов'язково стоїть запобіжник. Прилади підключаються до розеток інвертора або через подовжувач. Коли світло є, акумулятор заряджається — від окремого зарядного пристрою або від інвертора з вбудованим заряджанням.</p>
+</div>
+<figure><img src="../../../assets/img/ep01-sistema.jpg" alt="Схема: акумулятор, запобіжник, інвертор, розетка й прилади; мережа 220 В вимкнена" width="1280" height="720" loading="lazy"><figcaption>Акумулятор → запобіжник → інвертор → прилади. Поки є мережа, акумулятор заряджається.</figcaption></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">1</span>Список приладів</h2>
+  <p>Вирішіть, що справді потрібно під час відключення — не вся квартира, а найважливіше. У прикладі: холодильник, роутер, три світлодіодні лампи, ноутбук і зарядка двох телефонів; відключення — 6 годин.</p>
+  <p>Потужність приладу написана на ньому самому: на наліпці, табличці або блоці живлення. Наприклад, у роутера на блоці живлення «12V 1A»: 12 В × 1 А = <b>12 Вт</b>. Це максимум, тож розрахунок вийде із запасом.</p>
+  <p>Холодильник працює не постійно: компресор то вмикається, то вимикається. Тому беремо не потужність, а річне споживання з енергетичної наліпки:</p>
+  <div class="formula">250 кВт·год на рік = 250 000 Вт·год ÷ 365 ÷ 24 ≈ <b>28,5 Вт·год за кожну годину</b></div>
+</div>
+<figure><img src="../../../assets/img/ep01-pribory.jpg" alt="Картки приладів і приклади: блок живлення роутера 12 В × 1 А та енергетична наліпка холодильника 250 кВт·год на рік" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">2</span>Енергія за час відключення</h2>
+  <p>Потужність множимо на час роботи. Отримуємо ват-години — скільки енергії спожиє кожен прилад.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Прилад</th><th class="r">Потужність</th><th class="r">Час</th><th class="r">Енергія</th></tr></thead>
+    <tbody>
+      <tr><td>Холодильник</td><td class="r">28,5 Вт у середньому</td><td class="r">6 год</td><td class="r">171 Вт·год</td></tr>
+      <tr><td>Роутер</td><td class="r">12 Вт</td><td class="r">6 год</td><td class="r">72 Вт·год</td></tr>
+      <tr><td>3 світлодіодні лампи</td><td class="r">3 × 9 Вт</td><td class="r">6 год</td><td class="r">162 Вт·год</td></tr>
+      <tr><td>Ноутбук</td><td class="r">65 Вт (блок живлення)</td><td class="r">3 год</td><td class="r">195 Вт·год</td></tr>
+      <tr><td>2 зарядки телефона</td><td class="r">≈ 15 Вт·год кожна</td><td class="r">—</td><td class="r">30 Вт·год</td></tr>
+      <tr class="total"><td>Разом</td><td></td><td></td><td class="r">≈ 630 Вт·год</td></tr>
+    </tbody></table></div>
+  <p class="small muted">15 Вт·год на заряджання — приклад: акумулятор телефона 4000 мА·год × 3,7 В ≈ 15 Вт·год. Ємність вашого телефона — в його характеристиках.</p>
+
+  <h2 class="step-h"><span class="step-n">3</span>Ємність акумулятора</h2>
+  <p>Акумулятор беремо із запасом із трьох причин.</p>
+  <ol class="steps">
+    <li><b>Втрати в інверторі.</b> У добрих моделей на 12 В ККД сягає 92 %. Це максимум, тому рахуємо 90 %: 630 ÷ 0,9 = 700 Вт·год.</li>
+    <li><b>Холостий хід.</b> Інвертор споживає енергію сам, навіть без навантаження: у моделі на 1200 ВА — близько 8 Вт. За 6 годин це ще 48 Вт·год, разом ≈ 748 Вт·год.</li>
+    <li><b>Глибина розряду.</b> Акумулятор не можна розряджати в нуль. LiFePO4 за даними виробника витримує близько 2500 циклів при розряді на 80 %: 748 ÷ 0,8 ≈ 935 Вт·год.</li>
+  </ol>
+  <div class="formula">(630 ÷ 0,9 + 8 Вт × 6 год) ÷ 0,8 ≈ <b>935 Вт·год</b> → LiFePO4 12,8 В × 100 А·год = <b>1280 Вт·год</b></div>
+</div>
+<figure><img src="../../../assets/img/ep01-akkumulyator.jpg" alt="Розрахунок: 630 Вт·год, ділення на ККД 0,9, плюс 48 Вт·год холостого ходу, ділення на 0,8 — близько 935 Вт·год; обрано LiFePO4 на 1280 Вт·год" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h3>Літій чи свинець</h3>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>LiFePO4</th><th>Свинцево-кислотний AGM</th></tr></thead>
+    <tbody>
+      <tr><td>Глибина розряду в розрахунку</td><td>80 %</td><td>50 % — виробник радить не залишати розрядженим більш ніж наполовину</td></tr>
+      <tr><td>Ресурс</td><td>≈ 2500 циклів при розряді 80 %</td><td>≈ 250 циклів при розряді 80 %</td></tr>
+      <tr><td>Потрібно для прикладу</td><td>≈ 935 Вт·год</td><td>≈ 1500 Вт·год</td></tr>
+      <tr><td>Вага</td><td colspan="2">Літій, за даними виробника, до 70 % легший; свинець дешевший під час покупки</td></tr>
+    </tbody></table></div>
+</div>
+<figure><img src="../../../assets/img/ep01-litiy-svinec.jpg" alt="Порівняння LiFePO4 і AGM: розряд 80 і 50 відсотків, 2500 і 250 циклів, потрібно 935 і 1500 Вт·год" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">4</span>Потужність інвертора</h2>
+  <p>Спершу складаємо все, що може працювати одночасно: холодильник за табличкою 120 Вт, роутер 12, лампи 27, ноутбук 65, дві зарядки телефонів близько 40. Разом ≈ <b>264 Вт</b>.</p>
+</div>
+<figure><img src="../../../assets/img/ep01-invertor-summa.jpg" alt="Навантаження складається з приладів: холодильник 120, роутер 12, лампи 27, ноутбук 65, телефони 40 — разом 264 Вт" width="1280" height="720" loading="lazy"></figure>
+<div class="read">
+  <p>Але холодильник під час запуску бере набагато більше. Виробник інверторів Samlex пише, що холодильнику на старті потрібно приблизно в 5 разів більше робочої потужності, і ривок триває до 5 секунд. Тому інвертор підбираємо за тривалою потужністю, а не за коротким піком:</p>
+  <div class="formula">120 Вт × 5 + 144 Вт решти ≈ <b>744 Вт</b> → інвертор від ≈ 750 Вт тривало (у прикладі — 1000 Вт)</div>
+  <p>Для холодильника потрібен інвертор з <b>чистою синусоїдою</b>: на модифікованій синусоїді двигуни сильніше гріються.</p>
+</div>
+<figure><img src="../../../assets/img/ep01-invertor-pusk.jpg" alt="Графік навантаження: пік під час запуску холодильника близько 750 Вт, нижче лінії 1000 Вт тривалої потужності інвертора" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2 class="step-h"><span class="step-n">5</span>Збирання й безпека</h2>
+  <p>Акумулятор, запобіжник та інвертор з'єднують товстими короткими дротами. На 12 В струм великий: при навантаженні 1000 Вт це близько 85 А (1000 ÷ (12,8 В × 0,92)). Переріз кабелю й номінал запобіжника беріть з інструкції до інвертора. Прилади вмикайте в розетки інвертора або через подовжувач.</p>
+  <div class="box warn"><strong>Ніколи</strong> не вмикайте інвертор у розетку або щиток квартири, щоб живити всю проводку. Зворотна подача небезпечна для електриків на лінії та для сусідів. Вихід інвертора не можна напряму підключати до щитка, який живиться від мережі. Живити проводку повністю — окрема робота для електрика.</div>
+</div>
+<figure><img src="../../../assets/img/ep01-bezopasnost.jpg" alt="Схема зворотної подачі: інвертор увімкнено в розетку будинку, струм іде в лінію до електрика на опорі — так робити не можна" width="1280" height="720" loading="lazy"></figure>
+
+<div class="read">
+  <h2>Що купити для прикладу</h2>
+  <ul>
+    <li>Акумулятор LiFePO4 12,8 В, 100 А·год (1280 Вт·год).</li>
+    <li>Інвертор із чистою синусоїдою, тривала потужність не менше ≈ 750 Вт; дивіться ККД і холостий хід у паспорті.</li>
+    <li>Запобіжник і кабелі — за інструкцією до інвертора.</li>
+    <li>Зарядний пристрій, що підходить для вашого типу акумулятора, або інвертор із вбудованим заряджанням.</li>
+    <li>Подовжувач для підключення приладів.</li>
+  </ul>
+  <p class="muted small">Потужності приладів у прикладі — приклади з наліпок. Для своєї квартири підставте свої цифри в калькулятор.</p>
+
+  <h2>Джерела</h2>
+  <ul class="src">
+    <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-12,8-&amp;-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf" rel="noopener" target="_blank">Victron Energy — даташит LiFePO4 Smart 12,8 В</a>: комірка 3,2 В, 2500 циклів при розряді 80 %, до 70 % легший.</li>
+    <li><a href="https://www.victronenergy.com/upload/documents/Book-Energy-Unlimited-EN.pdf" rel="noopener" target="_blank">Victron Energy — «Energy Unlimited»</a>: свинцевий акумулятор не залишати розрядженим більш ніж на 50 %; AGM ≈ 250 циклів при розряді 80 %.</li>
+    <li>Victron Energy — даташит Phoenix Inverter 180–1200 VA: ККД до 92 % (12 В), холостий хід 8 Вт, 1200 ВА = 1000 Вт тривало, 2400 Вт пік.</li>
+    <li><a href="https://samlexamerica.com/resources-support/faq/inverters-general-information/" rel="noopener" target="_blank">Samlex — FAQ з інверторів</a>: пускова потужність холодильника ≈ 5× робочої, до 5 секунд; не підключати вихід інвертора до щитка, що живиться від мережі.</li>
+    <li><a href="https://samlexamerica.com/resources-support/faq/pure-sine-wave-versus-modified-sine-wave-inverters/" rel="noopener" target="_blank">Samlex — чиста й модифікована синусоїда</a>: на модифікованій двигуни сильніше гріються.</li>
+    <li><a href="https://www.cpsc.gov/s3fs-public/pdfs/blk_media_portgen.pdf" rel="noopener" target="_blank">CPSC — пам'ятка щодо портативних генераторів</a>: зворотна подача небезпечна для електриків і сусідів.</li>
+  </ul>
+  <p class="muted small">Перевірено 14 листопада 2026 р. Знайшли помилку — напишіть у коментарях під роликом.</p>
+</div>
+</article>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script></body></html>

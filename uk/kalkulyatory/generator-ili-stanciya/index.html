@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Калькулятор: генератор чи зарядна станція — бензин, мотогодини, олива — Алгоритм дома</title><meta name="description" content="Чи вистачить зарядної станції на ваше відключення, скільки бензину й мотогодин піде в генератора і скільки економить зв'язка «генератор + станція»."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/generator-ili-stanciya/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/generator-ili-stanciya/"><meta property="og:title" content="Калькулятор: генератор чи зарядна станція — бензин, мотогодини, олива — Алгоритм дома"><meta property="og:description" content="Чи вистачить зарядної станції на ваше відключення, скільки бензину й мотогодин піде в генератора і скільки економить зв'язка «генератор + станція»."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a4b37518"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/generator-ili-stanciya/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/generator-ili-stanciya/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/generator-ili-stanciya/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-generator-ili-stanciya.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-generator-ili-stanciya.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "Генератор чи зарядна станція", "item": "https://algoritmdoma.com/uk/kalkulyatory/generator-ili-stanciya/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/generator-ili-stanciya/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/generator-ili-stanciya/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>Генератор чи зарядна станція</h1>
+  <p class="lead">Приклад уже заповнено: будинок 300 Вт, відключення 12 годин, станція 1024 Вт·год із зарядом 1200 Вт, генератор 1800 Вт з баком 3,6 л — як у <a href="/uk/algoritmy/generator-ili-stanciya/">випуску 7</a>. Замініть на свої дані з паспортів.</p>
+</div>
+<form class="calc" id="gc" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Де і скільки</legend>
+    <label>Де живете<select name="where"><option value="house">приватний будинок</option><option value="flat">квартира</option></select></label>
+    <label>Середнє навантаження, Вт<input type="number" name="P" value="300" min="1" step="any"></label>
+    <label>Тривалість відключення, год<input type="number" name="H" value="12" min="0.1" step="any"></label>
+    <label>Вікно зі світлом між відключеннями, год<input type="number" name="W" value="4" min="0" step="any"></label>
+    <label>Відключень на місяць<input type="number" name="n" value="15" min="0" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox"><legend>Зарядна станція</legend>
+    <label>Ємність, Вт·год<input type="number" name="Cs" value="1024" min="1" step="any"></label>
+    <label>Потужність заряджання від мережі, Вт<input type="number" name="Pc" value="1200" min="1" step="any"></label>
+  </fieldset>
+  <fieldset class="cbox" id="genbox"><legend>Генератор</legend>
+    <label>Номінальна потужність, Вт<input type="number" name="Pg" value="1800" min="1" step="any"></label>
+    <label>Бак, л<input type="number" name="T" value="3.6" min="0.1" step="any"></label>
+    <label>Годин на баку при номіналі<input type="number" name="hr" value="3.2" min="0.1" step="any"></label>
+    <label>Годин на баку при ¼ потужності<input type="number" name="hq" value="8.1" min="0.1" step="any"></label>
+    <label>Заміна оливи кожні, год<input type="number" name="oil" value="50" min="1" step="any"></label>
+    <label>Ціна бензину за літр (необов'язково)<input type="number" name="fp" placeholder="ваша ціна" min="0" step="any"></label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="gres"></div>
+  <p id="gverd" class="box note"></p>
+  <div class="box warn" id="gwarn"><strong>Безпека:</strong> генератор — тільки надворі, не ближче 6 м від вікон, дверей і стін (Держпраці); у квартирі й на балконі не можна (Держенергонагляд). До проводки будинку — тільки через перекидний рубильник або АВР після лічильника та ввідного автомата, підключає електрик. Станцію заряджайте при 0…+45 °C.</div>
+  <p class="muted small">Як рахуємо: енергія відключення = навантаження × години; станція віддає ємність × 0,9 (ККД інвертора), протримається = ємність × 0,9 ÷ навантаження; повне заряджання ≈ ємність × 1,4 ÷ потужність заряджання (у DELTA 2 — 1024 Вт·год за ≈ 1,2 год при 1200 Вт). Витрата генератора: на ¼ потужності й нижче — бак ÷ години на ¼, вище — по прямій до бак ÷ години на номіналі. Зв'язка: генератор живить будинок і заряджає станцію, потім будинок живе від станції; цикл повторюється до кінця відключення, починаємо з генератора. Заміни оливи = мотогодини ÷ інтервал. Розрахунок орієнтовний, витрата при малому навантаженні в різних моделей відрізняється.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('gc');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function money(x){return x.toLocaleString('ru-RU',{maximumFractionDigits:x<10?2:0})}
+function run(){
+  var flat=f.elements.where.value==='flat',P=v('P'),H=v('H'),W=v('W'),n=v('n')||0,Cs=v('Cs'),Pc=v('Pc'),Pg=v('Pg'),T=v('T'),hr=v('hr'),hq=v('hq'),oil=v('oil')||50,fp=v('fp');
+  document.getElementById('genbox').style.display=flat?'none':'';
+  var rows=[],vd='';
+  if(!(P>0&&H>0&&Cs>0&&Pc>0)){document.getElementById('gres').innerHTML='';document.getElementById('gverd').textContent='Заповніть навантаження, години й дані станції.';return}
+  var E=P*H,use=Cs*0.9,hs=use/P,tc=Cs*1.4/Pc,need=E/use;
+  rows.push(['Енергія одного відключення',n0(E)+' Вт·год']);
+  rows.push(['Станція протримає','≈ '+n1(hs)+' год'+(hs>=H?' — вистачить':' — потрібно ≈ '+n1(need)+' таких станцій')]);
+  rows.push(['Повне заряджання станції','≈ '+n1(tc)+' год'+(W!=null?(tc<=W?' — встигне у вікно '+n1(W)+' год':' — у вікно '+n1(W)+' год не встигне повністю'):'')]);
+  if(flat){
+    vd='Квартира: генератор не можна навіть на балконі. '+(hs>=H?(W==null||tc<=W?'<strong>Станції вистачає</strong> і вона встигає зарядитися.':'Ємності вистачає, але станція не встигає зарядитися у вікно зі світлом — потрібне потужніше заряджання або друга станція.'):'Ємності мало: потрібна станція ≈ '+n0(E/0.9)+' Вт·год або власний комплект (випуск 2).');
+  } else if(Pg>0&&T>0&&hr>0&&hq>0){
+    var q=T/hq,r=T/hr,lph=function(L){return L<=Pg/4?q:q+(Math.min(L,Pg)-Pg/4)*(r-q)/(Pg*0.75)};
+    var L1=H*lph(P),M1=H;
+    var Pl=P+Pc,cyc=tc+hs,gh=Math.min(H,H/cyc*tc),L2=gh*lph(Pl);
+    rows.push(['Тільки генератор: бензин за відключення','≈ '+n1(L1)+' л, '+n1(M1)+' мотогодин']);
+    rows.push(['Генератор + станція: бензин за відключення','≈ '+n1(L2)+' л, '+n1(gh)+' мотогодин']);
+    if(n>0){rows.push(['За місяць: тільки генератор','≈ '+n0(L1*n)+' л, '+n0(M1*n)+' мотогодин, замін оливи ≈ '+n1(M1*n/oil)+(fp?' · бензин ≈ '+money(L1*n*fp):'')]);
+            rows.push(['За місяць: генератор + станція','≈ '+n0(L2*n)+' л, '+n0(gh*n)+' мотогодин, замін оливи ≈ '+n1(gh*n/oil)+(fp?' · бензин ≈ '+money(L2*n*fp):'')]);}
+    vd=(hs>=H&&(W==null||tc<=W))?'<strong>Станції вистачає</strong> на ваше відключення — генератор потрібен тільки для запасу.':'Однієї станції мало — потрібен генератор. ';
+    if(!(hs>=H))vd+='Зв\'язка «генератор + станція» економить ≈ '+n0((1-L2/L1)*100)+' % бензину, мотогодин — у '+n1(M1/Math.max(gh,0.01))+' рази менше.';
+    if(Pl>Pg)vd+=' <strong>Увага:</strong> навантаження + заряджання ('+n0(Pl)+' Вт) більше за номінал генератора — зменште потужність заряджання станції.';
+  }
+  document.getElementById('gres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('gverd').innerHTML=vd;
+}
+f.addEventListener('input',run);f.addEventListener('change',run);run();
+})();
+</script>
+<div class="read"><p class="muted small">Як влаштований розрахунок — в <a href="/uk/algoritmy/generator-ili-stanciya/">алгоритмі випуску 7</a>.</p></div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>
