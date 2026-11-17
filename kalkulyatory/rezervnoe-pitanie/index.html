@@ -103,8 +103,10 @@ footer{font-size:12.5px;color:var(--mut)}
         <div class="row">
           <button id="add" type="button">+ Добавить прибор</button>
           <button id="reset" type="button">Вернуть пример из ролика</button>
+          <button id="share" type="button">Скопировать ссылку на расчёт</button>
         </div>
-        <p class="hint">Если указано годовое потребление (энергонаклейка), энергия за отключение считается по нему, а «Мощность» нужна только для подбора инвертора. Часы работы не могут быть больше длительности отключения. Галочка «Мотор, компрессор» — для холодильника, морозильника, насоса: на запуске такой прибор берёт примерно в 5 раз больше. Для запаса считаем, что все отмеченные моторы могут запуститься одновременно, например когда свет вернули.</p>
+        <div class="share-box"></div>
+        <p class="hint">Если указано годовое потребление (энергонаклейка), энергия за отключение считается по нему, а «Мощность» нужна только для подбора инвертора. Часы работы не могут быть больше длительности отключения. Галочка «Мотор, компрессор» — для холодильника, морозильника, насоса: на запуске такой прибор берёт примерно в 5 раз больше. Для запаса считаем, что все отмеченные моторы могут запуститься одновременно, например когда свет вернули. Мощность типичных приборов — в таблице <a href="/skolko-vatt/">«Сколько ватт потребляет»</a>.</p>
       </section>
 
       <section class="card">
@@ -219,8 +221,21 @@ function update(){
   $('l-run').textContent=r.run?`≈ ${f1(r.run)} ч`:'—';
   $('sample-chip').hidden=!isSample();
 }
+function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))}
+function fromHash(){
+  const h=location.hash.slice(1); if(!h) return null;
+  try{
+    if(h.startsWith('s=')){const s=JSON.parse(b64d(h.slice(2)));if(s&&Array.isArray(s.rows))return s}
+    if(h.startsWith('add=')){const [n,p,y,m,hh]=decodeURIComponent(h.slice(4)).split('|');const s=load();
+      s.rows.push({n:n||'Прибор',p:+p||0,h:hh?Math.min(+hh,+s.T||6):(+s.T||6),y:y?+y:'',m:m==='1'});return s}
+  }catch(e){}
+  return null;
+}
 function init(){
-  state=load();
+  const fh=fromHash();
+  state=fh||load();
+  if(fh){save();try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
   $('T').value=state.T; $('chem').value=state.chem; $('volt').value=state.volt; $('eff').value=state.eff; $('idle').value=state.idle;
   renderRows(); update();
 }
@@ -229,7 +244,9 @@ document.addEventListener('change',()=>{readAll();save();update();});
 $('add').addEventListener('click',()=>{readAll();state.rows.push({n:'Новый прибор',p:50,h:state.T,y:'',m:false});renderRows();save();update();$('n'+(state.rows.length-1)).focus();});
 $('reset').addEventListener('click',()=>{state=JSON.parse(JSON.stringify(SAMPLE));try{localStorage.removeItem(KEY)}catch(e){};init();});
 rowsEl.addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(!b)return;readAll();state.rows.splice(+b.dataset.del,1);renderRows();save();update();});
+$('share').addEventListener('click',()=>{readAll();const url=location.href.split('#')[0]+'#s='+b64e(JSON.stringify(state));
+  if(window.__shareCopy)window.__shareCopy(url,document.querySelector('.share-box'));});
 init();
 window.__compute=compute; window.__SAMPLE=SAMPLE;
 </script>
-</body></html>
+<script src="../../assets/share.js?v=0b0cf30a"></script></body></html>

@@ -124,3 +124,11 @@ h1,h2,h3{scroll-margin-top:84px}
 .kres>div{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 18px;padding:11px 0;border-bottom:1px solid var(--line)}
 .kres>div>span:first-child{color:var(--mut);font-size:15px;flex:1 1 300px;min-width:0}
 .kres>div>span:last-child{font-variant-numeric:tabular-nums;text-align:right;margin-left:auto}
+.share{margin:18px 0 6px}.share .btn{cursor:pointer}.share p{margin:8px 0 0}
+.share-url{display:block;width:100%;margin-top:8px;font:14px/1.4 var(--body);padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.watt a.add{white-space:nowrap;display:inline-block;margin-top:4px}.watt td:first-child{min-width:170px}
+@media (max-width:600px){.watt table,.watt tbody,.watt tr,.watt td{display:block}.watt thead{display:none}.watt tr{padding:12px 0;border-bottom:1px solid var(--line)}.watt td{border:0;padding:3px 0;min-width:0}
+.watt td:nth-child(2)::before{content:'По паспорту: ';color:var(--mut)}.watt td:nth-child(3)::before{content:'В среднем: ';color:var(--mut)}}
+.cbox label.opt{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink);cursor:pointer;padding:3px 0}
+.cbox label.opt input{width:20px;height:20px;padding:0;margin:0;flex:0 0 auto;accent-color:var(--amber)}
+.steps-list li{margin:0 0 10px;line-height:1.5}

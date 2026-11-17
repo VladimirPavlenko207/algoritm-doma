@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Помощник: какое резервное питание вам подходит — Алгоритм дома</title><meta name="description" content="Ответьте на четыре вопроса — помощник подскажет, какие выпуски и калькуляторы подходят вашей квартире или дому, и заполнит калькулятор вашими приборами."><link rel="canonical" href="https://algoritmdoma.com/pomoshchnik/"><meta property="og:url" content="https://algoritmdoma.com/pomoshchnik/"><meta property="og:title" content="Помощник: какое резервное питание вам подходит — Алгоритм дома"><meta property="og:description" content="Ответьте на четыре вопроса — помощник подскажет, какие выпуски и калькуляторы подходят вашей квартире или дому, и заполнит калькулятор вашими приборами."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../assets/style.css?v=4b1c8da1"><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Разделы"><a href="/">Главная</a><a href="/algoritmy/">Алгоритмы</a><a href="/kalkulyatory/" aria-current="page">Калькуляторы</a><a href="/o-proekte/">Как мы проверяем факты</a></nav></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Помощник</div>
+  <h1>С чего начать: подбор резервного питания</h1>
+  <p class="lead">Четыре вопроса — и помощник подскажет, какие выпуски и калькуляторы подходят именно вам, а калькулятор откроется уже с вашими приборами.</p>
+  <div class="box note"><strong>Это подсказка, а не расчёт.</strong> Помощник не подбирает модели и не считает ёмкость — он помогает сориентироваться: что читать и смотреть в первую очередь и с какими цифрами открыть калькулятор. Точные значения — в калькуляторе, а мощность своих приборов сверьте с их табличками.</div>
+</div>
+<form class="calc helper" id="hp" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>1. Где нужно резервное питание?</legend>
+    <label class="opt"><input type="radio" name="where" value="flat" checked> Квартира</label>
+    <label class="opt"><input type="radio" name="where" value="house"> Частный дом или дача</label>
+  </fieldset>
+  <fieldset class="cbox"><legend>2. Сколько обычно длится отключение?</legend>
+    <label class="opt"><input type="radio" name="dur" value="4" checked> До 4 часов</label>
+    <label class="opt"><input type="radio" name="dur" value="8"> 4–8 часов</label>
+    <label class="opt"><input type="radio" name="dur" value="12"> Больше 8 часов, бывает полдня</label>
+  </fieldset>
+  <fieldset class="cbox"><legend>3. Что должно работать без света?</legend>
+    <label class="opt"><input type="checkbox" name="net" checked> Интернет (роутер и терминал провайдера)</label>
+    <label class="opt"><input type="checkbox" name="fridge" checked> Холодильник</label>
+    <label class="opt"><input type="checkbox" name="light" checked> Свет (несколько ламп)</label>
+    <label class="opt"><input type="checkbox" name="work"> Ноутбук для работы</label>
+    <label class="opt"><input type="checkbox" name="boiler"> Газовый котёл</label>
+    <label class="opt"><input type="checkbox" name="pump"> Насос скважины</label>
+  </fieldset>
+  <fieldset class="cbox"><legend>4. Сколько дают свет между отключениями?</legend>
+    <label class="opt"><input type="radio" name="win" value="long" checked> Несколько часов — аккумулятор успевает зарядиться</label>
+    <label class="opt"><input type="radio" name="win" value="short"> Час-два или меньше</label>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Что подходит вам</h2>
+  <p id="hsum" class="box note"></p>
+  <ol id="hsteps" class="steps-list"></ol>
+  <p class="muted small">Подсказка составлена по выпускам канала и правилам украинских ведомств (Держенергонагляд, Держпраці). Это ориентир — решение и расчёт за вами.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('hp'),P='../';
+function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function L(href,t){return '<a href="'+P+href+'">'+t+'</a>'}
+function run(){
+  var w=f.elements.where.value,T=+f.elements.dur.value,win=f.elements.win.value,c=function(n){return f.elements[n].checked};
+  var rows=[];
+  if(c('fridge'))rows.push({n:'Холодильник',p:100,h:T,y:238,m:true});
+  if(c('net'))rows.push({n:'Роутер и терминал',p:17,h:T,y:'',m:false});
+  if(c('light'))rows.push({n:'Лампы (3 шт.)',p:25.5,h:T,y:'',m:false});
+  if(c('work'))rows.push({n:'Ноутбук',p:65,h:Math.min(3,T),y:'',m:false});
+  if(c('boiler'))rows.push({n:'Газовый котёл',p:110,h:T,y:'',m:false});
+  if(c('pump'))rows.push({n:'Насос скважины',p:1550,h:.5,y:'',m:false});
+  var calc=P+'kalkulyatory/rezervnoe-pitanie/index.html#s='+b64e(JSON.stringify({T:String(T),chem:'lfp',volt:'1',eff:'90',idle:'8',rows:rows}));
+  var avg=0;rows.forEach(function(r){avg+=r.y? r.y*1000/8760 : r.p*r.h/T});
+  var onlyNet=c('net')&&!c('fridge')&&!c('light')&&!c('work')&&!c('boiler')&&!c('pump');
+  var big=w==='house'&&(T>=12||c('pump'));
+  var s=[],sum='';
+  if(!rows.length){document.getElementById('hsum').innerHTML='Отметьте хотя бы один прибор.';document.getElementById('hsteps').innerHTML='';return}
+  if(onlyNet){
+    sum='<strong>Нужен только интернет</strong> — хватит мини-ИБП на 12 В или power bank с выходом 12 В. Большой аккумулятор не нужен.';
+    s.push('Посмотрите '+L('algoritmy/router/index.html','выпуск 4 «Резервное питание роутера»')+' и посчитайте часы в '+L('kalkulyatory/router/index.html','калькуляторе роутера')+'.');
+    s.push('Спросите провайдера, работает ли его сеть без света: без питания на станции провайдера интернета не будет.');
+  } else {
+    if(w==='flat') sum='<strong>Квартира:</strong> зарядная станция или свой комплект «аккумулятор + инвертор». Генератор в квартире нельзя — даже на балконе.';
+    else if(big) sum='<strong>Дом, долгие отключения'+(c('pump')?' и насос':'')+':</strong> нужен генератор, а лучше генератор вместе со станцией — двигатель работает меньше часов, ночью тихо.';
+    else sum='<strong>Дом, отключения до '+T+' часов:</strong> скорее всего хватит станции или своего комплекта; генератор — если отключения станут длиннее.';
+    s.push('<a href="'+calc+'">Откройте калькулятор с вашими приборами</a> — он уже заполнен (средняя нагрузка ≈ '+Math.round(avg)+' Вт, '+T+' ч). Поправьте мощности по табличкам — в помощь '+L('skolko-vatt/index.html','таблица «Сколько ватт»')+'.');
+    s.push('Как работает расчёт — '+L('algoritmy/rezervnoe-pitanie/index.html','выпуск 1')+'. Станция или свой комплект — '+L('algoritmy/stanciya-ili-komplekt/index.html','выпуск 2')+'.');
+    if(c('boiler'))s.push('Котёл: отдельный расчёт и безопасное подключение — '+L('algoritmy/kotel/index.html','выпуск 3')+' и '+L('kalkulyatory/kotel/index.html','калькулятор котла')+'. Инвертор — только с чистой синусоидой.');
+    if(w==='house'&&(big||c('pump')))s.push('Генератор: где ставить (на улице, не ближе 6 м от окон, дверей и стен), как подключать (рубильник или АВР, электрик) и сколько уйдёт бензина — '+L('algoritmy/generator-ili-stanciya/index.html','выпуск 7')+' и '+L('kalkulyatory/generator-ili-stanciya/index.html#where=house&P='+Math.round(avg)+'&H='+T,'калькулятор «генератор или станция»')+'.');
+    if(win==='short')s.push('Свет дают ненадолго — важна скорость зарядки: сравните время зарядки станции и комплекта в '+L('algoritmy/stanciya-ili-komplekt/index.html','выпуске 2')+'. Свинцовый AGM при коротких окнах света быстро стареет — '+L('algoritmy/agm-ili-lifepo4/index.html','выпуск 6')+'.');
+    s.push('Перед покупкой проверьте паспорт инвертора — '+L('algoritmy/invertor/index.html','выпуск 5')+'; какой аккумулятор выгоднее — '+L('algoritmy/agm-ili-lifepo4/index.html','выпуск 6')+'. Литиевый не ставьте на морозный балкон.');
+    if(c('net'))s.push('Чтобы интернет работал, нужно питание и роутера, и терминала провайдера — '+L('algoritmy/router/index.html','выпуск 4')+'.');
+  }
+  document.getElementById('hsum').innerHTML=sum;
+  document.getElementById('hsteps').innerHTML=s.map(function(x){return '<li>'+x+'</li>'}).join('');
+}
+f.addEventListener('change',run);f.addEventListener('input',run);run();
+})();
+</script>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · расчёты ориентировочные, проверяйте паспорта своего оборудования</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/o-proekte/">Как мы проверяем факты</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адрес '+e+' скопирован — вставьте его в своей почте')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наш адрес: '+e)})}else{toast('Наш адрес: '+e)}})})})();</script></body></html>
