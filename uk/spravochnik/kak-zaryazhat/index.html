@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Як заряджати акумулятор LiFePO4, AGM, гелевий і зарядну станцію — Алгоритм дома</title><meta name="description" content="Напруга і струм заряду LiFePO4, AGM і гелевих акумуляторів, заряджання на морозі, який режим зарядного обрати, як заряджати станцію від розетки, авто й сонця і як зберігати між сезонами."><link rel="canonical" href="https://algoritmdoma.com/uk/spravochnik/kak-zaryazhat/"><meta property="og:url" content="https://algoritmdoma.com/uk/spravochnik/kak-zaryazhat/"><meta property="og:title" content="Як заряджати акумулятор LiFePO4, AGM, гелевий і зарядну станцію — Алгоритм дома"><meta property="og:description" content="Напруга і струм заряду LiFePO4, AGM і гелевих акумуляторів, заряджання на морозі, який режим зарядного обрати, як заряджати станцію від розетки, авто й сонця і як зберігати між сезонами."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=1ac523ab"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/spravochnik/kak-zaryazhat/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/spravochnik/kak-zaryazhat/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/spravochnik/kak-zaryazhat/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-s-kak-zaryazhat.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-s-kak-zaryazhat.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Довідник", "item": "https://algoritmdoma.com/uk/spravochnik/"}, {"@type": "ListItem", "position": 3, "name": "Як заряджати акумулятор і зарядну станцію", "item": "https://algoritmdoma.com/uk/spravochnik/kak-zaryazhat/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script><script src="../../../assets/ev.js?v=0b9718b6" defer></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/kalkulyatory/">Калькулятори</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/spravochnik/" aria-current="page">Довідник</a><a href="/uk/pomoshchnik/">З чого почати</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/spravochnik/kak-zaryazhat/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/spravochnik/kak-zaryazhat/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap"><nav class="crumbs" aria-label="Ви тут"><a href="/uk/">Головна</a><span aria-hidden="true">›</span><a href="/uk/spravochnik/">Довідник</a></nav>
+<div class="read">
+  <div class="eyebrow">Довідник</div>
+  <h1>Як заряджати акумулятор і зарядну станцію</h1>
+  <p class="lead">Коротко: LiFePO4 заряджають до 14,2 В, тільки вище +5 °C і через систему захисту (BMS); свинцеві AGM і гелеві — до 14,1–14,6 В, не більше 20 А на 100 А·год і одразу до повного; зарядний пристрій обирають з режимом під тип акумулятора; станцію заряджають при 0…45 °C і зберігають приблизно на 60 %.</p>
+  <p class="box note"><strong>Головне правило:</strong> налаштування заряду беріть з паспорта свого акумулятора. Нижче — цифри з паспортів Victron та інструкції EcoFlow, в інших виробників вони можуть відрізнятися.</p>
+
+  <h2>LiFePO4: напруга, струм і мороз</h2>
+  <div class="tscroll"><table class="spec"><tbody>
+    <tr><td>Напруга заряду</td><td>14,2 В (допустимо 14,0–14,4 В)</td></tr>
+    <tr><td>Напруга підтримки</td><td>13,5 В</td></tr>
+    <tr><td>Струм заряду для 100 А·год</td><td>краще до 50 А, максимум 200 А</td></tr>
+    <tr><td>Заряд</td><td>від +5 до +50 °C</td></tr>
+    <tr><td>Розряд</td><td>від −20 до +50 °C</td></tr>
+  </tbody></table></div>
+  <p class="muted small">Приклад: акумулятор Victron <a class="term-link" href="/uk/spravochnik/slovar/#lifepo4">LiFePO4</a> 12,8 В Smart.</p>
+  <p>Літієвому акумулятору потрібна система захисту — BMS. Вона зупинить заряд, якщо напруга однієї з комірок підніметься вище 3,75 В або якщо надто холодно чи спекотно. В акумуляторі на 12,8 В чотири комірки, тож 4 × 3,75 В = 15,0 В — вище цього заряд припиниться.</p>
+  <p>На морозі літієвий акумулятор віддає енергію, але не заряджається: у Victron — тільки від +5 °C. Тому його тримають у теплому приміщенні, а не на балконі. Заряджати до 100 % щоразу не обов'язково — на відміну від свинцевого, неповний заряд йому не шкодить.</p>
+
+  <h2>AGM і гелевий: напруга, струм і повний заряд</h2>
+  <div class="tscroll"><table class="spec"><tbody>
+    <tr><td>Основний заряд AGM</td><td>14,2–14,6 В (швидкий — 14,6–14,9 В)</td></tr>
+    <tr><td>Основний заряд гелевого</td><td>14,1–14,4 В</td></tr>
+    <tr><td>Напруга підтримки</td><td>13,5–13,8 В</td></tr>
+    <tr><td>Напруга зберігання</td><td>13,2–13,5 В</td></tr>
+    <tr><td>Струм заряду для 100 А·год</td><td>бажано до 20 А</td></tr>
+  </tbody></table></div>
+  <p class="muted small">Приклад: акумулятори Victron AGM і GEL 12 В. При струмі понад 20 А на 100 <a class="term-link" href="/uk/spravochnik/slovar/#ach">А·год</a> акумулятор нагрівається більш ніж на 10 °C.</p>
+  <p>Свинцевий акумулятор після відключення треба заряджати до кінця: якщо його довго тримати недозарядженим, він передчасно виходить з ладу через сульфатацію — детальніше у <a href="/uk/algoritmy/agm-ili-lifepo4/">випуску 6</a>.</p>
+  <p>Напруга заряду свинцевого залежить від температури: Victron радить знижувати її на 24 мВ на кожен градус вище 25 °C і підвищувати на стільки ж нижче — якщо акумулятор довго стоїть у холоді нижче 10 °C або в спеці вище 30 °C. Багато зарядних пристроїв роблять це самі — наприклад, у Victron Blue Smart IP65 є температурна компенсація для свинцевих акумуляторів.</p>
+
+  <h2>Який зарядний пристрій і який режим</h2>
+  <p>Зарядні пристрої для акумуляторів зазвичай мають кілька режимів. Наприклад, у Victron Blue Smart IP65 на 12 В:</p>
+  <div class="tscroll"><table class="spec modes"><thead><tr><th>Режим</th><th>Основний заряд</th><th>Підтримка</th><th>Відновлення</th></tr></thead><tbody>
+    <tr><td>Normal</td><td>14,4 В</td><td>13,8 В</td><td>16,2 В (за бажанням)</td></tr>
+    <tr><td>High</td><td>14,7 В</td><td>13,8 В</td><td>16,5 В (за бажанням)</td></tr>
+    <tr><td>Li-ion</td><td>14,2 В</td><td>13,5 В</td><td>ні</td></tr>
+  </tbody></table></div>
+  <p>«Відновлення» (його ще називають десульфатацією) — окремий етап заряду тільки для свинцевих акумуляторів, у режимі Li-ion він вимкнений. Струм заряду для LiFePO4 Victron радить тримати не більше приблизно половини ємності: для 100 А·год — до 50 А.</p>
+  <p><strong>Для літієвого акумулятора обирайте режим Li-ion або LiFePO4.</strong> Звичайний «автомобільний» зарядний пристрій без такого режиму, а тим паче з десульфатацією на 16 В, для літію не підходить: його напруга вища за 15,0 В, на яких BMS зупинить заряд. Для свинцевого режим обирайте за паспортом: AGM, гелевий або звичайний.</p>
+
+  <h2>Зарядна станція: від розетки, авто й сонця</h2>
+  <p>На прикладі EcoFlow DELTA 2 (1024 <a class="term-link" href="/uk/spravochnik/slovar/#vtch">Вт·год</a>):</p>
+  <ul>
+    <li><b>Від розетки</b> — 220–240 В, до 1200 Вт, повністю приблизно за 1,2 години. Швидкість можна зменшити в застосунку.</li>
+    <li><b>Від авто</b> — гніздо 12 або 24 В, струм 8 А. Це близько 100 Вт, тож повний заряд займе понад 10 годин (наш розрахунок). Виробник радить підключати станцію, коли двигун уже заведено.</li>
+    <li><b>Від сонячних панелей</b> — напруга 11–60 В, струм до 15 А, потужність до 500 Вт.</li>
+    <li><b>Температура</b> — станція заряджається при 0…45 °C. Якщо на холоді заряд зупинився, він продовжиться сам, коли батарея прогріється вище 5 °C.</li>
+  </ul>
+  <p>Чи вистачить вікна зі світлом, щоб зарядити станцію, і скільки вона протримає — у <a href="/uk/kalkulyatory/na-skolko-hvatit/">калькуляторі «На скільки вистачить»</a> і <a href="/uk/kalkulyatory/stanciya-ili-komplekt/">калькуляторі «Станція чи комплект»</a>.</p>
+
+  <h2>Зберігання між сезонами</h2>
+  <ul>
+    <li><b>LiFePO4 Victron</b> — до року при 25 °C, повністю зарядженим.</li>
+    <li><b>AGM і гелевий Victron</b> — втрачають менше 2 % заряду на місяць при 20 °C, але кожні +10 °C — удвічі більше. У прохолоді їх можна зберігати до року без підзаряджання; на зарядному — у режимі зберігання 13,2–13,5 В.</li>
+    <li><b>Станція EcoFlow DELTA 2</b> — приблизно на 60 %. Раз на три місяці розрядіть її до 30 % і знову зарядіть до 60 %. Найкраще при 20–30 °C, не вище 45 °C: якщо довго зберігати розрядженою, батарея служить менше.</li>
+  </ul>
+  <p>Поради у виробників різні — для свого акумулятора чи станції дотримуйтеся їхньої інструкції.</p>
+
+  <h2>Чек-лист перед зимою</h2>
+  <ol class="steps-list">
+    <li>Літієвий акумулятор і станція — у теплому приміщенні: на морозі вони не зарядяться.</li>
+    <li>Перевірте режим зарядного: для літію — Li-ion або LiFePO4, без «відновлення».</li>
+    <li>Свинцевий — заряджайте до кінця після кожного відключення.</li>
+    <li>Станцію, яка стоїть без діла, перевіряйте раз на три місяці.</li>
+    <li>Перевірте, від чого заряджатимете без світла: від авто станція заряджається повільно.</li>
+  </ol>
+
+  <h2>Джерела</h2>
+  <ul class="src">
+  <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-12,8-&amp;-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf" rel="noopener" target="_blank">Victron Energy (Нідерланди) — паспорт LiFePO4 Smart 12,8 В</a>: 14,0–14,4 В (14,2 рекомендовано), 13,5 В, струм до 50 А і максимум 200 А для 100 А·год, заряд +5…+50 °C, BMS 3,75 В на комірку, зберігання до року.</li>
+  <li><a href="https://www.victronenergy.com/upload/documents/Datasheet-GEL-and-AGM-Batteries-EN.pdf" rel="noopener" target="_blank">Victron Energy — паспорт GEL and AGM batteries</a>: напруги заряду, підтримки й зберігання, струм 0,2C, −24 мВ/°C, саморозряд.</li>
+  <li><a href="https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_230V_manual/en/operation---bsc---psc.html" rel="noopener" target="_blank">Victron Energy — інструкція Blue Smart IP65 Charger, розділ «Operation»</a>: режими Normal / High / Li-ion, відновлення тільки для свинцевих, струм для LiFePO4 до ~0,5C.</li>
+  <li><a href="https://eu.ecoflow.com/products/delta-2-portable-power-station" rel="noopener" target="_blank">EcoFlow Europe — DELTA 2</a>: 1200 Вт від мережі, 12/24 В 8 А від авто, 11–60 В 15 А 500 Вт від сонця.</li>
+  <li><a href="https://skanbatt.no/files/public/bdbd79ee-34f9-4395-90cf-86a67b2dc596/105830953a2e4bb904371e15573657f473d45e1d/EcoFlow%20DELTA%202%20-User%20Manual%20V1.1%20(EN+DE+FR+ES+IT+NL+RU+HK).pdf" rel="noopener" target="_blank">EcoFlow DELTA 2 User Manual V1.1</a>: ≈ 1,2 год від мережі, заряд від авто при заведеному двигуні, 0…45 °C і продовження вище 5 °C, зберігання на 60 %.</li>
+  </ul>
+  <p class="muted small">Перевірено 19 листопада 2026 р. Знайшли помилку — напишіть на пошту внизу сторінки.</p>
+</div>
+</div></main><footer class="site-foot gutter"><div class="in foot-map"><div><a class="fh" href="/uk/kalkulyatory/">Калькулятори</a><a href="/uk/kalkulyatory/na-skolko-hvatit/">На скільки вистачить</a><a href="/uk/kalkulyatory/rezervnoe-pitanie/">Акумулятор та інвертор</a><a href="/uk/kalkulyatory/stanciya-ili-komplekt/">Станція чи комплект</a><a href="/uk/kalkulyatory/kotel/">Газовий котел</a><a href="/uk/kalkulyatory/router/">Роутер</a><a href="/uk/kalkulyatory/invertor/">Підбір інвертора</a><a href="/uk/kalkulyatory/agm-ili-lifepo4/">AGM чи LiFePO4</a><a href="/uk/kalkulyatory/generator-ili-stanciya/">Генератор чи станція</a></div><div><a class="fh" href="/uk/algoritmy/">Алгоритми</a><a href="/uk/algoritmy/rezervnoe-pitanie/">1. Резервне живлення квартири</a><a href="/uk/algoritmy/stanciya-ili-komplekt/">2. Станція чи власний комплект</a><a href="/uk/algoritmy/kotel/">3. Газовий котел</a><a href="/uk/algoritmy/router/">4. Роутер</a><a href="/uk/algoritmy/invertor/">5. Як влаштований інвертор</a><a href="/uk/algoritmy/agm-ili-lifepo4/">6. AGM чи LiFePO4</a><a href="/uk/algoritmy/generator-ili-stanciya/">7. Генератор чи станція</a></div><div><a class="fh" href="/uk/spravochnik/">Довідник</a><a href="/uk/skolko-vatt/">Скільки ват споживають прилади</a><a href="/uk/spravochnik/slovar/">Словник термінів</a><a href="/uk/spravochnik/kak-zaryazhat/">Як заряджати акумулятор</a><a href="/uk/pomoshchnik/">З чого почати: помічник</a></div></div><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script></body></html>
