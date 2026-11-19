@@ -17,11 +17,16 @@
     if (inCalc) ev('calc-use' + P, 'Калькулятор: вписали свои цифры');
     else if (inHelper) ev('helper-use' + P, 'Помощник: начали отвечать');
   }
+  try { if (localStorage.getItem('fb:' + P)) document.querySelectorAll('.fb').forEach(function(b){ b.querySelectorAll('.fb-btn,.fb-q').forEach(function(x){ x.hidden = true; }); b.querySelector('.fb-thanks').hidden = false; }); } catch (x) {}
   document.addEventListener('input', onInput, true);
   document.addEventListener('change', onInput, true);
   document.addEventListener('click', function(e){
     var el = e.target; if (!el || !el.closest) return;
     if (inCalc && el.closest('.chip')) { ev('calc-use' + P, 'Калькулятор: вписали свои цифры'); return; }
+    var fb = el.closest('.fb-btn');
+    if (fb) { var yes = fb.dataset.fb === 'yes'; ev('helpful-' + (yes ? 'yes' : 'no') + P, yes ? 'Было полезно: да' : 'Было полезно: нет');
+      var box = fb.closest('.fb'); box.querySelectorAll('.fb-btn,.fb-q').forEach(function(x){ x.hidden = true; }); box.querySelector('.fb-thanks').hidden = false;
+      try { localStorage.setItem('fb:' + P, yes ? 'yes' : 'no'); } catch (x) {} return; }
     if (el.closest('.print-btn')) { ev('print' + P, 'Распечатали / сохранили в PDF'); return; }
     if (el.closest('#share, .share button')) { ev('share-copy' + P, 'Скопировали ссылку на расчёт'); return; }
     var v = el.closest('.video[data-yt]');

@@ -1,0 +1,71 @@
+{
+ "id": "/",
+ "name": "Алгоритм дома — резервное питание",
+ "short_name": "Алгоритм дома",
+ "description": "Калькуляторы и памятки резервного питания дома. Работают без интернета.",
+ "lang": "ru",
+ "dir": "ltr",
+ "start_url": "/?source=app",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#0d1520",
+ "theme_color": "#0d1520",
+ "icons": [
+  {
+   "src": "/assets/icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/icons/icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "На сколько хватит",
+   "url": "/kalkulyatory/na-skolko-hvatit/",
+   "icons": [
+    {
+     "src": "/assets/icons/icon-192.png",
+     "sizes": "192x192",
+     "type": "image/png",
+     "purpose": "any"
+    }
+   ]
+  },
+  {
+   "name": "Калькуляторы",
+   "url": "/kalkulyatory/",
+   "icons": [
+    {
+     "src": "/assets/icons/icon-192.png",
+     "sizes": "192x192",
+     "type": "image/png",
+     "purpose": "any"
+    }
+   ]
+  },
+  {
+   "name": "Памятка до отключения",
+   "url": "/spravochnik/pered-otklyucheniem/",
+   "icons": [
+    {
+     "src": "/assets/icons/icon-192.png",
+     "sizes": "192x192",
+     "type": "image/png",
+     "purpose": "any"
+    }
+   ]
+  }
+ ]
+}
