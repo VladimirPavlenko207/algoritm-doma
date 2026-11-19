@@ -22,6 +22,7 @@
   document.addEventListener('click', function(e){
     var el = e.target; if (!el || !el.closest) return;
     if (inCalc && el.closest('.chip')) { ev('calc-use' + P, 'Калькулятор: вписали свои цифры'); return; }
+    if (el.closest('.print-btn')) { ev('print' + P, 'Распечатали / сохранили в PDF'); return; }
     if (el.closest('#share, .share button')) { ev('share-copy' + P, 'Скопировали ссылку на расчёт'); return; }
     var v = el.closest('.video[data-yt]');
     if (v) { ev('video-play' + P, 'Запустили ролик на сайте'); return; }
