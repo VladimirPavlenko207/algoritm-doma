@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>На скільки вистачить акумулятора або зарядної станції — калькулятор і таблиця — Алгоритм дома</title><meta name="description" content="Скільки годин пропрацює холодильник, роутер, котел або телевізор від акумулятора 100 А·год з інвертором або від зарядної станції на 300, 500, 1000 і 2000 Вт·год. Калькулятор і готова таблиця."><link rel="canonical" href="https://algoritmdoma.com/uk/kalkulyatory/na-skolko-hvatit/"><meta property="og:url" content="https://algoritmdoma.com/uk/kalkulyatory/na-skolko-hvatit/"><meta property="og:title" content="На скільки вистачить акумулятора або зарядної станції — калькулятор і таблиця — Алгоритм дома"><meta property="og:description" content="Скільки годин пропрацює холодильник, роутер, котел або телевізор від акумулятора 100 А·год з інвертором або від зарядної станції на 300, 500, 1000 і 2000 Вт·год. Калькулятор і готова таблиця."><link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 44 28' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='41' height='25' rx='6' fill='none' stroke='%23ffb020' stroke-width='3'/><path d='M6 15h8l3-5 4 10 3-5h14' fill='none' stroke='%23ffb020' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap"><link rel="stylesheet" href="../../../assets/style.css?v=a497b4c0"><link rel="alternate" hreflang="ru" href="https://algoritmdoma.com/kalkulyatory/na-skolko-hvatit/"><link rel="alternate" hreflang="uk" href="https://algoritmdoma.com/uk/kalkulyatory/na-skolko-hvatit/"><link rel="alternate" hreflang="x-default" href="https://algoritmdoma.com/kalkulyatory/na-skolko-hvatit/"><meta property="og:type" content="website"><meta property="og:site_name" content="Алгоритм дома"><meta property="og:locale" content="uk_UA"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://algoritmdoma.com/assets/og/og-uk-k-na-skolko-hvatit.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://algoritmdoma.com/assets/og/og-uk-k-na-skolko-hvatit.jpg"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://algoritmdoma.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятори", "item": "https://algoritmdoma.com/uk/kalkulyatory/"}, {"@type": "ListItem", "position": 3, "name": "На скільки вистачить акумулятора або зарядної станції", "item": "https://algoritmdoma.com/uk/kalkulyatory/na-skolko-hvatit/"}]}</script><script data-goatcounter="https://algoritmdoma.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script><script src="../../../assets/ev.js?v=0b9718b6" defer></script></head><body><header class="site-head gutter"><div class="in"><a class="logo" href="/uk/"><svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Алгоритм дома</span></a><nav class="nav" aria-label="Розділи"><a href="/uk/">Головна</a><a href="/uk/algoritmy/">Алгоритми</a><a href="/uk/kalkulyatory/" aria-current="page">Калькулятори</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></nav><details class="lang"><summary aria-label="Язык / Мова">УКР</summary><div class="lang-menu"><a href="/kalkulyatory/na-skolko-hvatit/" hreflang="ru" lang="ru" data-lang="ru">Русский</a><a href="/uk/kalkulyatory/na-skolko-hvatit/" hreflang="uk" lang="uk" data-lang="uk" aria-current="true">Українська</a></div></details></div></header><main class="gutter"><div class="wrap">
+<div class="read">
+  <div class="eyebrow">Калькулятор</div>
+  <h1>На скільки вистачить акумулятора або зарядної станції</h1>
+  <p class="lead">Коротко: години = енергія, яку можна взяти з акумулятора, ÷ скільки за годину беруть прилади разом з інвертором. Впишіть свій акумулятор або станцію і потужність приладів — або подивіться <a href="#tablica">готову таблицю</a> нижче.</p>
+</div>
+<form class="calc" id="hv" autocomplete="off" onsubmit="return false">
+  <fieldset class="cbox"><legend>Що у вас</legend>
+    <label>Джерело<select name="src"><option value="bat">Акумулятор + інвертор</option><option value="st">Зарядна станція</option></select></label>
+    <div id="hv-bat">
+      <label>Тип акумулятора<select name="chem"><option value="lfp">LiFePO4 — розряд до 80 %</option><option value="agm">Свинцевий (AGM, гелевий) — до 50 %</option></select></label>
+      <label>Напруга, В<input type="number" name="U" value="12.8" min="1" step="any"></label>
+      <label>Ємність, А·год (два по 100 — впишіть 200)<input type="number" name="Q" value="100" min="1" step="any"></label>
+    </div>
+    <div id="hv-st" hidden>
+      <label>Ємність станції, Вт·год (з паспорта)<input type="number" name="Wh" value="1024" min="1" step="any"></label>
+      <label>Холостий хід станції з увімкненим виходом 230 В, Вт<input type="number" name="sidle" placeholder="якщо є в інструкції" min="0" step="any"></label>
+    </div>
+  </fieldset>
+  <fieldset class="cbox"><legend>Навантаження</legend>
+    <label>Середня потужність усіх приладів разом, Вт<input type="number" name="P" value="69.5" min="0.1" step="any"></label>
+    <div class="chips" role="group" aria-label="Додати прилад">
+      <button type="button" class="chip" data-w="17">+ Роутер і термінал · 17 Вт</button>
+      <button type="button" class="chip" data-w="27">+ Холодильник · ≈ 27 Вт у середньому</button>
+      <button type="button" class="chip" data-w="25.5">+ 3 світлодіодні лампи · 25,5 Вт</button>
+      <button type="button" class="chip" data-w="65">+ Ноутбук · 65 Вт</button>
+      <button type="button" class="chip" data-w="77">+ Телевізор 55″ · 77 Вт</button>
+      <button type="button" class="chip" data-w="110">+ Газовий котел · 110 Вт</button>
+      <button type="button" class="chip" data-w="0">Скинути</button>
+    </div>
+    <p class="muted small">Потужність своїх приладів — у довіднику <a href="/uk/skolko-vatt/">«Скільки ват споживають прилади»</a>. Холодильник рахуємо за середньою потужністю: компресор працює не весь час.</p>
+    <div id="hv-inv">
+      <label>ККД інвертора, %<input type="number" name="eff" value="90" min="50" max="100" step="any"></label>
+      <label>Холостий хід інвертора, Вт (з паспорта)<input type="number" name="idle" value="6" min="0" step="any"></label>
+    </div>
+  </fieldset>
+</form>
+<section class="cres" aria-live="polite">
+  <h2>Результат</h2>
+  <div class="kres" id="hvres"></div>
+  <p id="hvverd" class="box note"></p>
+  <p class="muted small">Формули: акумулятор — години = U × А·год × розряд ÷ (P ÷ ККД + холостий хід); станція — години = Вт·год × 0,9 ÷ (P + холостий хід станції). Розрахунок орієнтовний: перевіряйте паспорти свого обладнання.</p>
+</section>
+<script>
+(function(){
+var f=document.getElementById('hv');
+function v(n){var x=parseFloat((f.elements[n].value||'').replace(',','.'));return isFinite(x)?x:null}
+function n0(x){return Math.round(x).toLocaleString('ru-RU')}
+function n1(x){return (Math.round(x*10)/10).toLocaleString('ru-RU')}
+function fh(h){if(!isFinite(h)||h<=0)return '—';if(h>=10)return n0(h)+' год';var m=Math.round(h*6)*10,hh=Math.floor(m/60),mm=m%60;return hh?hh+' год'+(mm?' '+mm+' хв':''):mm+' хв'}
+function run(){
+  var st=f.elements.src.value==='st',P=v('P')||0;
+  document.getElementById('hv-bat').hidden=st;document.getElementById('hv-st').hidden=!st;document.getElementById('hv-inv').hidden=st;
+  var rows=[],h,notes=[];
+  if(!st){
+    var lfp=f.elements.chem.value==='lfp',dod=lfp?.8:.5,U=v('U')||12.8,Q=v('Q')||0,eff=(v('eff')||90)/100,idle=v('idle')||0;
+    var E=U*Q,Eu=E*dod,D=P/eff+idle;h=D>0?Eu/D:0;
+    rows=[['Запас енергії: '+n1(U)+' В × '+n0(Q)+' А·год',n0(E)+' Вт·год'],
+      ['Можна взяти (розряд до '+(lfp?'80':'50')+' %)',n0(Eu)+' Вт·год'],
+      ['Беруть з акумулятора: '+n1(P)+' Вт ÷ '+n0(eff*100)+' % + холостий хід '+n1(idle)+' Вт',n1(D)+' Вт'],
+      ['Вистачить приблизно на','<b>'+fh(h)+'</b>']];
+    if(D>0&&idle/D>=.2)notes.push('Холостий хід інвертора — '+n0(idle/D*100)+' % витрати. Невелике навантаження на кшталт роутера вигідніше живити без інвертора — від міні-ДБЖ на 12 В або павербанка з виходом 12 В: <a href="/uk/algoritmy/router/">випуск 4</a>.');
+    notes.push('Інвертор має витримати й пусковий ривок мотора (холодильник, насос) — перевірте в <a href="/uk/kalkulyatory/invertor/">калькуляторі інвертора</a>.');
+  }else{
+    var Wh=v('Wh')||0,si=v('sidle'),Eo=Wh*.9,D2=P+(si||0);h=D2>0?Eo/D2:0;
+    rows=[['Ємність станції',n0(Wh)+' Вт·год'],
+      ['Віддасть на виході 230 В (× 0,9 — втрати в інверторі)',n0(Eo)+' Вт·год'],
+      ['Витрата'+(si?': '+n1(P)+' Вт + холостий хід '+n1(si)+' Вт':''),n1(D2)+' Вт'],
+      ['Вистачить приблизно на','<b>'+fh(h)+'</b>']];
+    if(si==null&&P<60)notes.push('При малому навантаженні важливий холостий хід: поки ввімкнено вихід 230 В, інвертор станції витрачає енергію й сам по собі, тому реальний час може бути помітно меншим. Якщо холостий хід є в інструкції — впишіть його. Роутер вигідніше живити від виходу 12 В або USB станції, якщо він підходить за напругою (<a href="/uk/algoritmy/router/">випуск 4</a>).');
+    notes.push('Вихідна потужність станції має бути більшою за суму приладів і пусковий ривок — детальніше у <a href="/uk/algoritmy/stanciya-ili-komplekt/">випуску 2</a>.');
+  }
+  document.getElementById('hvres').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('');
+  document.getElementById('hvverd').innerHTML=notes.join(' ');
+}
+f.elements.chem.addEventListener('change',function(){var u=f.elements.U;if(this.value==='agm'&&u.value==='12.8')u.value='12';if(this.value==='lfp'&&u.value==='12')u.value='12.8'});
+f.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){var w=parseFloat(b.dataset.w),p=f.elements.P;p.value=w?String(Math.round(((parseFloat((p.value||'0').replace(',','.'))||0)+w)*10)/10):'';run()})});
+f.addEventListener('input',run);f.addEventListener('change',run);run();
+})();
+</script>
+<div class="read">
+<h2 id="tablica">Готова таблиця: скільки годин</h2>
+<p>Приблизний час роботи, якщо відключення застало акумулятор або станцію повністю зарядженими. Потужність приладів — середня, з нашого <a href="/uk/skolko-vatt/">довідника</a>.</p>
+<h3>Акумулятор з інвертором</h3>
+<p class="muted small">ККД інвертора 90 %, холостий хід 6 Вт; LiFePO4 розряджаємо до 80 %, свинцевий — до 50 %.</p>
+<div class="tscroll"><table class="hv"><thead><tr><th>Навантаження</th><th>LiFePO4 12,8 В 100 А·год</th><th>LiFePO4 12,8 В 200 А·год</th><th>AGM 12 В 100 А·год</th></tr></thead><tbody><tr><td>Роутер і термінал провайдера<span class="muted small"> · 17 Вт</span></td><td>41 год</td><td>82 год</td><td>24 год</td></tr><tr><td>Холодильник з морозилкою (у середньому)<span class="muted small"> · 27 Вт</span></td><td>28 год</td><td>57 год</td><td>17 год</td></tr><tr><td>Ноутбук<span class="muted small"> · 65 Вт</span></td><td>13 год</td><td>26 год</td><td>7,7 год</td></tr><tr><td>Холодильник + роутер + 3 лампи<span class="muted small"> · 69,5 Вт</span></td><td>12 год</td><td>25 год</td><td>7,2 год</td></tr><tr><td>Телевізор 55″<span class="muted small"> · 77 Вт</span></td><td>11 год</td><td>22 год</td><td>6,6 год</td></tr><tr><td>Газовий котел (за паспортом)<span class="muted small"> · 110 Вт</span></td><td>8,0 год</td><td>16 год</td><td>4,7 год</td></tr><tr><td>Котел + холодильник + роутер<span class="muted small"> · 154 Вт</span></td><td>5,8 год</td><td>12 год</td><td>3,4 год</td></tr></tbody></table></div>
+<h3>Зарядна станція</h3>
+<p class="muted small">Станція віддає близько 90 % ємності на виході 230 В. Власне споживання станції не враховано, тому навантаження менше 60 Вт у таблицю не включаємо — за них воно помітно скорочує час.</p>
+<div class="tscroll"><table class="hv"><thead><tr><th>Навантаження</th><th>300 Вт·год</th><th>500 Вт·год</th><th>1000 Вт·год</th><th>2000 Вт·год</th></tr></thead><tbody><tr><td>Ноутбук<span class="muted small"> · 65 Вт</span></td><td>4,2 год</td><td>6,9 год</td><td>14 год</td><td>28 год</td></tr><tr><td>Холодильник + роутер + 3 лампи<span class="muted small"> · 69,5 Вт</span></td><td>3,9 год</td><td>6,5 год</td><td>13 год</td><td>26 год</td></tr><tr><td>Телевізор 55″<span class="muted small"> · 77 Вт</span></td><td>3,5 год</td><td>5,8 год</td><td>12 год</td><td>23 год</td></tr><tr><td>Газовий котел (за паспортом)<span class="muted small"> · 110 Вт</span></td><td>2,5 год</td><td>4,1 год</td><td>8,2 год</td><td>16 год</td></tr><tr><td>Котел + холодильник + роутер<span class="muted small"> · 154 Вт</span></td><td>1,8 год</td><td>2,9 год</td><td>5,8 год</td><td>12 год</td></tr></tbody></table></div>
+<h2>Як порахувати самому</h2>
+<p><b>Акумулятор з інвертором.</b> Перемножте напругу та ємність — це енергія у ват-годинах: 12,8 В × 100 А·год = 1280 Вт·год. LiFePO4 розряджаємо до 80 %, лишається 1024 Вт·год; свинцевий — до 50 %. Тепер витрата: потужність приладів ділимо на ККД інвертора й додаємо його холостий хід. Холодильник, роутер і світло — близько 70 Вт: 70 ÷ 0,9 + 6 ≈ 83 Вт. Ділимо: 1024 ÷ 83 ≈ 12 годин.</p>
+<div class="formula">години = U × А·год × розряд ÷ (P ÷ ККД + холостий хід)</div>
+<p><b>Зарядна станція.</b> Ємність пишуть одразу у ват-годинах. Близько 10 % втрачається в інверторі, як ми рахували у <a href="/uk/algoritmy/generator-ili-stanciya/">випуску 7</a>: станція на 1000 Вт·год віддасть близько 900 Вт·год. З тими самими 70 Вт — близько 13 годин.</p>
+<div class="formula">години = Вт·год × 0,9 ÷ P</div>
+<h2>Чому мале навантаження розряджає акумулятор швидше, ніж здається</h2>
+<p>Інвертор витрачає енергію сам, навіть коли до нього нічого не підключено, — це холостий хід. В інвертора Victron Phoenix 12/1200 він 6 Вт. Коли на інверторі холодильник із котлом, це дрібниця. Коли лише роутер на 17 Вт, холостий хід з'їдає чверть витрати. Тому роутер і термінал краще живити напряму від 12 В — через міні-ДБЖ або павербанк, як у <a href="/uk/algoritmy/router/">випуску 4</a>. У зарядній станції всередині теж стоїть інвертор, і коли ввімкнено вихід 230 В, він теж споживає енергію.</p>
+<h2>Рахуйте за середньою потужністю, а не за наліпкою</h2>
+<p>На холодильнику Bosch KGN39VLEAG написано 100 Вт, але за рік він споживає 238 кВт·год — це в середньому близько 27 Вт: компресор працює не весь час. Котел за паспортом бере до 110 Вт, а насправді зазвичай менше. Якщо сумніваєтеся, виміряйте ватметром за добу й поділіть кіловат-години на 24. Для підбору інвертора, навпаки, важлива максимальна потужність і пуск — це окремий розрахунок у <a href="/uk/kalkulyatory/invertor/">калькуляторі інвертора</a>.</p>
+<h2>Джерела</h2>
+<ul class="src">
+<li><a href="https://www.victronenergy.com/upload/documents/Datasheet-Phoenix-Inverter-180VA-1200VA-EN.pdf" rel="noopener" target="_blank">Victron Energy (Нідерланди) — паспорт Phoenix Inverter 180–1200 VA</a>: холостий хід 12/1200 — 6 Вт, максимальний ККД 92 %.</li>
+<li><a href="https://media3.bosch-home.com/Documents/specsheet/en-IE/KGN39VLEAG.pdf" rel="noopener" target="_blank">Bosch — паспорт холодильника KGN39VLEAG</a>: 238 кВт·год на рік.</li>
+<li>Глибина розряду 80 % для LiFePO4 і 50 % для свинцевого, ККД інвертора 90 % — як у <a href="/uk/algoritmy/rezervnoe-pitanie/">випуску 1</a>; 90 % ємності станції на виході — як у <a href="/uk/algoritmy/generator-ili-stanciya/">випуску 7</a>; потужність приладів — <a href="/uk/skolko-vatt/">довідник</a>.</li>
+</ul>
+<p class="muted small">Перевірено 19 листопада 2026 р. Знайшли помилку — напишіть на пошту внизу сторінки.</p>
+</div>
+</div></main><footer class="site-foot gutter"><div class="in"><span>© 2026 Алгоритм дома · розрахунки орієнтовні, перевіряйте паспорти свого обладнання</span><span style="display:flex;flex-wrap:wrap;gap:6px 20px"><a class="mail" data-u="info" data-d="algoritmdoma.com" href="#">info<span aria-hidden="true"> [собака] </span>algoritmdoma.com</a><a href="/uk/o-proekte/">Як ми перевіряємо факти</a></span></div></footer><script>(function(){var t;function toast(m){if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on')},4500)}document.querySelectorAll('a.mail').forEach(function(a){var e=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+e;a.textContent=e;a.addEventListener('click',function(){var ok=function(){toast('Адресу '+e+' скопійовано — вставте її у своїй пошті')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(e).then(ok,function(){toast('Наша адреса: '+e)})}else{toast('Наша адреса: '+e)}})})})();</script><script>(function(){document.querySelectorAll('.lang a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})});try{if(document.documentElement.lang==='ru'&&localStorage.getItem('lang')==='uk'){var u=document.querySelector('.lang a[data-lang=uk]');if(u)location.replace(u.href+location.hash)}}catch(e){}document.addEventListener('click',function(e){document.querySelectorAll('details.lang[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})})})();</script><script src="../../../assets/share.js?v=153607b1"></script></body></html>
