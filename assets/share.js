@@ -13,8 +13,14 @@
   var sh=document.getElementById('share');
   if(sh&&!document.querySelector('.print-btn')){var pb=document.createElement('button');pb.type='button';pb.className='print-btn';pb.textContent=UK?'Роздрукувати / зберегти в PDF':'Распечатать / сохранить в PDF';sh.parentNode.insertBefore(pb,sh.nextSibling)}
   document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.print-btn'))window.print()});
+  var LOGO='<svg viewBox="0 0 44 28" aria-hidden="true"><rect x="1.5" y="1.5" width="41" height="25" rx="6" fill="none" stroke="#ffb020" stroke-width="3"/><path d="M6 15h8l3-5 4 10 3-5h14" fill="none" stroke="#ffb020" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  function shareUrl(){if(window.__shareUrl)return window.__shareUrl();var f=document.querySelector('form.calc:not(.helper)');if(!f)return location.href.split('#')[0];var q=[];Array.prototype.forEach.call(f.elements,function(el){if(el.name&&(el.tagName==='INPUT'||el.tagName==='SELECT')&&el.value!=='')q.push(encodeURIComponent(el.name)+'='+encodeURIComponent(el.value))});return location.href.split('#')[0]+'#'+q.join('&')}
   addEventListener('beforeprint',function(){var h=document.querySelector('.print-head');if(!h){h=document.createElement('div');h.className='print-head';var m=document.querySelector('main')||document.body;m.insertBefore(h,m.firstChild)}
-    var f=document.querySelector('form.calc:not(.helper)'),u=location.href;if(f){var q=[];Array.prototype.forEach.call(f.elements,function(el){if(el.name&&(el.tagName==='INPUT'||el.tagName==='SELECT')&&el.value!=='')q.push(encodeURIComponent(el.name)+'='+encodeURIComponent(el.value))});u=location.href.split('#')[0]+'#'+q.join('&')}var d=new Date().toLocaleDateString(UK?'uk-UA':'ru-RU');h.textContent=(UK?'Алгоритм дома · розрахунок від ':'Алгоритм дома · расчёт от ')+d+' · '+u});
+    var memo=!!document.querySelector('.memo'),u=shareUrl(),d=new Date().toLocaleDateString(UK?'uk-UA':'ru-RU'),qr='';
+    try{if(window.qrcode){var c=qrcode(0,'L');c.addData(u);c.make();qr=c.createSvgTag({cellSize:2,margin:4,scalable:true});if(u.length>250)qr=qr.replace('<svg ','<svg class="big" ')}}catch(e){}
+    var sub=memo?(UK?'Пам\'ятка для друку':'Памятка для печати'):(UK?'Розрахунок від ':'Расчёт от ')+d;
+    var cap=memo?(UK?'Калькулятори й пам\'ятки':'Калькуляторы и памятки'):(UK?'Відкрити цей розрахунок':'Открыть этот расчёт');
+    h.innerHTML='<div class="ph-brand">'+LOGO+'<div><b>Алгоритм дома</b> · algoritmdoma.com<br><span>'+sub+'</span></div></div>'+(qr?'<div class="ph-qr">'+qr+'<span>'+cap+'</span></div>':'')});
   document.querySelectorAll('form.calc:not(.helper)').forEach(function(f){
     var h=location.hash.slice(1),got=false;
     if(h){h.split('&').forEach(function(p){var i=p.indexOf('=');if(i<1)return;var k=decodeURIComponent(p.slice(0,i)),v=decodeURIComponent(p.slice(i+1));var el=f.elements[k];if(el&&el.tagName){el.value=v;got=true}});
